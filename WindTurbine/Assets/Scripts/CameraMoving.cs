@@ -46,7 +46,7 @@ public class CameraMoving : MonoBehaviour {
 //		transform.Translate(move, Space.World); 
 
 		float scroll = Input.GetAxis("Mouse ScrollWheel");
-		Debug.Log (scroll);
+		//Debug.Log (scroll);
 		transform.Translate(0, scroll * zoomSpeed, 0, Space.World);
 
 	}

@@ -1,11 +1,12 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/TurbinWorking.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/EnemyHealth.cs">
     <Files>
       <File FileName="Assets/Scripts/PumpAttacking.cs" Line="27" Column="106" />
       <File FileName="Assets/Scripts/EnemyMoving.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/EnemyHealth.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/TurbinWorking.cs" Line="9" Column="2" />
+      <File FileName="Assets/Scripts/EnemyHealth.cs" Line="23" Column="109" />
+      <File FileName="Assets/Scripts/TurbinWorking.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/EnemyHealthBar.cs" Line="28" Column="45" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

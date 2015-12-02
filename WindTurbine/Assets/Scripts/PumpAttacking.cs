@@ -27,7 +27,7 @@ public class PumpAttacking : MonoBehaviour {
 		gameObject.transform.localScale = new Vector3 (attackingGridRadius * 20, 40, attackingGridRadius * 20);
 
 		timer = 0f;
-		attackingDamage = 50;
+		attackingDamage = 10;
 	}
 	
 	// Update is called once per frame
@@ -52,34 +52,42 @@ public class PumpAttacking : MonoBehaviour {
 
 		if (other.gameObject.CompareTag ("waterDrop")) {
 			attackingList.Add(other.gameObject.transform);
-			Debug.Log ("Enter: " + attackingList.Count);
+			//Debug.Log ("Enter: " + attackingList.Count);
 		}
 	}
 
 	void OnTriggerExit(Collider other){
 		if (other.gameObject.CompareTag ("waterDrop")) {
 			attackingList.Remove(other.gameObject.transform);
-			Debug.Log ("Exit: " + attackingList.Count);
+			//Debug.Log ("Exit: " + attackingList.Count);
 		}
 	}
 
 	void attack(){
 		timer = 0f;
+
+		if (attackingList.Count <= 0)
+			return;
+		else
+			currentTarget = attackingList [0].transform;
+
 		for (int i = 0; i< attackingList.Count; i++) {
-		
-			currentTarget = attackingList[i].transform;
-			currentEnemyHealth = currentTarget.GetComponent<EnemyHealth>();
 
-			if(currentEnemyHealth.health<=attackingDamage)
-			{
-				attackingList.Remove (currentTarget);
-				currentEnemyHealth.attack(attackingDamage);
-				i--;
-			}
+			if(currentTarget.GetComponent<EnemyHealth>().health > attackingList [i].transform.GetComponent<EnemyHealth>().health)
+				currentTarget = attackingList [i].transform;
 
-			else
-				currentEnemyHealth.attack(attackingDamage);
 		}
+
+		currentEnemyHealth = currentTarget.GetComponent<EnemyHealth> ();
+
+		if(currentEnemyHealth.health<=attackingDamage)
+		{
+			attackingList.Remove (currentTarget);
+			currentEnemyHealth.attack(attackingDamage);
+		}
+		
+		else
+			currentEnemyHealth.attack(attackingDamage);
 	}
 
 	public void enableWork()

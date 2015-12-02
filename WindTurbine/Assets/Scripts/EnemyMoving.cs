@@ -37,7 +37,7 @@ public class EnemyMoving : MonoBehaviour {
 		if (i >= routeTurningPoints.Count)
 			return;
 
-		if (Mathf.Abs(transform.position.x - target.position.x) <=  5 && Mathf.Abs(transform.position.z - target.position.z) <=  5) {
+		if (Mathf.Abs(transform.position.x - target.position.x) <=  0.1 && Mathf.Abs(transform.position.z - target.position.z) <=  0.1) {
 			i++;
 
 			if (i == routeTurningPoints.Count){

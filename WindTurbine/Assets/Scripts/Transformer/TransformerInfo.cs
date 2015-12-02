@@ -14,4 +14,10 @@ public class TransformerInfo : MonoBehaviour {
 	void Update () {
 		
 	}
+
+	void OnMouseClick()
+	{
+		Debug.Log ("Click Transformer");
+	}
+
 }

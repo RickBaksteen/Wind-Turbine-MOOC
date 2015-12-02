@@ -20,8 +20,8 @@ public class PumpAttacking : MonoBehaviour {
 	void Start () {
 
 		timeBetweenAttacks = gameObject.GetComponentInParent<PumpInfo> ().pumpTimeBetween;
-		attackingDamage = gameObject.GetComponentInParent<PumpInfo> ().pumpDamage;
-		attackingGridRadius = gameObject.GetComponentInParent<PumpInfo> ().currentPower;
+		//attackingDamage = gameObject.GetComponentInParent<PumpInfo> ().pumpDamage;
+		attackingDamage = gameObject.GetComponentInParent<PumpInfo> ().currentPower;
 
 		if (isWorking)
 			enableWork ();
@@ -33,9 +33,11 @@ public class PumpAttacking : MonoBehaviour {
 		timer = 0f;
 		attackingDamage = 10;
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
+
+		attackingDamage = gameObject.GetComponentInParent<PumpInfo> ().currentPower;
 
 		if (isWorking) {
 		

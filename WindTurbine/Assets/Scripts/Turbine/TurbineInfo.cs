@@ -32,4 +32,9 @@ public class TurbineInfo : MonoBehaviour {
 		output = maxOutput * (4 - angle)/4;
 
 	}
+
+	void OnMouseClick()
+	{
+		Debug.Log ("Turbine Click");
+	}
 }

@@ -52,12 +52,15 @@
      <Compile Include="Assets\Scripts\Enemy\EnemyMoving.cs" />
      <Compile Include="Assets\Scripts\Manager\EnemyManager.cs" />
      <Compile Include="Assets\Scripts\Manager\WaterCountManager.cs" />
+     <Compile Include="Assets\Scripts\Terrain\CubeInfo.cs" />
+     <Compile Include="Assets\Scripts\Terrain\Info.cs" />
      <Compile Include="Assets\Scripts\Transformer\TransformerInfo.cs" />
      <Compile Include="Assets\Scripts\Transformer\TransformerWorking.cs" />
      <Compile Include="Assets\Scripts\Turbine\TurbineInfo.cs" />
      <Compile Include="Assets\Scripts\Turbine\TurbineWorking.cs" />
      <Compile Include="Assets\Scripts\UICondition\OutputManager.cs" />
      <Compile Include="Assets\Scripts\UICondition\WindManager.cs" />
+     <Compile Include="Assets\Scripts\UIGamePlay\gamePlayManager.cs" />
      <Compile Include="Assets\Scripts\pump\PumpAttacking.cs" />
      <Compile Include="Assets\Scripts\pump\PumpInfo.cs" />
      <None Include="Assets\license.txt" />

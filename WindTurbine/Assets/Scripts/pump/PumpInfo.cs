@@ -8,7 +8,7 @@ public class PumpInfo : MonoBehaviour {
 	public int pumpDamage = 10;	//pump damage;
 	public int currentPower;	//Current Power(used to calculate AS,DMG)???
 	public float percentage = 0.47f;	//Current power to Percentage of cap (example 47% to 100%)
-	public int maxPower = 10;		//Max Power
+	public int maxPower = 20;		//Max Power
 
 	// Use this for initialization
 	void Start () {

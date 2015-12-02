@@ -20,4 +20,8 @@ public class EnemyInfo : InfoItem {
     {
         return "Water Amount: " + waterAmount + "\nSpeed: " + speed + "\nReward: " + rewards;
     }
+
+	void OnMouseDown(){
+		Debug.Log (GetInfo ());
+	}
 }

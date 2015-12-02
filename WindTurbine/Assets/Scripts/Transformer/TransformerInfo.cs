@@ -10,4 +10,8 @@ public class TransformerInfo : InfoItem
     {
         return "Power: " + power;
     }
+
+	void OnMouseDown(){
+		Debug.Log (GetInfo ());
+	}
 }

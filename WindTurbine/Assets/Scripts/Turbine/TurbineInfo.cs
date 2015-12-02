@@ -37,4 +37,9 @@ public class TurbineInfo : InfoItem
         return "\nCurrent Direction: " + direction + "\nCurrent Power: " + output
             + "\nMax Power: " + maxOutput;
     }
+
+	void OnMouseDown()
+	{
+		Debug.Log (GetInfo ());
+	}
 }

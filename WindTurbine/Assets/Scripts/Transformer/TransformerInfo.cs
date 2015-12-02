@@ -1,17 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TransformerInfo : MonoBehaviour {
+public class TransformerInfo : InfoItem
+{
 	
 	public int power;
 
-	// Use this for initialization
-	void Start () {
-
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public override string GetInfo()
+    {
+        return "Power: " + power;
+    }
 }

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyInfo : MonoBehaviour {
+public class EnemyInfo : InfoItem {
 	
 	public int waterAmount = 1;	//Current water amount(HP)
 	public int speed = 10;		//Speed per unit (units per second)
@@ -16,4 +16,8 @@ public class EnemyInfo : MonoBehaviour {
 	void Update () {
 	
 	}
+    public override string GetInfo()
+    {
+        return "Water Amount: " + waterAmount + "\nSpeed: " + speed + "\nReward: " + rewards;
+    }
 }

@@ -35,4 +35,9 @@ public class PumpInfo : InfoItem
         return "Pump Time: " + pumpTimeBetween + "\nPump Ammount: " + pumpDamage + "\nCurrent Power: " + currentPower
             + "\nMax Power: " + maxPower + "\nPower Percentage: " + percentage;
     }
+
+	void OnMouseDown()
+	{
+		Debug.Log (GetInfo ());
+	}
 }

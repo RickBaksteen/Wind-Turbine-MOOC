@@ -48,22 +48,22 @@
      <Compile Include="Assets\Scripts\CameraMoving.cs" />
      <Compile Include="Assets\Scripts\EnemyHealth.cs" />
      <Compile Include="Assets\Scripts\EnemyHealthBar.cs" />
+     <Compile Include="Assets\Scripts\EnemyInfo.cs" />
      <Compile Include="Assets\Scripts\EnemyManager.cs" />
      <Compile Include="Assets\Scripts\EnemyMoving.cs" />
      <Compile Include="Assets\Scripts\PumpAttacking.cs" />
-     <Compile Include="Assets\Scripts\TurbinWorking.cs" />
+     <Compile Include="Assets\Scripts\PumpInfo.cs" />
+     <Compile Include="Assets\Scripts\TransformerInfo.cs" />
+     <Compile Include="Assets\Scripts\TransformerWorking.cs" />
+     <Compile Include="Assets\Scripts\TurbineInfo.cs" />
+     <Compile Include="Assets\Scripts\TurbineWorking.cs" />
      <Compile Include="Assets\Scripts\WaterCountManager.cs" />
- <Reference Include="UnityEngine.Analytics">
- <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
- </Reference>
+     <None Include="Assets\license.txt" />
  <Reference Include="UnityEngine.Networking">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.Advertisements">
- <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>/Applications/Unity/Unity.app/Contents/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>

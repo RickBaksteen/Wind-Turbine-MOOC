@@ -9,6 +9,7 @@ public class EnemyMoving : MonoBehaviour {
 	public float speed = 10;
 
 	private int i;
+	private Transform waterPool;
 
 
 	// Use this for initialization
@@ -16,6 +17,7 @@ public class EnemyMoving : MonoBehaviour {
 
 		Transform turningPointsObject = GameObject.FindGameObjectWithTag ("routeTurningPoints").transform;
 		Transform bufferPoint;
+		waterPool = GameObject.FindGameObjectWithTag ("waterPool").transform;
 		i = 0;
 
 		while (i < turningPointsObject.childCount) {
@@ -43,6 +45,9 @@ public class EnemyMoving : MonoBehaviour {
 			if (i == routeTurningPoints.Count){
 
 				WaterCountManager.waterCount++;
+
+				waterPool.localScale = new Vector3(5*WaterCountManager.waterCount, 1, 5*WaterCountManager.waterCount);
+
 				Destroy(gameObject);
 				Debug.Log(WaterCountManager.waterCount);
 				return;

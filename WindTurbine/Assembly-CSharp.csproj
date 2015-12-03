@@ -63,8 +63,11 @@
      <Compile Include="Assets\Scripts\Turbine\TurbineInfo.cs" />
      <Compile Include="Assets\Scripts\Turbine\TurbineWorking.cs" />
      <Compile Include="Assets\Scripts\UICondition\OutputManager.cs" />
+     <Compile Include="Assets\Scripts\UICondition\RainManager.cs" />
      <Compile Include="Assets\Scripts\UICondition\WindManager.cs" />
      <Compile Include="Assets\Scripts\UIGameplay\gamePlay.cs" />
+     <Compile Include="Assets\Scripts\UIPanelSwitching\CustomizationSwitch.cs" />
+     <Compile Include="Assets\Scripts\UIWindTurbineSelection\WindTurbineBtnInfo.cs" />
      <Compile Include="Assets\Scripts\pump\PumpAttacking.cs" />
      <Compile Include="Assets\Scripts\pump\PumpInfo.cs" />
      <None Include="Assets\license.txt" />

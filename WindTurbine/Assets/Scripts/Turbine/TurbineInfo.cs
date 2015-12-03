@@ -40,6 +40,8 @@ public class TurbineInfo : InfoItem
 
 	void OnMouseDown()
 	{
-		Debug.Log (GetInfo ());
+		GameObject.FindGameObjectWithTag ("screens").GetComponent<CustomizationSwitch> ().toSelectionP ();
+		GameObject.FindGameObjectWithTag ("selectionPanel").GetComponent<InfoPanel> ().UpdateInfo (gameObject.transform.GetComponent<TurbineInfo>());
+		Debug.Log(GetInfo ());
 	}
 }

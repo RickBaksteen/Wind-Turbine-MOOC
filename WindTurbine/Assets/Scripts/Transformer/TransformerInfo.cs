@@ -11,7 +11,10 @@ public class TransformerInfo : InfoItem
         return "Power: " + power;
     }
 
-	void OnMouseDown(){
-		Debug.Log (GetInfo ());
+	void OnMouseDown()
+	{
+		GameObject.FindGameObjectWithTag ("screens").GetComponent<CustomizationSwitch> ().toSelectionP ();
+		GameObject.FindGameObjectWithTag ("selectionPanel").GetComponent<InfoPanel> ().UpdateInfo (gameObject.transform.GetComponent<TransformerInfo>());
+		Debug.Log(GetInfo ());
 	}
 }

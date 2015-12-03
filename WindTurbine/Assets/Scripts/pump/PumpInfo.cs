@@ -38,6 +38,8 @@ public class PumpInfo : InfoItem
 
 	void OnMouseDown()
 	{
-		Debug.Log (GetInfo ());
+		GameObject.FindGameObjectWithTag ("screens").GetComponent<CustomizationSwitch> ().toSelectionP ();
+		GameObject.FindGameObjectWithTag ("selectionPanel").GetComponent<InfoPanel> ().UpdateInfo (gameObject.transform.GetComponent<PumpInfo>());
+		Debug.Log(GetInfo ());
 	}
 }

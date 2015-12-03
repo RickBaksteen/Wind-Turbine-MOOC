@@ -11,6 +11,8 @@ public class EnemyManager : MonoBehaviour {
 	public float timeBetweenNextWave = 10f;
 	public int waveNum = 3;
 
+	public int rainAmount = 1;
+
 	private int spawnNum = 0;
 	public int currentWave = 0;
 
@@ -69,6 +71,8 @@ public class EnemyManager : MonoBehaviour {
 
 		int spawnPointIndex = Random.Range (0, spawnPoints.Length);
 		Instantiate (enemy, spawnPoints [spawnPointIndex].position, spawnPoints [spawnPointIndex].rotation);
+
+		rainAmount += enemy.transform.GetComponent<EnemyInfo> ().waterAmount;
 
 		spawnNum++;
 	}

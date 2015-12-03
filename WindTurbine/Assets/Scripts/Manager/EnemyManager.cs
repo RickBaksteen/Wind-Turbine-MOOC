@@ -8,26 +8,79 @@ public class EnemyManager : MonoBehaviour {
 	public Transform[] spawnPoints;
 	public int spawnLimit;
 
+	public float timeBetweenNextWave = 10f;
+	public int waveNum = 3;
+
 	private int spawnNum = 0;
+	public int currentWave = 0;
+
+	private float waveTime;
+	//private float waitTime;
+
+	public bool waveComing;
 
 	// Use this for initialization
 	void Start () {
-		InvokeRepeating ("Spawn", spawnTime, spawnTime);
+
+		waveComing = true;
+		waveCome ();
+		//waveComing = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+
+		if (currentWave>=waveNum)
+			return;
+
+//		if (waveComing) {
+//		
+//			waitTime += Time.deltaTime;
+//
+//			if(waitTime >= (spawnLimit) * spawnTime){
+//				spawnNum = 0;
+//				waveComing = false;
+//				waitTime = 0;
+//			}
+//
+//		}
+
+		if (!waveComing) {
+			
+			waveTime += Time.deltaTime;
+			
+			if(waveTime >= timeBetweenNextWave){
+				waveComing = true;
+				waveCome();
+				waveTime = 0;
+			}
+		}
+
 	}
 
 	void Spawn(){
 
-		if (spawnNum >= spawnLimit)
+		if (spawnNum >= spawnLimit) {
+			CancelInvoke();
+			spawnNum = 0;
+			waveComing = false;
 			return;
+		}
 
 		int spawnPointIndex = Random.Range (0, spawnPoints.Length);
 		Instantiate (enemy, spawnPoints [spawnPointIndex].position, spawnPoints [spawnPointIndex].rotation);
 
 		spawnNum++;
 	}
+
+	void waveCome(){
+	
+		if (!waveComing)
+			return;
+
+		InvokeRepeating ("Spawn", spawnTime, spawnTime);
+		currentWave++;
+	
+	}
+
 }

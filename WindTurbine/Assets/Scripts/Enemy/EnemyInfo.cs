@@ -21,7 +21,10 @@ public class EnemyInfo : InfoItem {
         return "Water Amount: " + waterAmount + "\nSpeed: " + speed + "\nReward: " + rewards;
     }
 
-	void OnMouseDown(){
-		Debug.Log (GetInfo ());
+	void OnMouseDown()
+	{
+		GameObject.FindGameObjectWithTag ("screens").GetComponent<CustomizationSwitch> ().toSelectionP ();
+		GameObject.FindGameObjectWithTag ("selectionPanel").GetComponent<InfoPanel> ().UpdateInfo (gameObject.transform.GetComponent<EnemyInfo>());
+		Debug.Log(GetInfo ());
 	}
 }

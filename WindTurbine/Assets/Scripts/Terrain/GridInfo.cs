@@ -34,6 +34,8 @@ public class GridInfo : InfoItem {
 
 	void OnMouseDown()
 	{
+		GameObject.FindGameObjectWithTag ("screens").GetComponent<CustomizationSwitch> ().toSelectionP ();
+		GameObject.FindGameObjectWithTag ("selectionPanel").GetComponent<InfoPanel> ().UpdateInfo (gameObject.transform.GetComponent<GridInfo>());
 		Debug.Log(GetInfo ());
 	}
 }

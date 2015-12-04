@@ -29,7 +29,7 @@ public class WindManager : MonoBehaviour {
 
 	void ChangeWind(){
 
-		windIndex = Random.Range(0, 8);
+		windIndex = Random.Range(0, windDirection.Length);
 		//Debug.Log ("WindDirection: " + windIndex);
 
 		gameObject.transform.GetChild(0).GetComponent<Text>().text = "  Wind: " + windDirection[windIndex];

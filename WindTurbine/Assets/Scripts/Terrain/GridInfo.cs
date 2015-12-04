@@ -34,8 +34,30 @@ public class GridInfo : InfoItem {
 
 	void OnMouseDown()
 	{
-		GameObject.FindGameObjectWithTag ("screens").GetComponent<CustomizationSwitch> ().toSelectionP ();
-		GameObject.FindGameObjectWithTag ("selectionPanel").GetComponent<InfoPanel> ().UpdateInfo (gameObject.transform.GetComponent<GridInfo>());
-		Debug.Log(GetInfo ());
+		CreateManager createManager = GameObject.FindGameObjectWithTag ("createManager").transform.GetComponent<CreateManager> ();
+		bool creating = createManager.creating;
+
+		if (creating) {
+			Transform newTransform = createManager.newTransform;
+			Quaternion rotation = createManager.rotation;
+			int maxOutput = createManager.maxOutput;
+			int directionIndex = createManager.directionIndex;
+			Vector3 pos = transform.position;
+			pos.y += 1;
+			Transform newObject = (Transform)Instantiate(newTransform, pos, rotation);
+
+			newObject.GetComponent<TurbineInfo> ().maxOutput = maxOutput;
+			newObject.GetComponent<TurbineInfo> ().directionIndex = directionIndex % 8;
+
+			createManager.creating = false;
+		}
+
+		if (!creating) {
+			GameObject.FindGameObjectWithTag ("screens").GetComponent<CustomizationSwitch> ().toSelectionP ();
+			GameObject.FindGameObjectWithTag ("selectionPanel").GetComponent<InfoPanel> ().UpdateInfo (gameObject.transform.GetComponent<GridInfo>());
+			Debug.Log(GetInfo ());
+			
+			GameObject.FindGameObjectWithTag ("createManager").transform.position = gameObject.transform.position;
+		}
 	}
 }

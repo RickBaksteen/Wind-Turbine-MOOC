@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System;
 
 public class OutputManager : MonoBehaviour {
 
-	private int output;
+	private int output = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -13,7 +14,15 @@ public class OutputManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		output = GameObject.FindGameObjectWithTag ("turbine").transform.GetComponent<TurbineInfo> ().output;
-		gameObject.transform.GetChild(0).GetComponent<Text>().text = "   Output: " + output + " kWh";
+
+		try {
+
+			output = GameObject.FindGameObjectWithTag ("turbine").transform.GetComponent<TurbineInfo> ().output;
+			gameObject.transform.GetChild(0).GetComponent<Text>().text = "   Output: " + output + " kWh";
+			
+		}       
+		catch (NullReferenceException ex) {
+			
+		};
 	}
 }

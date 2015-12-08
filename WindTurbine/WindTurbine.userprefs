@@ -1,11 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/UICondition/OutputManager.cs">
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="../../Wind-Turbine-MOOC-ruoqing/WindTurbine/Assets/Scripts/Turbine/TurbineInfo.cs">
     <Files>
-      <File FileName="Assets/Scripts/UICondition/WindManager.cs" Line="35" Column="102" />
-      <File FileName="Assets/Scripts/UICondition/ConditionManager.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/pump/PumpInfo.cs" Line="39" Column="3" />
-      <File FileName="Assets/Scripts/UICondition/OutputManager.cs" Line="23" Column="24" />
+      <File FileName="../../Wind-Turbine-MOOC-ruoqing/WindTurbine/Assets/Scripts/Turbine/TurbineInfo.cs" Line="15" Column="26" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

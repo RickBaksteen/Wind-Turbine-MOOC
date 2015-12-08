@@ -38,6 +38,14 @@ public class GridInfo : InfoItem {
 		bool creating = createManager.creating;
 
 		if (creating) {
+
+			if(this.GridType == 1){
+
+				createManager.creating = false;
+				return;
+
+			}
+
 			Transform newTransform = createManager.newTransform;
 			Quaternion rotation = createManager.rotation;
 			int maxOutput = createManager.maxOutput;
@@ -59,5 +67,11 @@ public class GridInfo : InfoItem {
 			
 			GameObject.FindGameObjectWithTag ("createManager").transform.position = gameObject.transform.position;
 		}
+	}
+
+	public void setAttribute(){
+
+		ExtraCost = Elevation;
+
 	}
 }

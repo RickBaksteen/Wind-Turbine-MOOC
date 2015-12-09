@@ -22,8 +22,9 @@ public class TurbineInfo : InfoItem
 
     public void CalculateOutput()
     {
-        int wind = GameObject.FindGameObjectWithTag("wind").transform.GetComponent<WindManager>().windIndex;
-        int angle = Math.Abs(wind - directionIndex) % 4;
+        //int wind = GameObject.FindGameObjectWithTag("wind").transform.GetComponent<WindManager>().windIndex;
+		int wind = 0;
+		int angle = Math.Abs(wind - directionIndex) % 4;
 
         if (Math.Abs(wind - directionIndex) == 4)
         {

@@ -61,6 +61,7 @@
      <Compile Include="Assets\Scripts\Terrain\TerrainInfo.cs" />
      <Compile Include="Assets\Scripts\Transformer\TransformerInfo.cs" />
      <Compile Include="Assets\Scripts\Transformer\TransformerWorking.cs" />
+     <Compile Include="Assets\Scripts\Transformer\powerLineInfo.cs" />
      <Compile Include="Assets\Scripts\Turbine\TurbineInfo.cs" />
      <Compile Include="Assets\Scripts\Turbine\TurbineWorking.cs" />
      <Compile Include="Assets\Scripts\UICondition\ConditionManager.cs" />

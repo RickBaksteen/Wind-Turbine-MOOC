@@ -10,6 +10,8 @@ public class PumpInfo : InfoItem
     public float percentage = 0.47f;    //Current power to Percentage of cap (example 47% to 100%)
     public int maxPower = 25;       //Max Power
 
+	public int power = 0;
+
     void Start()
     {
         
@@ -54,12 +56,16 @@ public class PumpInfo : InfoItem
 		catch (NullReferenceException ex) {
 			
 		};
+
+		pumpDamage = power / 25 + 1;
     }
 
     public override string GetInfo()
     {
-        return "Pump Time: " + pumpTimeBetween + "\nPump Ammount: " + pumpDamage + "\nCurrent Power: " + currentPower
-            + "\nMax Power: " + maxPower + "\nPower Percentage: " + percentage;
+//        return "Pump Time: " + pumpTimeBetween + "\nPump Ammount: " + pumpDamage + "\nCurrent Power: " + power
+//            + "\nMax Power: " + maxPower + "\nPower Percentage: " + percentage;
+
+		return "Pump Time: " + pumpTimeBetween + "\nPump Ammount: " + pumpDamage + "\nCurrent Power: " + power;
     }
 
 	void OnMouseDown()

@@ -55,6 +55,7 @@ public class GridInfo : InfoItem {
 			Transform newObject = (Transform)Instantiate(newTransform, pos, rotation);
 
 			newObject.GetComponent<TurbineInfo> ().maxOutput = maxOutput;
+			newObject.GetComponent<TurbineInfo> ().CalculateOutput(Elevation);
 			newObject.GetComponent<TurbineInfo> ().directionIndex = directionIndex % 8;
 
 			createManager.creating = false;

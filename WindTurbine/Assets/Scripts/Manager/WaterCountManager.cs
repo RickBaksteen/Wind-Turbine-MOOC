@@ -7,7 +7,7 @@ public class WaterCountManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+        waterCount = 0;
 	}
 	
 	// Update is called once per frame

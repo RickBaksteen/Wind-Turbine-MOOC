@@ -50,14 +50,20 @@ public class GridInfo : InfoItem {
 			Quaternion rotation = createManager.rotation;
 			int maxOutput = createManager.maxOutput;
 			int directionIndex = createManager.directionIndex;
+			int cost = createManager.cost;
 			Vector3 pos = transform.position;
 			pos.y += 1;
 			Transform newObject = (Transform)Instantiate(newTransform, pos, rotation);
 
-			newObject.GetComponent<TurbineInfo> ().maxOutput = maxOutput;
-			newObject.GetComponent<TurbineInfo> ().CalculateOutput(Elevation);
-			newObject.GetComponent<TurbineInfo> ().directionIndex = directionIndex % 8;
+			TurbineInfo newTurbineInfo = newObject.GetComponent<TurbineInfo> ();
 
+			newTurbineInfo.maxOutput = maxOutput;
+			newTurbineInfo.CalculateOutput(Elevation);
+			newTurbineInfo.directionIndex = directionIndex % 8;
+			newTurbineInfo.cost = cost;
+
+			MoneyManager.money -= cost + ExtraCost;
+			createManager.turbineNum++;
 			createManager.creating = false;
 		}
 

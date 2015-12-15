@@ -110,7 +110,31 @@ public class TerrainInfo : MonoBehaviour {
 			}
 			
 		}
-		
+
+//		if (indexMax == elevationBound - 1) {
+//
+//			return;
+//
+//		} 
+//
+//		else {
+//
+//			int difference = (elevationBound - 1) - elevationInfo [12, 6];
+//			
+//			for (int x = 0; x < 20; x++) {
+//				
+//				for (int z = 0; z < 20; z++) {
+//					
+//					elevationInfo [x, z] = Math.Min (difference + elevationInfo [x, z], (elevationBound - 1));
+//					
+//				}
+//				
+//			}
+//			
+//			indexMax = elevationBound - 1;
+//			indexMin = Math.Min (indexMin + difference, elevationBound - 1);
+//		}
+
 	}
 	
 	public void loadMap(){

@@ -49,6 +49,7 @@ public class EnemyMoving : MonoBehaviour {
 				waterPool.localScale = new Vector3(5*WaterCountManager.waterCount, 1, 5*WaterCountManager.waterCount);
 
 				GameObject.FindGameObjectWithTag("enemyManager").transform.GetComponent<EnemyManager>().rainAmount-=gameObject.transform.GetComponent<EnemyInfo>().waterAmount;
+				//MoneyManager.money += gameObject.transform.GetComponent<EnemyInfo>().rewards;
 				Destroy(gameObject);
 				Debug.Log(WaterCountManager.waterCount);
 				return;

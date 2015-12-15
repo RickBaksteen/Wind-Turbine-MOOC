@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using UnityEngine.UI;
 
 public class TurbineInfo : InfoItem
 {
@@ -13,6 +14,7 @@ public class TurbineInfo : InfoItem
     public int maxOutput = 140;
 	public int elevation;
 	public float powerLoss;
+	public int cost;
 
     void Start()
     {
@@ -22,7 +24,11 @@ public class TurbineInfo : InfoItem
     void Update()
     {
         //CalculateOutput();
-		powerLoss = gameObject.transform.GetChild (1).GetComponent<powerLineInfo> ().loss;
+		if (Application.loadedLevelName == "Level1")
+			powerLoss = 1f;
+		else
+			powerLoss = gameObject.transform.GetChild (1).GetComponent<powerLineInfo> ().loss;
+		//powerLoss = 1f;
 		output = (int) (originalOutput * powerLoss);
     }
 
@@ -53,7 +59,8 @@ public class TurbineInfo : InfoItem
 //        return "\nCurrent Direction: " + direction + "\nCurrent Power: " + output
 //            + "\nMax Power: " + maxOutput;
 
-		return "\nPower: " + originalOutput + "\nCurrent Elevation: " + elevation + "\nPower Loss: " + powerLoss.ToString("0.00");
+		return "\nOriginal Power: " + originalOutput + "\nCurrent Power: " + output + "\nCurrent Elevation: " + elevation + "\nPower Loss: " + powerLoss.ToString("0.00")
+			+ "\nCost: $ " + cost;
 
     }
 
@@ -61,6 +68,9 @@ public class TurbineInfo : InfoItem
 	{
 		GameObject.FindGameObjectWithTag ("screens").GetComponent<CustomizationSwitch> ().toSelectionP ();
 		GameObject.FindGameObjectWithTag ("selectionPanel").GetComponent<InfoPanel> ().UpdateInfo (gameObject.transform.GetComponent<TurbineInfo>());
+		GameObject sellButton = GameObject.FindGameObjectWithTag ("sellButton");
+		sellButton.GetComponent<SellManager>().proposeSell(this.gameObject);
+
 		Debug.Log(GetInfo ());
 	}
 }

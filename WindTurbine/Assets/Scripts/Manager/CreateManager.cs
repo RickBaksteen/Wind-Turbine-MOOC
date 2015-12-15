@@ -9,10 +9,15 @@ public class CreateManager : MonoBehaviour {
 
 	public int maxOutput;
 	public int directionIndex;
+	public int cost;
+
+	public int turbineNum = 0;
+	public static int turbineNumLimit = 2;
 
 	// Use this for initialization
 	void Start () {
 		creating = false;
+		turbineNum = 0;
 	}
 	
 	// Update is called once per frame
@@ -20,12 +25,13 @@ public class CreateManager : MonoBehaviour {
 		
 	}
 
-	public void createTransform(Transform newObject, Quaternion newRotation, int maxOutput, int directionIndex){
+	public void createTransform(Transform newObject, Quaternion newRotation, int maxOutput, int directionIndex, int cost){
 
 		creating = true;
 		newTransform = newObject;
 		rotation = newRotation;
 		this.maxOutput = maxOutput;
 		this.directionIndex = directionIndex;
+		this.cost = cost;
 	}
 }

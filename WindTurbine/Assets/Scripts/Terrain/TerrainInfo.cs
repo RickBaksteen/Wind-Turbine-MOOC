@@ -36,7 +36,7 @@ public class TerrainInfo : MonoBehaviour {
 		}
 		
 		
-		loadElevation ();
+		loadElevation (12, 6);
 		loadMap ();
 		buildMap ();
 		
@@ -135,6 +135,98 @@ public class TerrainInfo : MonoBehaviour {
 //			indexMin = Math.Min (indexMin + difference, elevationBound - 1);
 //		}
 
+	}
+
+
+	public void loadElevation(int m, int n){
+		
+		int elevationBound = elevationMax / elevationInterval + 1;
+		int currentIndex = 0;
+		int prevIndexX = 0;
+		int prevIndexZ = 0;
+		
+		indexMin = elevationBound - 1;
+		indexMax = 0;
+
+		m = 12; n = 6;
+		elevationInfo [m, n] = elevationBound - 1;
+
+		for (int z = n-1; z >= 0; z--) {
+		
+			prevIndexZ = elevationInfo[m, z + 1];
+			elevationInfo[m, z] = UnityEngine.Random.Range(Math.Max(prevIndexZ - 1, 0), Math.Min(prevIndexZ + 2, elevationBound));
+			currentIndex = elevationInfo[m, z];
+			indexMax = Math.Max (currentIndex, indexMax);
+			indexMin = Math.Min (currentIndex, indexMin);
+
+		}
+
+		for (int z = n+1; z < 20; z++) {
+			
+			prevIndexZ = elevationInfo[m, z - 1];
+			elevationInfo[m, z] = UnityEngine.Random.Range(Math.Max(prevIndexZ - 1, 0), Math.Min(prevIndexZ + 2, elevationBound));
+			currentIndex = elevationInfo[m, z];
+			indexMax = Math.Max (currentIndex, indexMax);
+			indexMin = Math.Min (currentIndex, indexMin);
+
+		}
+
+		for (int x = m - 1; x >= 0; x--) {
+		
+			for(int z = 0; z < 20; z++)
+			{
+				if (z == 0){
+					
+					prevIndexX = elevationInfo[x + 1, z];
+					currentIndex = UnityEngine.Random.Range(Math.Max(prevIndexX - 1, 0), Math.Min(prevIndexX + 2, elevationBound));
+				}
+
+				else{
+
+					prevIndexX = elevationInfo[x + 1, z];
+					prevIndexZ = elevationInfo[x, z - 1];
+					
+					int min = Math.Max(Math.Max(prevIndexX - 1, prevIndexZ - 1), 0);
+					int max = Math.Min(Math.Min(prevIndexX + 2, prevIndexZ + 2), elevationBound);
+					currentIndex = UnityEngine.Random.Range(min, max);
+
+				}
+
+				elevationInfo[x, z] = currentIndex;
+				indexMax = Math.Max (currentIndex, indexMax);
+				indexMin = Math.Min (currentIndex, indexMin);
+			}
+		
+		}
+
+		for (int x = m + 1; x < 20; x++) {
+			
+			for(int z = 0; z < 20; z++)
+			{
+				if (z == 0){
+					
+					prevIndexX = elevationInfo[x - 1, z];
+					currentIndex = UnityEngine.Random.Range(Math.Max(prevIndexX - 1, 0), Math.Min(prevIndexX + 2, elevationBound));
+				}
+				
+				else{
+					
+					prevIndexX = elevationInfo[x - 1, z];
+					prevIndexZ = elevationInfo[x, z - 1];
+					
+					int min = Math.Max(Math.Max(prevIndexX - 1, prevIndexZ - 1), 0);
+					int max = Math.Min(Math.Min(prevIndexX + 2, prevIndexZ + 2), elevationBound);
+					currentIndex = UnityEngine.Random.Range(min, max);
+					
+				}
+
+				elevationInfo[x, z] = currentIndex;
+				indexMax = Math.Max (currentIndex, indexMax);
+				indexMin = Math.Min (currentIndex, indexMin);
+			}
+			
+		}
+		
 	}
 	
 	public void loadMap(){

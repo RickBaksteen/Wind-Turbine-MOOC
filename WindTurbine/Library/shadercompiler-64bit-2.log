@@ -1,32 +1,6 @@
 Base path: /Applications/Unity/Unity.app/Contents
-Pipe name: \\.\pipe\UnityShaderCompiler-64bit-2-14008320
+Pipe name: \\.\pipe\UnityShaderCompiler-64bit-2-158416896
 Cmd: getPlatforms
-Cmd: compileSnippet
-  api=1 type=0 insize=1705 outsize=169 kw=SOFTPARTICLES_OFF pd= ok=1
-Cmd: compileSnippet
-  api=8 type=0 insize=1705 outsize=1828 kw=SOFTPARTICLES_OFF pd=UNITY_NO_SCREENSPACE_SHADOWS UNITY_NO_LINEAR_COLORSPACE ok=1
-Cmd: compileSnippet
-  api=1 type=0 insize=1705 outsize=335 kw=SOFTPARTICLES_ON pd= ok=1
-Cmd: compileSnippet
-  api=4 type=0 insize=1705 outsize=2038 kw=SOFTPARTICLES_ON pd= ok=1
-Cmd: compileSnippet
-  api=8 type=0 insize=1705 outsize=2982 kw=SOFTPARTICLES_ON pd=UNITY_NO_SCREENSPACE_SHADOWS UNITY_NO_LINEAR_COLORSPACE ok=1
-Cmd: compileSnippet
-  api=1 type=0 insize=1705 outsize=411 kw=FOG_EXP2 SOFTPARTICLES_ON pd= ok=1
-Cmd: compileSnippet
-  api=4 type=0 insize=1705 outsize=2314 kw=FOG_EXP2 SOFTPARTICLES_ON pd= ok=1
-Cmd: compileSnippet
-  api=1 type=1 insize=1705 outsize=115 kw=SOFTPARTICLES_OFF pd= ok=1
-Cmd: compileSnippet
-  api=8 type=1 insize=1705 outsize=1308 kw=SOFTPARTICLES_OFF pd=UNITY_NO_SCREENSPACE_SHADOWS UNITY_NO_LINEAR_COLORSPACE ok=1
-Cmd: compileSnippet
-  api=8 type=1 insize=1705 outsize=2494 kw=SOFTPARTICLES_ON pd=UNITY_NO_SCREENSPACE_SHADOWS UNITY_NO_LINEAR_COLORSPACE ok=1
-Cmd: compileSnippet
-  api=4 type=1 insize=1705 outsize=1136 kw=FOG_EXP2 SOFTPARTICLES_OFF pd= ok=1
-Cmd: compileSnippet
-  api=1 type=1 insize=1705 outsize=401 kw=FOG_EXP2 SOFTPARTICLES_ON pd= ok=1
-Cmd: compileSnippet
-  api=8 type=1 insize=1705 outsize=2763 kw=FOG_EXP2 SOFTPARTICLES_ON pd=UNITY_NO_SCREENSPACE_SHADOWS UNITY_NO_LINEAR_COLORSPACE ok=1
 End of pipe
 
 Quitting shader compiler process

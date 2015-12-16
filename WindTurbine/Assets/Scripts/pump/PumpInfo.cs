@@ -57,7 +57,17 @@ public class PumpInfo : InfoItem
 			
 		};
 
-		pumpDamage = power / 25 + 1;
+		if (currentPower <= 0) {
+
+			pumpDamage = 0;
+			//gameObject.transform.GetChild(1)
+		
+		} else {
+		
+			pumpDamage = power / 25 + 1;
+		
+		}
+			
     }
 
     public override string GetInfo()
@@ -65,7 +75,7 @@ public class PumpInfo : InfoItem
 //        return "Pump Time: " + pumpTimeBetween + "\nPump Ammount: " + pumpDamage + "\nCurrent Power: " + power
 //            + "\nMax Power: " + maxPower + "\nPower Percentage: " + percentage;
 
-		return "Pump Time: " + pumpTimeBetween + "\nPump Ammount: " + pumpDamage + "\nCurrent Power: " + power;
+		return "Pump\n\n\n\n" + "Attacking Speed: " + pumpTimeBetween + "\nDamage: " + pumpDamage + "\nCurrent Power: " + power;
     }
 
 	void OnMouseDown()

@@ -18,7 +18,7 @@ public class EnemyInfo : InfoItem {
 	}
     public override string GetInfo()
     {
-        return "Water Amount: " + waterAmount + "\nSpeed: " + speed + "\nReward: " + rewards;
+		return "Flood\n\n\n\n" + "Water Amount: " + waterAmount + "\nSpeed: " + speed + "\nReward: " + rewards;
     }
 
 	void OnMouseDown()

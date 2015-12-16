@@ -4,7 +4,8 @@ using UnityEngine.UI;
 
 public class ConditionManager : MonoBehaviour {
 
-	public string[] conditions = {"Normal", "Normal", "Normal", "Normal", "Normal", "Earthquake!!", "Storm!!"};
+	//public string[] conditions = {"Normal", "Normal", "Normal", "Normal", "Normal", "Earthquake!!", "Storm!!"};
+	public string[] conditions = {"Normal", "Normal", "Normal", "Normal", "Normal"};
 
 	public int conditionIndex = 0;
 	public float conditionChangeTimeBetween = 5f;

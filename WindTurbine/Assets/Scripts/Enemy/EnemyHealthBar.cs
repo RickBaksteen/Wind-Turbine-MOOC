@@ -5,13 +5,15 @@ public class EnemyHealthBar : MonoBehaviour {
 
 	public Transform target;
 
-	public int maxHealth = 100;
-	public int curHealth = 100;
+	public int maxHealth;
+	public int curHealth;
 	
 	public float healthBarLength;
 	
 	// Use this for initialization
 	void Start () {
+		maxHealth = gameObject.transform.GetComponent<EnemyHealth> ().maxHealth;
+		curHealth = maxHealth;
 		target = gameObject.GetComponentInParent<Transform> ();
 		healthBarLength = Screen.width / 6;
 	}

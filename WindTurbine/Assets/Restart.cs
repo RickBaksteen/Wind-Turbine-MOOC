@@ -9,5 +9,9 @@ public class Restart : MonoBehaviour {
         Debug.Log("Button Clicked");
         Application.LoadLevel(CurrentLevel .currentLevel );
         Time.timeScale = 1;
+
+		KilledDrops.killedDrops = 0;
+		WaterCountManager.waterCount = 0;
+		GameObject.FindGameObjectWithTag("createManager").GetComponent<CreateManager>().turbineNum = 0;
     }
 }

@@ -19,6 +19,8 @@ public class PumpAttacking : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+		//isWorking = false;
+
 		timeBetweenAttacks = gameObject.GetComponentInParent<PumpInfo> ().pumpTimeBetween;
 		//attackingDamage = gameObject.GetComponentInParent<PumpInfo> ().pumpDamage;
 		attackingDamage = gameObject.GetComponentInParent<PumpInfo> ().currentPower;
@@ -37,7 +39,7 @@ public class PumpAttacking : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		attackingDamage = gameObject.GetComponentInParent<PumpInfo> ().currentPower;
+		attackingDamage = gameObject.GetComponentInParent<PumpInfo> ().pumpDamage;
 
 		if (isWorking) {
 		
@@ -49,6 +51,7 @@ public class PumpAttacking : MonoBehaviour {
 		
 		} else {
 		
+			disableWork();
 			timer = 0f;
 		}
 
@@ -98,6 +101,8 @@ public class PumpAttacking : MonoBehaviour {
 
 	public void enableWork()
 	{
+		Debug.Log ("working");
+		//what???
 		isWorking = true;
 		Color color = gameObject.GetComponent<MeshRenderer> ().material.color;
 		color.a = 70f/255f;

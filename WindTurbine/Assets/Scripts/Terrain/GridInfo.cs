@@ -23,10 +23,10 @@ public class GridInfo : InfoItem {
 		string print = "";
 		
 		if(GridType == 0){
-			print = "TerrainHolder Elevation: " + Elevation + "\nConstruction Cost: " + ExtraCost;
+			print = "Terrain\n\n\n\n" + "TerrainHolder Elevation: " + Elevation + "\nConstruction Cost: " + ExtraCost;
 		}
 		if(GridType == 1){
-			print = "WaterRoute Elevation: " + Elevation + "\nConstruction Cost: " + ExtraCost;
+			print = "River\n\n\n\n" + "RiverRoute Elevation: " + Elevation + "\nConstruction Cost: " + ExtraCost;
 		}
 
 		return print;

@@ -59,8 +59,10 @@ public class TurbineInfo : InfoItem
 //        return "\nCurrent Direction: " + direction + "\nCurrent Power: " + output
 //            + "\nMax Power: " + maxOutput;
 
-		return "\nOriginal Power: " + originalOutput + "\nCurrent Power: " + output + "\nCurrent Elevation: " + elevation + "\nPower Loss: " + powerLoss.ToString("0.00")
-			+ "\nCost: $ " + cost;
+//		return "\nOriginal Power: " + originalOutput + "\nCurrent Power: " + output + "\nCurrent Elevation: " + elevation + "\nPower Loss: " + powerLoss.ToString("0.00")
+//			+ "\nCost: $ " + cost;
+
+		return "Turbine\n\n\n\n" + "\nOriginal Power: " + originalOutput + "\nCost: $ " + cost;
 
     }
 

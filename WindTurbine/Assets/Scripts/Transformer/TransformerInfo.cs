@@ -8,7 +8,7 @@ public class TransformerInfo : InfoItem
 
     public override string GetInfo()
     {
-        return "Power: " + power;
+		return "Transformer\n\n\n\n" + "Power: " + power;
     }
 
 	void OnMouseDown()

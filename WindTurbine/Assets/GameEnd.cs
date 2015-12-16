@@ -21,7 +21,7 @@ public class GameEnd : MonoBehaviour {
         }
        else if ((KilledDrops. killedDrops + WaterCountManager .waterCount ) == allDrops )
         {
-            KilledDrops.killedDrops = 0;
+			KilledDrops.killedDrops = 0;
             Application.LoadLevel("Win");
         }
        

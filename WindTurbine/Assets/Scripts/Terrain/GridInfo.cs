@@ -62,9 +62,15 @@ public class GridInfo : InfoItem {
 			newTurbineInfo.directionIndex = directionIndex % 8;
 			newTurbineInfo.cost = cost;
 
-			MoneyManager.money -= cost + ExtraCost;
-			createManager.turbineNum++;
-			createManager.creating = false;
+			if(MoneyManager.money < cost + ExtraCost){
+				createManager.creating = false;
+				Destroy(newObject);
+			}
+			else{
+				MoneyManager.money -= cost + ExtraCost;
+				createManager.turbineNum++;
+				createManager.creating = false;
+			}
 		}
 
 		if (!creating) {

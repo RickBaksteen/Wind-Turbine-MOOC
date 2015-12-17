@@ -19,7 +19,7 @@ public class WindTurbineBtnInfo : InfoItem {
 	// Update is called once per frame
 	void Update () {
 
-		if (MoneyManager.money < cost || GameObject.FindGameObjectWithTag("createManager").GetComponent<CreateManager>().turbineNum >= CreateManager.turbineNumLimit) {
+		if (MoneyManager.money < cost || CreateManager.turbineNum >= CreateManager.turbineNumLimit) {
 		
 			transform.GetComponent<Button>().interactable = false;
 		
@@ -40,8 +40,7 @@ public class WindTurbineBtnInfo : InfoItem {
 
 	public void createTurbine(){
 
-		GameObject.FindGameObjectWithTag ("createManager").GetComponent<CreateManager> ().createTransform (windTurbine, rotation, maxOutput,directionIndex, cost);
-
+		GameObject.FindGameObjectWithTag ("createManager").GetComponent<CreateManager> ().createTurbine (windTurbine, rotation, maxOutput,directionIndex, cost);
 		GameObject.FindGameObjectWithTag ("screens").GetComponent<CustomizationSwitch> ().toSelectionP ();
 		GameObject.FindGameObjectWithTag ("selectionPanel").GetComponent<InfoPanel> ().UpdateInfo (transform.GetComponent<WindTurbineBtnInfo>());
 

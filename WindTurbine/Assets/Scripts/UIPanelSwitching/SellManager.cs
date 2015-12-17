@@ -22,7 +22,7 @@ public class SellManager : MonoBehaviour {
 		Transform transformer = sellingObject.transform.GetComponent<TurbineWorking>().transformer;
 		transformer.GetComponent<TransformerWorking> ().unlinkTurbine (sellingObject.transform);
 		Destroy (sellingObject);
-		GameObject.FindGameObjectWithTag("createManager").GetComponent<CreateManager>().turbineNum--;
+		CreateManager.turbineNum--;
 		gameObject.transform.GetComponent<Button>().interactable = false;
 	}
 

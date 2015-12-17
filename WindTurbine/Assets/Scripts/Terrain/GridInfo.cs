@@ -36,6 +36,7 @@ public class GridInfo : InfoItem {
 	{
 		CreateManager createManager = GameObject.FindGameObjectWithTag ("createManager").transform.GetComponent<CreateManager> ();
 		bool creating = createManager.creating;
+		CreateManager.createType createType = createManager.currentType;
 
 		if (creating) {
 
@@ -46,31 +47,48 @@ public class GridInfo : InfoItem {
 
 			}
 
-			Transform newTransform = createManager.newTransform;
-			Quaternion rotation = createManager.rotation;
-			int maxOutput = createManager.maxOutput;
-			int directionIndex = createManager.directionIndex;
-			int cost = createManager.cost;
-			Vector3 pos = transform.position;
-			pos.y += 1;
-			Transform newObject = (Transform)Instantiate(newTransform, pos, rotation);
+			if(createType == CreateManager.createType.turbine){
 
-			TurbineInfo newTurbineInfo = newObject.GetComponent<TurbineInfo> ();
-
-			newTurbineInfo.maxOutput = maxOutput;
-			newTurbineInfo.CalculateOutput(Elevation);
-			newTurbineInfo.directionIndex = directionIndex % 8;
-			newTurbineInfo.cost = cost;
-
-			if(MoneyManager.money < cost + ExtraCost){
-				createManager.creating = false;
-				Destroy(newObject);
+				Transform newTransform = createManager.newTransform;
+				Quaternion rotation = createManager.rotation;
+				int maxOutput = createManager.maxOutput;
+				int directionIndex = createManager.directionIndex;
+				int cost = createManager.cost;
+				Vector3 pos = transform.position;
+				pos.y += 1;
+				Transform newObject = (Transform)Instantiate(newTransform, pos, rotation);
+				
+				TurbineInfo newTurbineInfo = newObject.GetComponent<TurbineInfo> ();
+				
+				newTurbineInfo.maxOutput = maxOutput;
+				newTurbineInfo.CalculateOutput(Elevation);
+				newTurbineInfo.directionIndex = directionIndex % 8;
+				newTurbineInfo.cost = cost;
+				
+				if(MoneyManager.money < cost + ExtraCost){
+					createManager.creating = false;
+					Destroy(newObject);
+				}
+				else{
+					MoneyManager.money -= cost + ExtraCost;
+					CreateManager.turbineNum++;
+					createManager.creating = false;
+				}
 			}
-			else{
-				MoneyManager.money -= cost + ExtraCost;
-				createManager.turbineNum++;
-				createManager.creating = false;
+
+			//Create Pump here
+			else if(createType == CreateManager.createType.pump)
+			{
+
 			}
+
+			//Create Transformer here
+			else if(createType == CreateManager.createType.transformer)
+			{
+
+			}
+
+
 		}
 
 		if (!creating) {

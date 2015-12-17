@@ -15,49 +15,13 @@ public class PumpInfo : InfoItem
     void Start()
     {
         
-		try {
-
-			Transform turbine = GameObject.FindGameObjectWithTag("turbine").transform;
-			
-			int distance = (int)Math.Abs(turbine.position.x - transform.position.x) + (int)Math.Abs(turbine.position.z - transform.position.z);
-			distance /= 10;
-			
-			if (distance > 10)
-				percentage = 0.47f;
-			else
-				percentage = (float)((distance - 10) * ((1 - 0.47f) / (1 - 10))) + 0.47f;
-			
-			currentPower = (int)(maxPower * percentage);
-
-		}       
-		catch (NullReferenceException ex) {
-
-		}
 
     }
 
     void Update()
     {
-		try {
-			
-			Transform turbine = GameObject.FindGameObjectWithTag("turbine").transform;
-			
-			int distance = (int)Math.Abs(turbine.position.x - transform.position.x) + (int)Math.Abs(turbine.position.z - transform.position.z);
-			distance /= 10;
-			
-			if (distance > 10)
-				percentage = 0.47f;
-			else
-				percentage = (float)((distance - 10) * ((1 - 0.47f) / (1 - 10))) + 0.47f;
-			
-			currentPower = (int)(maxPower * percentage);
-			
-		}       
-		catch (NullReferenceException ex) {
-			
-		};
 
-		if (currentPower <= 0) {
+		if (power <= 0) {
 
 			pumpDamage = 0;
 			//gameObject.transform.GetChild(1)

@@ -16,6 +16,7 @@ public class LevelPass : MonoBehaviour {
 			KilledDrops.killedDrops = 0;
 			WaterCountManager.waterCount = 0;
 			GameObject.FindGameObjectWithTag("createManager").GetComponent<CreateManager>().turbineNum = 0;
+			MoneyManager.money = 1000;
         }
         else
         {
@@ -25,6 +26,7 @@ public class LevelPass : MonoBehaviour {
 			KilledDrops.killedDrops = 0;
 			WaterCountManager.waterCount = 0;
 			GameObject.FindGameObjectWithTag("createManager").GetComponent<CreateManager>().turbineNum = 0;
+			MoneyManager.money = 1000;
         }
     }
 }

@@ -52,17 +52,18 @@ public class CreateManager : MonoBehaviour {
 	}
 
 	//Not well defined
-	public void createTransformer(Transform newObject, Quaternion newRotation){
+	public void createTransformer(Transform newObject, Quaternion newRotation, int cost){
 		
 		creating = true;
 		currentType = createType.transformer;
 		newTransform = newObject;
 		rotation = newRotation;
-		
+
+		this.cost = cost;
 	}
 
 	//Not well defined
-	public void createPump(Transform newObject, Quaternion newRotation, float pumpTimeBetween){
+	public void createPump(Transform newObject, Quaternion newRotation, float pumpTimeBetween, int cost){
 		
 		creating = true;
 		currentType = createType.pump;
@@ -70,6 +71,7 @@ public class CreateManager : MonoBehaviour {
 		rotation = newRotation;
 		
 		this.pumpTimeBetween = pumpTimeBetween;
+		this.cost = cost;
 		
 	}
 

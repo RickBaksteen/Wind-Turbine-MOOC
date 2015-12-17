@@ -5,6 +5,7 @@ public class TransformerInfo : InfoItem
 {
 	
 	public int power = 0;
+	public int cost = 0;
 
     public override string GetInfo()
     {

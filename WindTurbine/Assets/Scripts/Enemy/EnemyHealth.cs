@@ -4,7 +4,7 @@ using System.Collections;
 public class EnemyHealth : MonoBehaviour {
 
 	public int health;
-	public int maxHealth = 50;
+	public int maxHealth = 45;
 	private Vector3 slider;
 
 	// Use this for initialization

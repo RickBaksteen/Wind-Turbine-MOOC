@@ -19,6 +19,7 @@ public class beginUI : MonoBehaviour {
 
 		KilledDrops.killedDrops = 0;
 		WaterCountManager.waterCount = 0;
+		MoneyManager.money = 1000;
 	}
 
 
@@ -27,6 +28,7 @@ public class beginUI : MonoBehaviour {
         CurrentLevel.currentLevel = 2;
 		KilledDrops.killedDrops = 0;
 		WaterCountManager.waterCount = 0;
+		MoneyManager.money = 1000;
 	}
 
 	public void loadChapter1_3(){
@@ -34,6 +36,7 @@ public class beginUI : MonoBehaviour {
         CurrentLevel.currentLevel = 3;
 		KilledDrops.killedDrops = 0;
 		WaterCountManager.waterCount = 0;
+		MoneyManager.money = 1000;
 	}
 
 	public void loadChapter1_4(){
@@ -41,6 +44,7 @@ public class beginUI : MonoBehaviour {
 		CurrentLevel.currentLevel = 4;
 		KilledDrops.killedDrops = 0;
 		WaterCountManager.waterCount = 0;
+		MoneyManager.money = 1000;
 	}
 
 

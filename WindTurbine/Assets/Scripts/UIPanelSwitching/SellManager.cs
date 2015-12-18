@@ -28,8 +28,6 @@ public class SellManager : MonoBehaviour {
 
 			case itemType.Turbine:
 
-			Debug.Log ("sell Turbine");	
-
 				MoneyManager.money += (int)(sellingTurbine.transform.GetComponent<TurbineInfo> ().cost * 0.5);
 				Transform transformer = sellingTurbine.transform.GetComponent<TurbineWorking>().transformer;
 				transformer.GetComponent<TransformerWorking> ().unlinkTurbine (sellingTurbine.transform);

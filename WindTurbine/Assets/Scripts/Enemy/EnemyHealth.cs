@@ -4,14 +4,14 @@ using System.Collections;
 public class EnemyHealth : MonoBehaviour {
 
 	public int health;
-	public int maxHealth = 45;
+	public int maxHealth;
 	private Vector3 slider;
 
 	// Use this for initialization
 	void Start () {
 
 		if (Application.loadedLevelName == "Level4")
-			maxHealth = 60;
+			maxHealth = 120;
 
 		health = maxHealth;
 	}

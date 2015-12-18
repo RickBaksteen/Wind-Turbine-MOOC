@@ -53,7 +53,7 @@ public class TurbineInfo : InfoItem
 	//calculate output with the influence of elevation	
 	public void outputFromElevation(){
 
-		originalOutput = baseOutput + this.elevation / 10;
+		originalOutput = maxOutput + this.elevation / 10;
 	
 	}
 
@@ -65,7 +65,7 @@ public class TurbineInfo : InfoItem
 //		return "\nOriginal Power: " + originalOutput + "\nCurrent Power: " + output + "\nCurrent Elevation: " + elevation + "\nPower Loss: " + powerLoss.ToString("0.00")
 //			+ "\nCost: $ " + cost;
 
-		return "Turbine\n\n\n\n" + "\nOriginal Power: " + maxOutput + "\nCost: $ " + cost;
+		return "Turbine\n\n\n\n" + "\nPower Output: " + originalOutput + "\nSelling Cost: $ " + cost/2;
 
     }
 

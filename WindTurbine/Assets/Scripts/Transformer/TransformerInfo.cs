@@ -12,7 +12,7 @@ public class TransformerInfo : InfoItem
 
     public override string GetInfo()
     {
-		return "Transformer\n\n\n\n" + "Power: " + power;
+		return "Transformer\n\n\n\n" + "Received Power: " + power;
     }
 
 	void OnMouseDown()

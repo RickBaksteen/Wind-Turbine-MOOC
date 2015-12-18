@@ -1,18 +1,15 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/UIGameplay/gamePlay.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Manager/EnemyManager.cs">
     <Files>
-      <File FileName="Assets/Scripts/UIWindTurbineSelection/WindTurbineBtnInfo.cs" Line="65" Column="1" />
-      <File FileName="Assets/Scripts/UICustomization/BladSelection.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/UICustomization/PowertrainSelection.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Transformer/TransformerWorking.cs" Line="33" Column="98" />
       <File FileName="Assets/Scripts/Turbine/TurbineInfo.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/UIWindTurbineSelection/WindCustomizationPanelInfo.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/UICondition/MoneyManager.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/UIPanelSwitching/CustomizationSwitch.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Manager/CreateManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Terrain/TerrainInfo.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Transformer/TransformerInfo.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Terrain/GridInfo.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/UIGameplay/acceleration.cs" Line="5" Column="44" />
-      <File FileName="Assets/Scripts/UIGameplay/gamePlay.cs" Line="27" Column="20" />
+      <File FileName="Assets/Scripts/EndGameManager/OpenMenu.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Enemy/EnemyHealth.cs" Line="7" Column="22" />
+      <File FileName="Assets/Scripts/Manager/EnemyManager.cs" Line="16" Column="27" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

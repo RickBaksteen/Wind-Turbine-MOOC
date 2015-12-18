@@ -7,6 +7,9 @@ public class TransformerInfo : InfoItem
 	public int power = 0;
 	public int cost = 0;
 
+	public int x;
+	public int z;
+
     public override string GetInfo()
     {
 		return "Transformer\n\n\n\n" + "Power: " + power;

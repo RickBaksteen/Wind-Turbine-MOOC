@@ -2,22 +2,25 @@
 using System.Collections;
 
 public class GridInfo : InfoItem {
-
+	
 	public int Elevation;
 	public int ExtraCost;
-
+	
 	public int GridType;
-
+	
+	public int x;
+	public int z;
+	
 	// Use this for initialization
 	void Start () {
-	
+		
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
 	}
-
+	
 	public override string GetInfo()
 	{
 		string print = "";
@@ -28,27 +31,27 @@ public class GridInfo : InfoItem {
 		if(GridType == 1){
 			print = "River\n\n\n\n" + "RiverRoute Elevation: " + Elevation + "\nConstruction Cost: " + ExtraCost;
 		}
-
+		
 		return print;
 	}
-
+	
 	void OnMouseDown()
 	{
 		CreateManager createManager = GameObject.FindGameObjectWithTag ("createManager").transform.GetComponent<CreateManager> ();
 		bool creating = createManager.creating;
 		CreateManager.createType createType = createManager.currentType;
-
+		
 		if (creating) {
-
-			if(this.GridType == 1){
-
+			
+			if(this.GridType == 1 || TerrainInfo.placeItemInfo[x, z] == 1){
+				
 				createManager.creating = false;
 				return;
-
+				
 			}
-
+			
 			if(createType == CreateManager.createType.turbine){
-
+				
 				Transform newTransform = createManager.newTransform;
 				Quaternion rotation = createManager.rotation;
 				int maxOutput = createManager.maxOutput;
@@ -64,6 +67,8 @@ public class GridInfo : InfoItem {
 				newTurbineInfo.CalculateOutput(Elevation);
 				newTurbineInfo.directionIndex = directionIndex % 8;
 				newTurbineInfo.cost = cost;
+				newTurbineInfo.x = x;
+				newTurbineInfo.z = z;
 				
 				if(MoneyManager.money < cost + ExtraCost){
 					createManager.creating = false;
@@ -73,24 +78,25 @@ public class GridInfo : InfoItem {
 					MoneyManager.money -= cost + ExtraCost;
 					CreateManager.turbineNum++;
 					createManager.creating = false;
+					TerrainInfo.placeItemInfo[x, z] = 1;
 				}
 			}
-
+			
 			//Create Pump here
 			else if(createType == CreateManager.createType.pump)
 			{
-
+				
 			}
-
+			
 			//Create Transformer here
 			else if(createType == CreateManager.createType.transformer)
 			{
-
+				
 			}
-
-
+			
+			
 		}
-
+		
 		if (!creating) {
 			GameObject.FindGameObjectWithTag ("screens").GetComponent<CustomizationSwitch> ().toSelectionP ();
 			GameObject.FindGameObjectWithTag ("selectionPanel").GetComponent<InfoPanel> ().UpdateInfo (gameObject.transform.GetComponent<GridInfo>());
@@ -99,10 +105,10 @@ public class GridInfo : InfoItem {
 			GameObject.FindGameObjectWithTag ("createManager").transform.position = gameObject.transform.position;
 		}
 	}
-
+	
 	public void setAttribute(){
-
+		
 		ExtraCost = Elevation;
-
+		
 	}
 }

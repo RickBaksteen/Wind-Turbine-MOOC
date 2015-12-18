@@ -16,6 +16,9 @@ public class TurbineInfo : InfoItem
 	public float powerLoss;
 	public int cost;
 
+	public int x;
+	public int z;
+
     void Start()
     {
         direction = directions[directionIndex];
@@ -71,7 +74,7 @@ public class TurbineInfo : InfoItem
 		GameObject.FindGameObjectWithTag ("screens").GetComponent<CustomizationSwitch> ().toSelectionP ();
 		GameObject.FindGameObjectWithTag ("selectionPanel").GetComponent<InfoPanel> ().UpdateInfo (gameObject.transform.GetComponent<TurbineInfo>());
 		GameObject sellButton = GameObject.FindGameObjectWithTag ("sellButton");
-		sellButton.GetComponent<SellManager>().proposeSell(this.gameObject);
+		sellButton.GetComponent<SellManager>().proposeSellTurbine(this.gameObject);
 
 		Debug.Log(GetInfo ());
 	}

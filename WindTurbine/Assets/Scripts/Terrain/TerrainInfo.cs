@@ -6,9 +6,10 @@ using System.Linq;
 
 public class TerrainInfo : MonoBehaviour {
 	
-	public float pathHeight = 1f;
-	public int[,] gridInfo = new int[20, 20];
-	public int[,] elevationInfo = new int[20, 20];
+	public static float pathHeight = 1f;
+	public int[,] gridInfo = new int[20, 20];		//0: normal grid; 1: grid
+	public int[,] elevationInfo = new int[20, 20];		//Elevation Index: From 0 ~ elevationMax/ElevationInterval		
+	public static int[,] placeItemInfo = new int[20, 20];		//0: not occupied; 1: occupied
 	
 	public int elevationInterval = 5;
 	public int elevationMax = 100;
@@ -30,7 +31,7 @@ public class TerrainInfo : MonoBehaviour {
 		
 		while (i < turningPointsObject.childCount) {
 			routeTurningPoints.Add (turningPointsObject.GetChild (i).transform);
-			gridTurningPoints.Add(TransformToGrid(turningPointsObject.GetChild (i).transform.position));
+			gridTurningPoints.Add(TerrainInfo.TransformToGrid(turningPointsObject.GetChild (i).transform.position));
 			//Debug.Log ("Turning Points" + gridTurningPoints[i]);
 			i++;
 		}
@@ -39,7 +40,7 @@ public class TerrainInfo : MonoBehaviour {
 		loadElevation (12, 6);
 		loadMap ();
 		buildMap ();
-		
+
 	}
 	
 	// Update is called once per frame
@@ -47,13 +48,13 @@ public class TerrainInfo : MonoBehaviour {
 		
 	}
 	
-	public Vector3 GridToTranform(int x, int z){
+	public static Vector3 GridToTranform(int x, int z){
 		
 		return new Vector3 ((float)(10 * x - 95), pathHeight,(float)( -10 * z + 95));
 		
 	}
 	
-	public Vector2 TransformToGrid(Vector3 newVector){
+	public static Vector2 TransformToGrid(Vector3 newVector){
 		
 		return new Vector2 ((int)(newVector.x + 95) / 10, (int)(95 - newVector.z) / 10);
 		
@@ -111,33 +112,9 @@ public class TerrainInfo : MonoBehaviour {
 			
 		}
 
-//		if (indexMax == elevationBound - 1) {
-//
-//			return;
-//
-//		} 
-//
-//		else {
-//
-//			int difference = (elevationBound - 1) - elevationInfo [12, 6];
-//			
-//			for (int x = 0; x < 20; x++) {
-//				
-//				for (int z = 0; z < 20; z++) {
-//					
-//					elevationInfo [x, z] = Math.Min (difference + elevationInfo [x, z], (elevationBound - 1));
-//					
-//				}
-//				
-//			}
-//			
-//			indexMax = elevationBound - 1;
-//			indexMin = Math.Min (indexMin + difference, elevationBound - 1);
-//		}
-
 	}
-
-
+	
+	
 	public void loadElevation(int m, int n){
 		
 		int elevationBound = elevationMax / elevationInterval + 1;
@@ -147,20 +124,20 @@ public class TerrainInfo : MonoBehaviour {
 		
 		indexMin = elevationBound - 1;
 		indexMax = 0;
-
-		m = 12; n = 6;
-		elevationInfo [m, n] = elevationBound - 1;
-
-		for (int z = n-1; z >= 0; z--) {
 		
+		//m = 12; n = 6;
+		elevationInfo [m, n] = elevationBound - 1;
+		
+		for (int z = n-1; z >= 0; z--) {
+			
 			prevIndexZ = elevationInfo[m, z + 1];
 			elevationInfo[m, z] = UnityEngine.Random.Range(Math.Max(prevIndexZ - 1, 0), Math.Min(prevIndexZ + 2, elevationBound));
 			currentIndex = elevationInfo[m, z];
 			indexMax = Math.Max (currentIndex, indexMax);
 			indexMin = Math.Min (currentIndex, indexMin);
-
+			
 		}
-
+		
 		for (int z = n+1; z < 20; z++) {
 			
 			prevIndexZ = elevationInfo[m, z - 1];
@@ -168,11 +145,11 @@ public class TerrainInfo : MonoBehaviour {
 			currentIndex = elevationInfo[m, z];
 			indexMax = Math.Max (currentIndex, indexMax);
 			indexMin = Math.Min (currentIndex, indexMin);
-
+			
 		}
-
-		for (int x = m - 1; x >= 0; x--) {
 		
+		for (int x = m - 1; x >= 0; x--) {
+			
 			for(int z = 0; z < 20; z++)
 			{
 				if (z == 0){
@@ -180,25 +157,25 @@ public class TerrainInfo : MonoBehaviour {
 					prevIndexX = elevationInfo[x + 1, z];
 					currentIndex = UnityEngine.Random.Range(Math.Max(prevIndexX - 1, 0), Math.Min(prevIndexX + 2, elevationBound));
 				}
-
+				
 				else{
-
+					
 					prevIndexX = elevationInfo[x + 1, z];
 					prevIndexZ = elevationInfo[x, z - 1];
 					
 					int min = Math.Max(Math.Max(prevIndexX - 1, prevIndexZ - 1), 0);
 					int max = Math.Min(Math.Min(prevIndexX + 2, prevIndexZ + 2), elevationBound);
 					currentIndex = UnityEngine.Random.Range(min, max);
-
+					
 				}
-
+				
 				elevationInfo[x, z] = currentIndex;
 				indexMax = Math.Max (currentIndex, indexMax);
 				indexMin = Math.Min (currentIndex, indexMin);
 			}
-		
+			
 		}
-
+		
 		for (int x = m + 1; x < 20; x++) {
 			
 			for(int z = 0; z < 20; z++)
@@ -219,7 +196,7 @@ public class TerrainInfo : MonoBehaviour {
 					currentIndex = UnityEngine.Random.Range(min, max);
 					
 				}
-
+				
 				elevationInfo[x, z] = currentIndex;
 				indexMax = Math.Max (currentIndex, indexMax);
 				indexMin = Math.Min (currentIndex, indexMin);
@@ -236,6 +213,7 @@ public class TerrainInfo : MonoBehaviour {
 			for(int z = 0; z < 20; z++){
 				
 				gridInfo[x,z] = 0;
+				placeItemInfo[x, z] = 0;
 				
 			}
 			
@@ -247,6 +225,45 @@ public class TerrainInfo : MonoBehaviour {
 			
 			loadRoute (prev, gridTurningPoints[i]);
 			prev = gridTurningPoints[i];
+			
+		}
+
+		//Detect the palce of all turbines, pumps and transformers that already in the scene
+
+		GameObject[] allTurbines = GameObject.FindGameObjectsWithTag ("turbine");
+		GameObject[] allPumps = GameObject.FindGameObjectsWithTag ("waterTower");
+		GameObject[] allTransformers = GameObject.FindGameObjectsWithTag ("transformer");
+
+		for (int i = 0; i < allTurbines.Length; i++) {
+
+			Transform currentTransform = allTurbines[i].transform;
+			Vector2 gridPlace = TerrainInfo.TransformToGrid(currentTransform.position);
+			TurbineInfo currentTurbine = allTurbines[i].transform.GetComponent<TurbineInfo>();
+			currentTurbine.x = (int) gridPlace.x;
+			currentTurbine.z = (int) gridPlace.y;
+			placeItemInfo[(int)gridPlace.x, (int)gridPlace.y] = 1;
+
+		}
+
+		for (int i = 0; i < allPumps.Length; i++) {
+			
+			Transform currentTransform = allPumps[i].transform;
+			Vector2 gridPlace = TerrainInfo.TransformToGrid(currentTransform.position);
+			PumpInfo currentPump = allPumps[i].transform.GetComponent<PumpInfo>();
+			currentPump.x = (int)gridPlace.x;
+			currentPump.z = (int)gridPlace.y;
+			placeItemInfo[(int)gridPlace.x, (int)gridPlace.y] = 1;
+
+		}
+
+		for (int i = 0; i < allTransformers.Length; i++) {
+			
+			Transform currentTransform = allTransformers[i].transform;
+			Vector2 gridPlace = TerrainInfo.TransformToGrid(currentTransform.position);
+			TransformerInfo currentTransformer = allTransformers[i].transform.GetComponent<TransformerInfo>();
+			currentTransformer.x = (int)gridPlace.x;
+			currentTransformer.z = (int)gridPlace.y;
+			placeItemInfo[(int)gridPlace.x, (int)gridPlace.y] = 1;
 			
 		}
 		
@@ -263,6 +280,7 @@ public class TerrainInfo : MonoBehaviour {
 			for(int i = min; i<= max; i++){
 				
 				gridInfo[(int)prev.x, i] = 1;
+				placeItemInfo[(int)prev.x, i] = 1;
 				
 			}
 			
@@ -276,12 +294,12 @@ public class TerrainInfo : MonoBehaviour {
 			for(int i = min; i<=max; i++){
 				
 				gridInfo[i, (int)prev.y] = 1;
-				
+				placeItemInfo[i, (int)prev.y] = 1;
 			}
 			
 		}
 	}
-	
+
 	public void buildMap()
 	{
 		int elevationBound = elevationMax / elevationInterval;
@@ -292,9 +310,11 @@ public class TerrainInfo : MonoBehaviour {
 				
 				if(gridInfo[x, z]==0)
 				{
-					Transform newGrid = (Transform)Instantiate(placeHolderTile, GridToTranform(x, z), Quaternion.identity);
+					Transform newGrid = (Transform)Instantiate(placeHolderTile, TerrainInfo.GridToTranform(x, z), Quaternion.identity);
 					newGrid.SetParent(gameObject.transform);
 					GridInfo newGridInfo = newGrid.GetComponent<GridInfo>();
+					newGridInfo.x = x;
+					newGridInfo.z = z;
 					newGrid.GetComponent<MeshRenderer>().material.SetFloat("_Metallic", 1f / (float) (indexMax-indexMin) * (float)(elevationInfo[x, z]-indexMin));
 					newGridInfo.Elevation = elevationInfo[x, z] * elevationInterval;
 					newGridInfo.setAttribute();
@@ -302,9 +322,11 @@ public class TerrainInfo : MonoBehaviour {
 				
 				else if(gridInfo[x, z] == 1)
 				{
-					Transform newGrid = (Transform)Instantiate(routeTile, GridToTranform(x, z), Quaternion.identity);
+					Transform newGrid = (Transform)Instantiate(routeTile, TerrainInfo.GridToTranform(x, z), Quaternion.identity);
 					newGrid.SetParent(gameObject.transform);
 					GridInfo newGridInfo = newGrid.GetComponent<GridInfo>();
+					newGridInfo.x = x;
+					newGridInfo.z = z;
 					newGridInfo.Elevation = elevationInfo[x, z] * elevationInterval;
 					newGridInfo.setAttribute();
 				}

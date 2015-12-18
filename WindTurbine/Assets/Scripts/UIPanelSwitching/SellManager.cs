@@ -4,7 +4,13 @@ using UnityEngine.UI;
 
 public class SellManager : MonoBehaviour {
 
-	public GameObject sellingObject;
+	public GameObject sellingTurbine;
+	public GameObject sellingPump;
+	public GameObject sellingTransformer;
+
+	public enum itemType {Turbine, Pump, Transformer};
+	public itemType sellingType;
+
 
 	// Use this for initialization
 	void Start () {
@@ -18,17 +24,57 @@ public class SellManager : MonoBehaviour {
 
 	public void sell()
 	{
-		MoneyManager.money += (int)(sellingObject.transform.GetComponent<TurbineInfo> ().cost * 0.5);
-		Transform transformer = sellingObject.transform.GetComponent<TurbineWorking>().transformer;
-		transformer.GetComponent<TransformerWorking> ().unlinkTurbine (sellingObject.transform);
-		Destroy (sellingObject);
-		CreateManager.turbineNum--;
-		gameObject.transform.GetComponent<Button>().interactable = false;
+		switch (sellingType) {
+
+			case itemType.Turbine:
+
+			Debug.Log ("sell Turbine");	
+
+				MoneyManager.money += (int)(sellingTurbine.transform.GetComponent<TurbineInfo> ().cost * 0.5);
+				Transform transformer = sellingTurbine.transform.GetComponent<TurbineWorking>().transformer;
+				transformer.GetComponent<TransformerWorking> ().unlinkTurbine (sellingTurbine.transform);
+				
+				int x = sellingTurbine.transform.GetComponent<TurbineInfo> ().x;
+				int z = sellingTurbine.transform.GetComponent<TurbineInfo> ().z;
+				
+				TerrainInfo.placeItemInfo [x, z] = 0;
+				Destroy (sellingTurbine);
+				CreateManager.turbineNum--;
+				gameObject.transform.GetComponent<Button>().interactable = false;
+
+				break;
+
+			case itemType.Pump:
+				break;
+
+			case itemType.Transformer:
+				break;
+
+		}
+
+
+
+
 	}
 
-	public void proposeSell(GameObject newGameObject)
+
+	public void proposeSellTurbine(GameObject newGameObject)
 	{
 		gameObject.transform.GetComponent<Button>().interactable = true;
-		sellingObject = newGameObject;
+		sellingTurbine = newGameObject;
+		sellingType = itemType.Turbine; 
 	}
+
+	public void proposeSellPump(GameObject newGameObject){
+		gameObject.transform.GetComponent<Button>().interactable = true;
+		sellingPump = newGameObject;
+		sellingType = itemType.Pump; 
+	}
+
+	public void proposeSellTransformer(GameObject newGameObject){
+		gameObject.transform.GetComponent<Button>().interactable = true;
+		sellingTransformer = newGameObject;
+		sellingType = itemType.Transformer; 
+	}
+
 }

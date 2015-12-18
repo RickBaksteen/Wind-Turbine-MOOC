@@ -11,6 +11,8 @@ public class PumpInfo : InfoItem
     public int maxPower = 25;       //Max Power
 
 	public int cost = 0;
+	public int x;
+	public int z;
 
 	public int power = 0;
 

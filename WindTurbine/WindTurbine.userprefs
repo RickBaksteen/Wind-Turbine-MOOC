@@ -1,17 +1,13 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/EndGameManager/CurrentLevel.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/UIPanelSwitching/SellManager.cs">
     <Files>
-      <File FileName="Assets/Scripts/Terrain/GridInfo.cs" Line="1" Column="19" />
-      <File FileName="Assets/Scripts/Manager/CreateManager.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/pump/PumpInfo.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Transformer/powerLineInfo.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/EndGameManager/GameEnd.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/EndGameManager/CurrentLevel.cs" Line="4" Column="1" />
-      <File FileName="Assets/Scripts/Terrain/TerrainInfo.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/UIPanelSwitching/SellManager.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/UIWindTurbineSelection/WindTurbineBtnInfo.cs" Line="43" Column="69" />
-      <File FileName="../../../Code/Unity/Wind-Turbine-MOOC-20151217/WindTurbine/Assets/Scripts/Terrain/GridInfo.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Terrain/GridInfo.cs" Line="81" Column="6" />
+      <File FileName="Assets/Scripts/Terrain/TerrainInfo.cs" Line="231" Column="74" />
+      <File FileName="Assets/Scripts/Turbine/TurbineInfo.cs" Line="19" Column="2" />
+      <File FileName="Assets/Scripts/pump/PumpInfo.cs" Line="15" Column="15" />
+      <File FileName="Assets/Scripts/Transformer/TransformerInfo.cs" Line="11" Column="15" />
+      <File FileName="Assets/Scripts/UIPanelSwitching/SellManager.cs" Line="31" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

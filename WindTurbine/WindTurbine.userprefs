@@ -1,13 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/UIPanelSwitching/SellManager.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/UIWindTurbineSelection/WindTurbineBtnInfo.cs">
     <Files>
-      <File FileName="Assets/Scripts/Terrain/GridInfo.cs" Line="81" Column="6" />
-      <File FileName="Assets/Scripts/Terrain/TerrainInfo.cs" Line="231" Column="74" />
-      <File FileName="Assets/Scripts/Turbine/TurbineInfo.cs" Line="19" Column="2" />
-      <File FileName="Assets/Scripts/pump/PumpInfo.cs" Line="15" Column="15" />
-      <File FileName="Assets/Scripts/Transformer/TransformerInfo.cs" Line="11" Column="15" />
-      <File FileName="Assets/Scripts/UIPanelSwitching/SellManager.cs" Line="31" Column="1" />
+      <File FileName="Assets/Scripts/UIWindTurbineSelection/WindTurbineBtnInfo.cs" Line="60" Column="103" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

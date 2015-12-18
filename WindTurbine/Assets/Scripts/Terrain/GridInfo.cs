@@ -54,7 +54,7 @@ public class GridInfo : InfoItem {
 				
 				Transform newTransform = createManager.newTransform;
 				Quaternion rotation = createManager.rotation;
-				int maxOutput = createManager.maxOutput;
+				int maxOutput = createManager.maxOutput; 
 				int directionIndex = createManager.directionIndex;
 				int cost = createManager.cost;
 				Vector3 pos = transform.position;
@@ -71,13 +71,13 @@ public class GridInfo : InfoItem {
 				newTurbineInfo.z = z;
 				
 				if(MoneyManager.money < cost + ExtraCost){
-					createManager.creating = false;
+					createManager.finishCreateTurbine();
 					Destroy(newObject);
 				}
 				else{
 					MoneyManager.money -= cost + ExtraCost;
 					CreateManager.turbineNum++;
-					createManager.creating = false;
+					createManager.finishCreateTurbine();
 					TerrainInfo.placeItemInfo[x, z] = 1;
 				}
 			}

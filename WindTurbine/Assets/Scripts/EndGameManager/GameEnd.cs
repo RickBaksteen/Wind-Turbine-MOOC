@@ -19,7 +19,7 @@ public class GameEnd : MonoBehaviour {
         {
             Application.LoadLevel("Fail");
         }
-       else if ((KilledDrops. killedDrops + WaterCountManager .waterCount ) == allDrops )
+       else if ((KilledDrops. killedDrops + WaterCountManager.waterCount ) == allDrops )
         {
 			KilledDrops.killedDrops = 0;
             Application.LoadLevel("Win");

@@ -7,6 +7,8 @@ public class CreateManager : MonoBehaviour {
 	public Transform newTransform;
 	public Quaternion rotation;
 
+	public Transform currentButton;
+
 	//Parameter for Turbine
 	public int maxOutput;
 	public int directionIndex;
@@ -19,7 +21,7 @@ public class CreateManager : MonoBehaviour {
 	//Nothing is needed for define a transformer
 	
 	public static int turbineNum = 0;
-	public static int turbineNumLimit = 2;
+	public static int turbineNumLimit = 1000;
 
 	//0: Turbine; 1: transfomrer; 2: pump
 	public enum createType {turbine, transformer, pump} ;
@@ -38,8 +40,10 @@ public class CreateManager : MonoBehaviour {
 		
 	}
 
-	public void createTurbine(Transform newObject, Quaternion newRotation, int maxOutput, int directionIndex, int cost){
+	public void createTurbine(Transform newObject, Quaternion newRotation, int maxOutput, int directionIndex, int cost, Transform button){
 
+		currentButton = button;
+		currentButton.GetComponent<WindTurbineBtnInfo> ().creating = true;
 		creating = true;
 		currentType = createType.turbine;
 		newTransform = newObject;
@@ -51,8 +55,14 @@ public class CreateManager : MonoBehaviour {
 
 	}
 
+	public void finishCreateTurbine()
+	{
+		creating = false;
+		currentButton.GetComponent<WindTurbineBtnInfo> ().creating = false;
+	}
+
 	//Not well defined
-	public void createTransformer(Transform newObject, Quaternion newRotation, int cost){
+	public void createTransformer(Transform newObject, Quaternion newRotation, int cost, Transform button){
 		
 		creating = true;
 		currentType = createType.transformer;
@@ -63,7 +73,7 @@ public class CreateManager : MonoBehaviour {
 	}
 
 	//Not well defined
-	public void createPump(Transform newObject, Quaternion newRotation, float pumpTimeBetween, int cost){
+	public void createPump(Transform newObject, Quaternion newRotation, float pumpTimeBetween, int cost, Transform button){
 		
 		creating = true;
 		currentType = createType.pump;

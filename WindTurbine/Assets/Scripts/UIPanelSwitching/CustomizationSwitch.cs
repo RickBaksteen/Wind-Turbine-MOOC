@@ -6,6 +6,12 @@ public class CustomizationSwitch : MonoBehaviour {
 
 	public GameObject panelC;
 	public GameObject panelS;
+
+	public void Start(){
+	
+		toSelectionP ();
+	
+	}
 	
 	public void toCustomizationP()
 	{

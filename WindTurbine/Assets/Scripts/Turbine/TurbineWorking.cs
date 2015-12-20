@@ -4,19 +4,16 @@ using System.Collections.Generic;
 
 public class TurbineWorking : MonoBehaviour {
 
-
-	public int influenceGridRadius = 4;
 	public List<Transform> transformers = new List<Transform>();
-	public Transform transformer;
+	public Transform transformerForTurbine;
 	public Transform powerLine;
 
 
 	// Use this for initialization
 	void Start () {
-		//gameObject.transform.localScale = new Vector3 (influenceGridRadius * 2000, influenceGridRadius * 2000, 500);
 
-		transformer = GameObject.FindGameObjectWithTag("transformer").transform;
-		linkToTransformer (transformer);
+		transformerForTurbine = GameObject.FindGameObjectWithTag("transformerForTurbine").transform;
+		linkToTransformer (transformerForTurbine);
 
 	}
 	
@@ -27,10 +24,10 @@ public class TurbineWorking : MonoBehaviour {
 
 	public void linkToTransformer(Transform target){
 
-		if (target.CompareTag ("transformer")) {
+		if (target.CompareTag ("transformerForTurbine")) {
 
 			transformers.Add(target);
-			target.transform.GetComponent<TransformerWorking>().linkTurbine(gameObject.transform);
+			target.transform.GetComponent<TransformerForTurbineWorking>().linkTurbine(gameObject.transform);
 
 			//target.GetComponent<TransformerWorking>().linkToWaterTower();
 
@@ -55,7 +52,7 @@ public class TurbineWorking : MonoBehaviour {
 
 	public void unlinkToTransformer(Transform target){
 
-		if (target.CompareTag ("transformer")) {
+		if (target.CompareTag ("transformerForTurbine")) {
 			
 			int index = transformers.IndexOf(target);
 			
@@ -65,7 +62,7 @@ public class TurbineWorking : MonoBehaviour {
 
 			LineRenderer lineRenderer = gameObject.GetComponent<LineRenderer>();
 			GameObject.Destroy(lineRenderer); //I don't know whether this would work or not.
-			target.transform.GetComponent<TransformerWorking>().unlinkTurbine(gameObject.transform);
+			target.transform.GetComponent<TransformerForTurbineWorking>().unlinkTurbine(gameObject.transform);
 		}
 
 	}

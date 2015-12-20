@@ -38,11 +38,25 @@ public class powerLineInfo : MonoBehaviour {
 		loss = 1f / Mathf.Sqrt (distance);
 		
 		lineRenderer = gameObject.GetComponent<LineRenderer> ();
-		//lineRenderer.material = new Material(Shader.Find("Particles/Additive"));
-		lineRenderer.SetWidth (5f * loss, 5f * loss);
+
+		if(Application.loadedLevelName == "Level1")
+			lineRenderer.SetWidth (5f, 5f);
+		else
+			lineRenderer.SetWidth (5f, 5f * loss);
+
 		lineRenderer.SetColors(color, color);
 		lineRenderer.SetPosition (0, start);
 		lineRenderer.SetPosition (1, end);
 		
+	}
+
+	public static float length(Vector3 start, Vector3 end)
+	{
+		Vector2 startGrid = new Vector2 ((int)(start.x + 95) / 10, (int)(95 - start.z) / 10);
+		Vector2 endGrid = new Vector2 ((int)(end.x + 95) / 10, (int)(95 - end.z) / 10);
+
+		float distance = Vector2.Distance (startGrid, endGrid);
+
+		return distance;
 	}
 }

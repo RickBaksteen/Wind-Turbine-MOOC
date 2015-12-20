@@ -8,13 +8,14 @@ public class TurbineInfo : InfoItem
     public string[] directions = { "N", "NE", "E", "SE", "S", "SW", "W", "NW" };
     public int directionIndex = 0;
     public string direction;
-	public int baseOutput = 100;
-	public int originalOutput = 0;
-	public int output = 0;
+	public int originalOutput = 0;		//maxOutput+ Elevation effect
+	public int output = 0;				//After powerLoss
     public int maxOutput = 140;
 	public int elevation;
-	public float powerLoss;
+	public int powerLoss;
 	public int cost;
+
+	public float lossK;
 
 	public int x;
 	public int z;
@@ -22,30 +23,22 @@ public class TurbineInfo : InfoItem
     void Start()
     {
         direction = directions[directionIndex];
+		lossK = 0.0001f;
     }
 
     void Update()
     {
         //CalculateOutput();
 		if (Application.loadedLevelName == "Level1")
-			powerLoss = 1f;
+			powerLoss = 0;
 		else
-			powerLoss = gameObject.transform.GetChild (1).GetComponent<powerLineInfo> ().loss;
-		//powerLoss = 1f;
-		output = (int) (originalOutput * powerLoss);
+			powerLoss = (int)(lossK * originalOutput * originalOutput * powerLineInfo.length(transform.position, gameObject.transform.GetComponent<TurbineWorking>().transformerForTurbine.position));
+
+		output = originalOutput - powerLoss;
     }
 
     public void CalculateOutput(int elevation)
     {
-//        //int wind = GameObject.FindGameObjectWithTag("wind").transform.GetComponent<WindManager>().windIndex;
-//		int wind = 0;
-//		int angle = Math.Abs(wind - directionIndex) % 4;
-//
-//        if (Math.Abs(wind - directionIndex) == 4)
-//        {
-//            angle = 4;
-//        }
-//        output = maxOutput * (4 - angle) / 4;
 		this.elevation = elevation;
 		outputFromElevation ();
     }

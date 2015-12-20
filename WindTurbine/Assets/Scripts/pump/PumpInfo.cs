@@ -19,6 +19,7 @@ public class PumpInfo : InfoItem
     void Start()
     {
         
+		GameObject.FindGameObjectWithTag ("transformer").GetComponent<TransformerWorking> ().linkToWaterTower (transform);
 
     }
 
@@ -50,6 +51,9 @@ public class PumpInfo : InfoItem
 	{
 		GameObject.FindGameObjectWithTag ("screens").GetComponent<CustomizationSwitch> ().toSelectionP ();
 		GameObject.FindGameObjectWithTag ("selectionPanel").GetComponent<InfoPanel> ().UpdateInfo (gameObject.transform.GetComponent<PumpInfo>());
+		GameObject sellButton = GameObject.FindGameObjectWithTag ("sellButton");
+		sellButton.GetComponent<SellManager>().proposeSellPump(this.gameObject);
+
 		Debug.Log(GetInfo ());
 	}
 }

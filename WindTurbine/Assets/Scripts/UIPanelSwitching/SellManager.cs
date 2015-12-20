@@ -29,8 +29,8 @@ public class SellManager : MonoBehaviour {
 			case itemType.Turbine:
 
 				MoneyManager.money += (int)(sellingTurbine.transform.GetComponent<TurbineInfo> ().cost * 0.5);
-				Transform transformer = sellingTurbine.transform.GetComponent<TurbineWorking>().transformer;
-				transformer.GetComponent<TransformerWorking> ().unlinkTurbine (sellingTurbine.transform);
+				Transform transformer = sellingTurbine.transform.GetComponent<TurbineWorking>().transformerForTurbine;
+				transformer.GetComponent<TransformerForTurbineWorking> ().unlinkTurbine (sellingTurbine.transform);
 				
 				int x = sellingTurbine.transform.GetComponent<TurbineInfo> ().x;
 				int z = sellingTurbine.transform.GetComponent<TurbineInfo> ().z;
@@ -43,6 +43,19 @@ public class SellManager : MonoBehaviour {
 				break;
 
 			case itemType.Pump:
+
+				MoneyManager.money += (int)(sellingPump.transform.GetComponent<PumpInfo> ().cost * 0.5);
+				Transform myTransformer = GameObject.FindGameObjectWithTag("transformer").transform;
+				myTransformer.GetComponent<TransformerWorking> ().unLinkToWaterTower (sellingPump.transform);
+				
+				int pumpX = sellingPump.transform.GetComponent<PumpInfo> ().x;
+				int pumpZ = sellingPump.transform.GetComponent<PumpInfo> ().z;
+				
+				TerrainInfo.placeItemInfo [pumpX, pumpZ] = 0;
+				Destroy (sellingPump);
+				//CreateManager.turbineNum--;
+				gameObject.transform.GetComponent<Button>().interactable = false;
+
 				break;
 
 			case itemType.Transformer:

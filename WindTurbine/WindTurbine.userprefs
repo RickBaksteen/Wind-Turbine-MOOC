@@ -1,8 +1,14 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Manager/ScoreManager.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Transformer/powerLineInfo.cs">
     <Files>
-      <File FileName="Assets/Scripts/Manager/ScoreManager.cs" Line="24" Column="1" />
+      <File FileName="Assets/Scripts/UIPanelSwitching/SellManager.cs" Line="28" Column="1" />
+      <File FileName="Assets/Scripts/Transformer/powerLineInfo.cs" Line="39" Column="3" />
+      <File FileName="Assets/Scripts/Transformer/TransformerInfo.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Transformer/TransformerWorking.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/TransformerForTurbine/TransformerForTurbineInfo.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/TransformerForTurbine/TransformerForTurbineWorking.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Turbine/TurbineInfo.cs" Line="32" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -9,12 +9,14 @@ public class TransformerForTurbineInfo : InfoItem {
 
 	public float lossK;
 	public int powerLoss;
-	
+
 	public int x;
 	public int z;
+	public AudioClip construct;
 		
 	void Start(){
-	
+		AudioSource playSource = GetComponent<AudioSource> ();
+		playSource.PlayOneShot (construct, 1.0f);
 		lossK = 0.00001f;
 
 	}

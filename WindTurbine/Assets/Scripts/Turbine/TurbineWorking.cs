@@ -7,11 +7,18 @@ public class TurbineWorking : MonoBehaviour {
 	public List<Transform> transformers = new List<Transform>();
 	public Transform transformerForTurbine;
 	public Transform powerLine;
+	public AudioClip construct;
+	public AudioClip breakdown;
+	public AudioClip working;
+	public AudioClip sell;
 
 
 	// Use this for initialization
 	void Start () {
-
+		AudioSource[] sources = GetComponents<AudioSource>();
+		AudioSource playSource = sources [0];
+		AudioSource loopSource = sources [1];
+		playSource.PlayOneShot (construct, 1.0f);
 		transformerForTurbine = GameObject.FindGameObjectWithTag("transformerForTurbine").transform;
 		linkToTransformer (transformerForTurbine);
 

@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class CreateManager : MonoBehaviour {
-
 	public bool creating;
 	public Transform newTransform;
 	public Quaternion rotation;
@@ -52,7 +51,6 @@ public class CreateManager : MonoBehaviour {
 		this.maxOutput = maxOutput;
 		this.directionIndex = directionIndex;
 		this.cost = cost;
-
 	}
 
 	public void finishCreateTurbine()

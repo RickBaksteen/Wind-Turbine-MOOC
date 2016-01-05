@@ -15,10 +15,8 @@ public class PumpAttacking : MonoBehaviour {
 	private Transform currentTarget;
 	private EnemyHealth currentEnemyHealth;
 
-
 	// Use this for initialization
 	void Start () {
-
 		//isWorking = false;
 
 		timeBetweenAttacks = gameObject.GetComponentInParent<PumpInfo> ().pumpTimeBetween;
@@ -74,10 +72,15 @@ public class PumpAttacking : MonoBehaviour {
 
 	void attack(){
 		timer = 0f;
-
-		if (attackingList.Count <= 0)
+		AudioSource source = GetComponent<AudioSource> ();
+		if (attackingList.Count <= 0) {
+			
+			source.mute = true;
 			return;
-		else
+		} else
+		if (attackingDamage != 0) {
+			source.mute = false;
+		}
 			currentTarget = attackingList [0].transform;
 
 		for (int i = 0; i< attackingList.Count; i++) {

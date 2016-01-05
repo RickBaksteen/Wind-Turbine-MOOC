@@ -7,6 +7,7 @@ public class EnemyMoving : MonoBehaviour {
 	public List<Transform> routeTurningPoints = new List<Transform>();
 	public Transform target;
 	public float speed = 10;
+	public AudioClip Flood;
 
 	private int i;
 	private Transform waterPool;
@@ -45,7 +46,7 @@ public class EnemyMoving : MonoBehaviour {
 			if (i == routeTurningPoints.Count){
 
 				WaterCountManager.waterCount++;
-
+				AudioSource.PlayClipAtPoint(Flood, Camera.main.transform.position);
 				waterPool.localScale = new Vector3(5*WaterCountManager.waterCount, 1, 5*WaterCountManager.waterCount);
 
 				GameObject.FindGameObjectWithTag("enemyManager").transform.GetComponent<EnemyManager>().rainAmount-=gameObject.transform.GetComponent<EnemyInfo>().waterAmount;

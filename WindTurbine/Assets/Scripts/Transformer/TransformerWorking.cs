@@ -8,6 +8,7 @@ public class TransformerWorking : MonoBehaviour {
 	public List<Transform> turbineLinks = new List<Transform> ();
 	public List<Transform> pumpLinks = new List<Transform> ();
 	public bool enabled;
+	public AudioClip construct;
 
 	public Transform powerLine;
 
@@ -15,7 +16,8 @@ public class TransformerWorking : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+		AudioSource playSource = GetComponent<AudioSource> ();
+		playSource.PlayOneShot (construct, 1.0f);
 		enabled = false;
 		lossK = 0.0001f;
 

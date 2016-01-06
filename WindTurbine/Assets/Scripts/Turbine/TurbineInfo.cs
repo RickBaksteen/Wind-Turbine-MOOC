@@ -16,25 +16,84 @@ public class TurbineInfo : InfoItem
 	public int cost;
 
 	public float lossK;
-
+	
 	public int x;
 	public int z;
+
+	public int health = 100;			//Health percentage
+	public float timeForWork;		//Seconds before repair
+	public float timeAfterWork = 0f;
+
+	public float timeForRepair;
+	public float timeAfterRepair = 0f;
+
+	public bool isWorking;
+	public bool	isReparing; 
+
+	public int costForRepair;
+
 
     void Start()
     {
         direction = directions[directionIndex];
 		lossK = 0.0001f;
+		timeAfterWork = 0;
+
+		isWorking = true;
+		isReparing = false;
+
+		timeForWork = 30f;
+		timeForRepair = 15f;
     }
 
     void Update()
     {
-        //CalculateOutput();
-		if (Application.loadedLevelName == "Level1")
-			powerLoss = 0;
-		else
-			powerLoss = (int)(lossK * originalOutput * originalOutput * powerLineInfo.length(transform.position, gameObject.transform.GetComponent<TurbineWorking>().transformerForTurbine.position));
+		if (isWorking) {
+		
+			//CalculateOutput();
+			if (Application.loadedLevelName == "Level1")
+				powerLoss = 0;
+			else
+				powerLoss = (int)(lossK * originalOutput * originalOutput * powerLineInfo.length(transform.position, gameObject.transform.GetComponent<TurbineWorking>().transformerForTurbine.position));
+			
+			output = originalOutput - powerLoss;
 
-		output = originalOutput - powerLoss;
+			timeAfterWork += Time.deltaTime;
+			health = 100 - (int)(100 * timeAfterWork/timeForWork);
+
+			if(health <= 0)
+			{
+				isWorking = false;
+				isReparing = true;
+			}
+		
+		}
+
+		if (!isWorking) {
+		
+			powerLoss = 0;
+			originalOutput = 0;
+			output = 0;
+			
+			if (isReparing) {
+
+				timeAfterRepair += Time.deltaTime;
+
+				if(timeAfterRepair >= timeForRepair){
+
+					isReparing = false;
+
+				}
+				
+			}
+
+			if(!isReparing)
+			{
+
+
+			}
+
+		}
     }
 
     public void CalculateOutput(int elevation)
@@ -58,7 +117,19 @@ public class TurbineInfo : InfoItem
 //		return "\nOriginal Power: " + originalOutput + "\nCurrent Power: " + output + "\nCurrent Elevation: " + elevation + "\nPower Loss: " + powerLoss.ToString("0.00")
 //			+ "\nCost: $ " + cost;
 
-		return "Turbine\n\n\n\n" + "\nPower Output: " + originalOutput + "\nSelling Cost: $ " + cost/2;
+		float timeRemains;
+
+		if (!isWorking && !isReparing)
+			return "Turbine\n\n\n\nTurbine is Not working any more.";
+
+		else if (!isWorking && isReparing) {
+		
+			timeRemains = timeForRepair - timeAfterRepair;
+			return "Turbine\n\n\n\nTurbine is waiting to be repaired.\nTime remains: " + (int)timeRemains + "s";
+		
+		}
+
+		return "Turbine\n\n\n\n" + "\nPower Output: " + originalOutput + "\nSelling Cost: $ " + cost/2 + "\nHealth: " + health + "%";
 
     }
 
@@ -70,5 +141,16 @@ public class TurbineInfo : InfoItem
 		sellButton.GetComponent<SellManager>().proposeSellTurbine(this.gameObject);
 
 		Debug.Log(GetInfo ());
+	}
+
+	//For repair the windTurbine
+	public void Repair()
+	{
+
+		MoneyManager.money -= costForRepair;
+		isWorking = true;
+		isReparing = false;
+
+
 	}
 }

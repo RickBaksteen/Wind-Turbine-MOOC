@@ -4,7 +4,7 @@ using System.Collections;
 public class CurrentLevel : MonoBehaviour {
 
     public static int currentLevel = 1;
-    public int maxLevel = 3;
+    public int maxLevel = 4;
 
 	// Use this for initialization
 	void Start () {

@@ -44,6 +44,7 @@ public class TurbineInfo : InfoItem
 
 		timeForWork = 30f;
 		timeForRepair = 15f;
+		costForRepair = 25;
     }
 
     void Update()
@@ -71,8 +72,7 @@ public class TurbineInfo : InfoItem
 
 		if (!isWorking) {
 		
-			powerLoss = 0;
-			originalOutput = 0;
+			powerLoss = originalOutput;
 			output = 0;
 			
 			if (isReparing) {
@@ -120,12 +120,12 @@ public class TurbineInfo : InfoItem
 		float timeRemains;
 
 		if (!isWorking && !isReparing)
-			return "Turbine\n\n\n\nTurbine is Not working any more.";
+			return "Turbine\n\n\n\nTurbine is not working any more.";
 
 		else if (!isWorking && isReparing) {
 		
 			timeRemains = timeForRepair - timeAfterRepair;
-			return "Turbine\n\n\n\nTurbine is waiting to be repaired.\nTime remains: " + (int)timeRemains + "s";
+			return "Turbine\n\n\n\nTurbine is waiting to be repaired.\nTime remains for repair: " + (int)timeRemains + "s\nRepair Cost: $" + costForRepair;
 		
 		}
 
@@ -138,7 +138,9 @@ public class TurbineInfo : InfoItem
 		GameObject.FindGameObjectWithTag ("screens").GetComponent<CustomizationSwitch> ().toSelectionP ();
 		GameObject.FindGameObjectWithTag ("selectionPanel").GetComponent<InfoPanel> ().UpdateInfo (gameObject.transform.GetComponent<TurbineInfo>());
 		GameObject sellButton = GameObject.FindGameObjectWithTag ("sellButton");
+		GameObject repairButton = GameObject.FindGameObjectWithTag ("repairButton");
 		sellButton.GetComponent<SellManager>().proposeSellTurbine(this.gameObject);
+		repairButton.GetComponent<RepairManager> ().proposeRepairTurbine (transform);
 
 		Debug.Log(GetInfo ());
 	}
@@ -148,9 +150,10 @@ public class TurbineInfo : InfoItem
 	{
 
 		MoneyManager.money -= costForRepair;
+		timeAfterWork = 0;
+		timeAfterRepair = 0;
 		isWorking = true;
 		isReparing = false;
-
 
 	}
 }

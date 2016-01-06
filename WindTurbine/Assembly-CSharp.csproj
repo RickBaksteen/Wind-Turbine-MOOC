@@ -87,6 +87,7 @@
      <Compile Include="Assets\Scripts\UIGameplay\acceleration.cs" />
      <Compile Include="Assets\Scripts\UIGameplay\gamePlay.cs" />
      <Compile Include="Assets\Scripts\UIPanelSwitching\CustomizationSwitch.cs" />
+     <Compile Include="Assets\Scripts\UIPanelSwitching\RepairManager.cs" />
      <Compile Include="Assets\Scripts\UIPanelSwitching\SellManager.cs" />
      <Compile Include="Assets\Scripts\UIWindTurbineSelection\PowerInfo.cs" />
      <Compile Include="Assets\Scripts\UIWindTurbineSelection\WindCustomizationPanelInfo.cs" />

@@ -1,14 +1,16 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Turbine/TurbineInfo.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\EndGameManager\GameEnd.cs">
     <Files>
-      <File FileName="../../../Code/Unity/WindTurbine-20151220/Assets/Scripts/UIPanelSwitching/CustomizationSwitch.cs" Line="13" Column="39" />
-      <File FileName="Assets/Scripts/EndGameManager/CurrentLevel.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/UIWindTurbineSelection/WindCustomizationPanelInfo.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/UIPanelSwitching/CustomizationSwitch.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/UIPanelSwitching/SellManager.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Turbine/TurbineInfo.cs" Line="157" Column="1" />
-      <File FileName="Assets/Scripts/UIPanelSwitching/RepairManager.cs" Line="18" Column="1" />
+      <File FileName="Assets\Scripts\Manager\CreateManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\EndGameManager\CurrentLevel.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\UIWindTurbineSelection\WindCustomizationPanelInfo.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\UIPanelSwitching\CustomizationSwitch.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\UIPanelSwitching\SellManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Turbine\TurbineInfo.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\UIPanelSwitching\RepairManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Enemy\EnemyHealth.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\EndGameManager\GameEnd.cs" Line="9" Column="32" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -3,9 +3,8 @@ using System.Collections;
 
 public class GameEnd : MonoBehaviour {
 
-    public int allDrops = 30;
+    public int allDrops = 31;
    // public int killedDrops = 0;
-    
 
 	// Use this for initialization
 	void Start () {

@@ -32,6 +32,8 @@ public class TurbineInfo : InfoItem
 
 	public int costForRepair;
 
+	bool healthShow = false;
+
 
     void Start()
     {
@@ -45,6 +47,8 @@ public class TurbineInfo : InfoItem
 		timeForWork = 30f;
 		timeForRepair = 15f;
 		costForRepair = 25;
+
+		healthShow = false;
     }
 
     void Update()
@@ -129,7 +133,7 @@ public class TurbineInfo : InfoItem
 		
 		}
 
-		return "Turbine\n\n\n\n" + "\nPower Output: " + originalOutput + "\nSelling Cost: $ " + cost/2 + "\nHealth: " + health + "%";
+		return "Turbine\n\n\n\n" + "\nPower Output: " + originalOutput + "\nSelling Cost: $ " + cost/2;
 
     }
 
@@ -143,7 +147,23 @@ public class TurbineInfo : InfoItem
 		repairButton.GetComponent<RepairManager> ().proposeRepairTurbine (transform);
 
 		Debug.Log(GetInfo ());
+
+		if (healthShow) {
+			
+			transform.GetChild (1).GetChild (0).GetComponent<TurbineHealth> ().exit ();
+			healthShow = false;
+			
+		}
+		
+		else if (!healthShow) {
+			
+			transform.GetChild (1).GetChild (0).GetComponent<TurbineHealth> ().enter ();
+			healthShow = true;
+			
+		}
+
 	}
+
 
 	//For repair the windTurbine
 	public void Repair()

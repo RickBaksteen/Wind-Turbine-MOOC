@@ -1,0 +1,16 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/pump/PumpInfo.cs">
+    <Files>
+      <File FileName="Assets/Scripts/Turbine/TurbineHealth.cs" Line="19" Column="1" />
+      <File FileName="Assets/Scripts/Turbine/TurbineInfo.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Transformer/TransformerInfo.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/TransformerForTurbine/TransformerForTurbineInfo.cs" Line="43" Column="4" />
+      <File FileName="Assets/Scripts/pump/PumpInfo.cs" Line="81" Column="4" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

@@ -233,7 +233,6 @@ public class TerrainInfo : MonoBehaviour {
 		GameObject[] allTurbines = GameObject.FindGameObjectsWithTag ("turbine");
 		GameObject[] allPumps = GameObject.FindGameObjectsWithTag ("waterTower");
 		GameObject[] allTransformers = GameObject.FindGameObjectsWithTag ("transformer");
-		GameObject[] allTransformersForTurbine = GameObject.FindGameObjectsWithTag("transformerForTurbine");
 
 		for (int i = 0; i < allTurbines.Length; i++) {
 
@@ -267,19 +266,6 @@ public class TerrainInfo : MonoBehaviour {
 			placeItemInfo[(int)gridPlace.x, (int)gridPlace.y] = 1;
 			
 		}
-
-		for (int i = 0; i < allTransformersForTurbine.Length; i++) {
-			
-			Transform currentTransform = allTransformersForTurbine[i].transform;
-			Vector2 gridPlace = TerrainInfo.TransformToGrid(currentTransform.position);
-			TransformerForTurbineInfo currentTransformer = allTransformersForTurbine[i].transform.GetComponent<TransformerForTurbineInfo>();
-			currentTransformer.x = (int)gridPlace.x;
-			currentTransformer.z = (int)gridPlace.y;
-			placeItemInfo[(int)gridPlace.x, (int)gridPlace.y] = 1;
-			
-		}
-
-
 		
 	}
 	

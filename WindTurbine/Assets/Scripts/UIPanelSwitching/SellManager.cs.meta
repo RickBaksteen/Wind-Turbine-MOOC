@@ -1,14 +1,10 @@
 fileFormatVersion: 2
 guid: 3bf017d0da69248da8f5f8c37f31790b
-timeCreated: 1452182854
+timeCreated: 1449825969
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences:
-  - sellingTurbine: {instanceID: 0}
-  - sellingPump: {instanceID: 0}
-  - sellingTransformer: {instanceID: 0}
-  - coins: {fileID: 8300000, guid: 2d601d3b9b108b4429e9e825acf2327f, type: 3}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

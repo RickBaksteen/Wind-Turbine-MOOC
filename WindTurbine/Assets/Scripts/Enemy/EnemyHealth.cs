@@ -5,11 +5,11 @@ public class EnemyHealth : MonoBehaviour {
 
 	public int health;
 	public int maxHealth;
-	public AudioClip coins;
 	private Vector3 slider;
 
 	// Use this for initialization
 	void Start () {
+
 		if (Application.loadedLevelName == "Level4")
 			maxHealth = 120;
 
@@ -18,6 +18,7 @@ public class EnemyHealth : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
 		if (health <= 0)
 			die ();
 
@@ -31,9 +32,8 @@ public class EnemyHealth : MonoBehaviour {
 	}
 
 	public void die(){
-		GameObject.FindGameObjectWithTag("enemyManager").transform.GetComponent<EnemyManager>().rainAmount -= gameObject.transform.GetComponent<EnemyInfo>().waterAmount;
+        GameObject.FindGameObjectWithTag("enemyManager").transform.GetComponent<EnemyManager>().rainAmount -= gameObject.transform.GetComponent<EnemyInfo>().waterAmount;
 		MoneyManager.money += gameObject.transform.GetComponent<EnemyInfo>().rewards;
-		AudioSource.PlayClipAtPoint (coins, Camera.main.transform.position);
 		Destroy (gameObject);
         KilledDrops.killedDrops += 1;
 	}

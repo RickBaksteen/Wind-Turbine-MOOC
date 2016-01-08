@@ -14,13 +14,13 @@ public class TransformerInfo : InfoItem
 	public bool powerShow;
 
 	void Start(){
-
+	
 		powerShow = false;
-
+	
 	}
 
 	void Update(){
-
+		
 		if (powerShow) {
 			
 			transform.GetChild (1).GetChild (0).GetComponent<Text> ().text = power + " kW";
@@ -31,12 +31,12 @@ public class TransformerInfo : InfoItem
 			transform.GetChild (1).GetChild (0).GetComponent<Text> ().text = "";
 			
 		}
-
+		
 	}
 
     public override string GetInfo()
     {
-		return "Pump Transformer\n\n\n\n" + "Received Power: " + power;
+		return "Transformer\n\n\n\n" + "Received Power: " + power;
     }
 
 	void OnMouseDown()
@@ -46,16 +46,15 @@ public class TransformerInfo : InfoItem
 		Debug.Log(GetInfo ());
 
 		if (!powerShow) {
-		
+			
 			powerShow = true;
-		
+			
 		} 
 		else {
-		
+			
 			powerShow = false;
-		
+			
 		}
-
 	}
 
 

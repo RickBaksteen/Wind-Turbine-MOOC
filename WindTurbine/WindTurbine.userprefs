@@ -1,14 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/pump/PumpInfo.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Manager/ScoreManager.cs">
     <Files>
-      <File FileName="Assets/Scripts/Transformer/TransformerInfo.cs" Line="55" Column="1" />
-      <File FileName="Assets/Scripts/UIPanelSwitching/CustomizationSwitch.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/UIWindTurbineSelection/WindCustomizationPanelInfo.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Turbine/TurbineHealth.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Turbine/TurbineInfo.cs" Line="173" Column="1" />
-      <File FileName="Assets/Scripts/TransformerForTurbine/TransformerForTurbineInfo.cs" Line="68" Column="1" />
-      <File FileName="Assets/Scripts/pump/PumpInfo.cs" Line="78" Column="1" />
+      <File FileName="Assets/Scripts/Manager/ScoreManager.cs" Line="24" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

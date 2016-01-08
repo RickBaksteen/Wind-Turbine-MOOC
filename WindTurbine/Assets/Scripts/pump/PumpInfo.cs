@@ -19,25 +19,26 @@ public class PumpInfo : InfoItem
 
 	public bool powerShow;
 
-    void Start()
-    {
-        
+	void Start()
+	{
+		
 		GameObject.FindGameObjectWithTag ("transformer").GetComponent<TransformerWorking> ().linkToWaterTower (transform);
 		powerShow = false;
-    }
 
-    void Update()
-    {
-
+	}
+	
+	void Update()
+	{
+		
 		if (power <= 0) {
-
+			
 			pumpDamage = 0;
 			//gameObject.transform.GetChild(1)
-		
+			
 		} else {
-		
+			
 			pumpDamage = power / 25 + 1;
-		
+			
 		}
 
 		if (powerShow) {
@@ -49,34 +50,34 @@ public class PumpInfo : InfoItem
 			transform.GetChild (2).GetChild (0).GetComponent<Text> ().text = "";
 			
 		}
-			
-    }
-
-    public override string GetInfo()
-    {
-//        return "Pump Time: " + pumpTimeBetween + "\nPump Ammount: " + pumpDamage + "\nCurrent Power: " + power
-//            + "\nMax Power: " + maxPower + "\nPower Percentage: " + percentage;
-
+		
+	}
+	
+	public override string GetInfo()
+	{
+		//        return "Pump Time: " + pumpTimeBetween + "\nPump Ammount: " + pumpDamage + "\nCurrent Power: " + power
+		//            + "\nMax Power: " + maxPower + "\nPower Percentage: " + percentage;
+		
 		return "Pump\n\n\n\n" + "Attacking Speed: " + pumpTimeBetween + "\nDamage: " + pumpDamage + "\nCurrent Power: " + power;
-    }
-
+	}
+	
 	void OnMouseDown()
 	{
 		GameObject.FindGameObjectWithTag ("screens").GetComponent<CustomizationSwitch> ().toSelectionP ();
 		GameObject.FindGameObjectWithTag ("selectionPanel").GetComponent<InfoPanel> ().UpdateInfo (gameObject.transform.GetComponent<PumpInfo>());
 		GameObject sellButton = GameObject.FindGameObjectWithTag ("sellButton");
 		sellButton.GetComponent<SellManager>().proposeSellPump(this.gameObject);
-
+		
 		Debug.Log(GetInfo ());
 
 		if (!powerShow) {
-		
+			
 			powerShow = true;
-
+			
 		} else {
-		
+			
 			powerShow = false;
-
+			
 		}
 	}
 }

@@ -10,18 +10,15 @@ public class TransformerForTurbineInfo : InfoItem {
 
 	public float lossK;
 	public int powerLoss;
-
+	
 	public int x;
 	public int z;
-	public AudioClip construct;
 
 	public bool powerShow;
 		
 	void Start(){
-		AudioSource playSource = GetComponent<AudioSource> ();
-		playSource.PlayOneShot (construct, 1.0f);
+	
 		lossK = 0.00001f;
-
 		powerShow = false;
 
 	}
@@ -60,14 +57,14 @@ public class TransformerForTurbineInfo : InfoItem {
 		//Debug.Log(GetInfo ());
 
 		if (!powerShow) {
-		
+			
 			powerShow = true;
-
-		} else {
-
+			
+		} 
+		else {
+			
 			powerShow = false;
-
+			
 		}
-
 	}
 }

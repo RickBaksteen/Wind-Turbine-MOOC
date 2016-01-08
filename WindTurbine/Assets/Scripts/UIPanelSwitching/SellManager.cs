@@ -10,7 +10,7 @@ public class SellManager : MonoBehaviour {
 
 	public enum itemType {Turbine, Pump, Transformer};
 	public itemType sellingType;
-	public AudioClip coins;
+
 
 	// Use this for initialization
 	void Start () {
@@ -27,7 +27,7 @@ public class SellManager : MonoBehaviour {
 		switch (sellingType) {
 
 			case itemType.Turbine:
-				AudioSource.PlayClipAtPoint (coins, Camera.main.transform.position);
+
 				MoneyManager.money += (int)(sellingTurbine.transform.GetComponent<TurbineInfo> ().cost * 0.5);
 				Transform transformer = sellingTurbine.transform.GetComponent<TurbineWorking>().transformerForTurbine;
 				transformer.GetComponent<TransformerForTurbineWorking> ().unlinkTurbine (sellingTurbine.transform);
@@ -43,19 +43,6 @@ public class SellManager : MonoBehaviour {
 				break;
 
 			case itemType.Pump:
-				AudioSource.PlayClipAtPoint (coins, Camera.main.transform.position);
-				MoneyManager.money += (int)(sellingPump.transform.GetComponent<PumpInfo> ().cost * 0.5);
-				Transform myTransformer = GameObject.FindGameObjectWithTag("transformer").transform;
-				myTransformer.GetComponent<TransformerWorking> ().unLinkToWaterTower (sellingPump.transform);
-				
-				int pumpX = sellingPump.transform.GetComponent<PumpInfo> ().x;
-				int pumpZ = sellingPump.transform.GetComponent<PumpInfo> ().z;
-				
-				TerrainInfo.placeItemInfo [pumpX, pumpZ] = 0;
-				Destroy (sellingPump);
-				//CreateManager.turbineNum--;
-				gameObject.transform.GetComponent<Button>().interactable = false;
-
 				break;
 
 			case itemType.Transformer:

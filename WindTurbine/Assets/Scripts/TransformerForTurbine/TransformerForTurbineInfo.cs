@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class TransformerForTurbineInfo : InfoItem {
 
@@ -13,11 +14,15 @@ public class TransformerForTurbineInfo : InfoItem {
 	public int x;
 	public int z;
 	public AudioClip construct;
+
+	public bool powerShow;
 		
 	void Start(){
 		AudioSource playSource = GetComponent<AudioSource> ();
 		playSource.PlayOneShot (construct, 1.0f);
 		lossK = 0.00001f;
+
+		powerShow = false;
 
 	}
 
@@ -29,6 +34,16 @@ public class TransformerForTurbineInfo : InfoItem {
 			powerLoss = (int)(lossK * originalPower * originalPower * powerLineInfo.length(transform.position, gameObject.transform.GetComponent<TransformerForTurbineWorking>().poweredTransformer.position));
 		
 		outputPower = originalPower - powerLoss;
+
+		if (powerShow) {
+			
+			transform.GetChild (1).GetChild (0).GetComponent<Text> ().text = originalPower + " kW";
+			
+		} else {
+			
+			transform.GetChild (1).GetChild (0).GetComponent<Text> ().text = "";
+			
+		}
 	
 	}
 
@@ -43,5 +58,16 @@ public class TransformerForTurbineInfo : InfoItem {
 		GameObject.FindGameObjectWithTag ("screens").GetComponent<CustomizationSwitch> ().toSelectionP ();
 		GameObject.FindGameObjectWithTag ("selectionPanel").GetComponent<InfoPanel> ().UpdateInfo (gameObject.transform.GetComponent<TransformerForTurbineInfo>());
 		//Debug.Log(GetInfo ());
+
+		if (!powerShow) {
+		
+			powerShow = true;
+
+		} else {
+
+			powerShow = false;
+
+		}
+
 	}
 }

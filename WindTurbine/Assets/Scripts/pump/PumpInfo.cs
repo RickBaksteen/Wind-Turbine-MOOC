@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using UnityEngine.UI;
 
 public class PumpInfo : InfoItem
 {
@@ -16,11 +17,13 @@ public class PumpInfo : InfoItem
 
 	public int power = 0;
 
+	public bool powerShow;
+
     void Start()
     {
         
 		GameObject.FindGameObjectWithTag ("transformer").GetComponent<TransformerWorking> ().linkToWaterTower (transform);
-
+		powerShow = false;
     }
 
     void Update()
@@ -35,6 +38,16 @@ public class PumpInfo : InfoItem
 		
 			pumpDamage = power / 25 + 1;
 		
+		}
+
+		if (powerShow) {
+			
+			transform.GetChild (2).GetChild (0).GetComponent<Text> ().text = power + " kW";
+			
+		} else {
+			
+			transform.GetChild (2).GetChild (0).GetComponent<Text> ().text = "";
+			
 		}
 			
     }
@@ -55,5 +68,15 @@ public class PumpInfo : InfoItem
 		sellButton.GetComponent<SellManager>().proposeSellPump(this.gameObject);
 
 		Debug.Log(GetInfo ());
+
+		if (!powerShow) {
+		
+			powerShow = true;
+
+		} else {
+		
+			powerShow = false;
+
+		}
 	}
 }

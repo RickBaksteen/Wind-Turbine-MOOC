@@ -98,6 +98,20 @@ public class TurbineInfo : InfoItem
 			}
 
 		}
+
+
+		if (!healthShow) {
+			
+			transform.GetChild (1).GetChild (0).GetComponent<TurbineHealth> ().exit ();
+			
+		}
+		
+		else if (healthShow) {
+			
+			transform.GetChild (1).GetChild (0).GetComponent<TurbineHealth> ().enter ();
+			
+		}
+
     }
 
     public void CalculateOutput(int elevation)
@@ -150,14 +164,12 @@ public class TurbineInfo : InfoItem
 
 		if (healthShow) {
 			
-			transform.GetChild (1).GetChild (0).GetComponent<TurbineHealth> ().exit ();
 			healthShow = false;
 			
 		}
 		
 		else if (!healthShow) {
 			
-			transform.GetChild (1).GetChild (0).GetComponent<TurbineHealth> ().enter ();
 			healthShow = true;
 			
 		}

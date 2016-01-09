@@ -15,7 +15,8 @@ public class TransformerForTurbineInfo : InfoItem {
 	public int z;
 
 	public bool powerShow;
-		
+	public AudioClip click;
+
 	void Start(){
 	
 		lossK = 0.00001f;
@@ -52,6 +53,7 @@ public class TransformerForTurbineInfo : InfoItem {
 	
 	void OnMouseDown()
 	{
+		AudioSource.PlayClipAtPoint (click, Camera.main.transform.position);
 		GameObject.FindGameObjectWithTag ("screens").GetComponent<CustomizationSwitch> ().toSelectionP ();
 		GameObject.FindGameObjectWithTag ("selectionPanel").GetComponent<InfoPanel> ().UpdateInfo (gameObject.transform.GetComponent<TransformerForTurbineInfo>());
 		//Debug.Log(GetInfo ());

@@ -7,6 +7,7 @@ public class EnemyMoving : MonoBehaviour {
 	public List<Transform> routeTurningPoints = new List<Transform>();
 	public Transform target;
 	public float speed = 10;
+	public AudioClip flood;
 
 	private int i;
 	private Transform waterPool;
@@ -18,6 +19,9 @@ public class EnemyMoving : MonoBehaviour {
 		Transform turningPointsObject = GameObject.FindGameObjectWithTag ("routeTurningPoints").transform;
 		Transform bufferPoint;
 		waterPool = GameObject.FindGameObjectWithTag ("waterPool").transform;
+		waterPool.localScale = new Vector3(38.0f, 1.0f, 38.0f);
+		waterPool.localPosition = new Vector3(-155.0f, (-20.1f + (((float)WaterCountManager.waterCount/10.0f)*(20.1f-7.5f))), 40.0f);
+
 		i = 0;
 
 		while (i < turningPointsObject.childCount) {
@@ -43,11 +47,9 @@ public class EnemyMoving : MonoBehaviour {
 			i++;
 
 			if (i == routeTurningPoints.Count){
-
+				AudioSource.PlayClipAtPoint(flood, Camera.main.transform.position);
 				WaterCountManager.waterCount++;
-
-				waterPool.localScale = new Vector3(5*WaterCountManager.waterCount, 1, 5*WaterCountManager.waterCount);
-
+				waterPool.localPosition = new Vector3(-155.0f, (-20.1f + (((float)WaterCountManager.waterCount/10.0f)*(20.1f-7.5f))), 40.0f);
 				GameObject.FindGameObjectWithTag("enemyManager").transform.GetComponent<EnemyManager>().rainAmount-=gameObject.transform.GetComponent<EnemyInfo>().waterAmount;
 				//MoneyManager.money += gameObject.transform.GetComponent<EnemyInfo>().rewards;
 				Destroy(gameObject);

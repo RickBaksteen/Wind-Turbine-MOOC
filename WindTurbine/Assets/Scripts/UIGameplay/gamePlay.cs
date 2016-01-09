@@ -24,7 +24,7 @@ public class gamePlay : MonoBehaviour {
 	public void accelerate(){
 
 		if (Time.timeScale < 12) {
-			Time.timeScale += 3;
+			Time.timeScale += 1;
 		}
 	}
 }

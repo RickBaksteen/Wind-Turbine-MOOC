@@ -10,7 +10,7 @@ public class GridInfo : InfoItem {
 	
 	public int x;
 	public int z;
-	
+	public AudioClip click;
 	// Use this for initialization
 	void Start () {
 		
@@ -37,6 +37,7 @@ public class GridInfo : InfoItem {
 	
 	void OnMouseDown()
 	{
+		AudioSource.PlayClipAtPoint (click, Camera.main.transform.position);
 		CreateManager createManager = GameObject.FindGameObjectWithTag ("createManager").transform.GetComponent<CreateManager> ();
 		bool creating = createManager.creating;
 		CreateManager.createType createType = createManager.currentType;

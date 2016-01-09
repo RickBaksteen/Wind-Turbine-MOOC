@@ -1,8 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Manager/ScoreManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Enemy\EnemyMoving.cs">
     <Files>
-      <File FileName="Assets/Scripts/Manager/ScoreManager.cs" Line="24" Column="1" />
+      <File FileName="Assets\Scripts\Turbine\TurbineWorking.cs" Line="14" Column="3" />
+      <File FileName="Assets\Scripts\Manager\WaterCountManager.cs" Line="10" Column="15" />
+      <File FileName="Assets\Scripts\Enemy\EnemyMoving.cs" Line="23" Column="128" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

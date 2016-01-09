@@ -15,6 +15,11 @@ public class gamePlay : MonoBehaviour {
 
 	public void play(){
 		Time.timeScale = 1;
+		GameObject.FindGameObjectWithTag ("canvas").GetComponent<CanvasGroup> ().alpha = 1;
+		GameObject.FindGameObjectWithTag ("canvas").GetComponent<CanvasGroup> ().interactable = true;
+
+		GameObject.FindGameObjectWithTag ("canvasMenu").GetComponent<CanvasGroup> ().alpha = 0;
+		GameObject.FindGameObjectWithTag ("canvasMenu").GetComponent<CanvasGroup> ().interactable = false;
 	}
 
 	public void pause(){

@@ -53,6 +53,8 @@ public class TransformerForTurbineInfo : InfoItem {
 	
 	void OnMouseDown()
 	{
+		if (LockUI.OverGui) return;
+
 		AudioSource.PlayClipAtPoint (click, Camera.main.transform.position);
 		GameObject.FindGameObjectWithTag ("screens").GetComponent<CustomizationSwitch> ().toSelectionP ();
 		GameObject.FindGameObjectWithTag ("selectionPanel").GetComponent<InfoPanel> ().UpdateInfo (gameObject.transform.GetComponent<TransformerForTurbineInfo>());

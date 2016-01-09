@@ -63,6 +63,8 @@ public class PumpInfo : InfoItem
 	
 	void OnMouseDown()
 	{
+		if (LockUI.OverGui) return;
+
 		GameObject.FindGameObjectWithTag ("screens").GetComponent<CustomizationSwitch> ().toSelectionP ();
 		GameObject.FindGameObjectWithTag ("selectionPanel").GetComponent<InfoPanel> ().UpdateInfo (gameObject.transform.GetComponent<PumpInfo>());
 		GameObject sellButton = GameObject.FindGameObjectWithTag ("sellButton");

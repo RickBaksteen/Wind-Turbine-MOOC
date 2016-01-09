@@ -14,7 +14,7 @@ public class MoneyManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		transform.GetChild (0).GetComponent<Text> ().text = "  Money: TC " + money;
+		transform.GetChild (0).GetComponent<Text> ().text = "  Money: " + money + " TC";
 
 	}
 }

@@ -11,6 +11,7 @@ public class WindTurbineBtnInfo : InfoItem, IPointerClickHandler {
 	public int maxOutput;
 	public int directionIndex;
 	public int cost;
+	public float timeForWork;
 
 	public bool creating;
 
@@ -39,7 +40,7 @@ public class WindTurbineBtnInfo : InfoItem, IPointerClickHandler {
 
 	public override string GetInfo()
 	{
-		return "Turbine\n\n\n\n" + "\nOriginal Power: " + maxOutput + "\nCost: $ " + cost;
+		return "Turbine\n\n\n\n" + "\nOriginal Power: " + maxOutput + "\nCost: " + cost+ " TC";
 	}
 
 	public void createTurbine(){
@@ -51,7 +52,7 @@ public class WindTurbineBtnInfo : InfoItem, IPointerClickHandler {
 	public void OnPointerClick(PointerEventData eventData)
 	{
 		if (eventData.button == PointerEventData.InputButton.Left) {
-			GameObject.FindGameObjectWithTag ("createManager").GetComponent<CreateManager> ().createTurbine (windTurbine, rotation, maxOutput,directionIndex, cost, transform);
+			GameObject.FindGameObjectWithTag ("createManager").GetComponent<CreateManager> ().createTurbine (windTurbine, rotation, maxOutput,directionIndex, cost, transform, timeForWork);
 			GameObject.FindGameObjectWithTag ("screens").GetComponent<CustomizationSwitch> ().toSelectionP ();
 			GameObject.FindGameObjectWithTag ("selectionPanel").GetComponent<InfoPanel> ().UpdateInfo (transform.GetComponent<WindTurbineBtnInfo>());
 		} else if (eventData.button == PointerEventData.InputButton.Middle) {

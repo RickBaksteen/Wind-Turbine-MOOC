@@ -24,6 +24,7 @@ public class WindCustomizationPanelInfo : MonoBehaviour {
         newItem.transform.SetParent(TurbPrefab.transform.parent, false);
         newItem.GetComponent<WindTurbineBtnInfo>().maxOutput=GameObject.FindGameObjectWithTag("createResultHolder").GetComponent<CreateResultManager>().maxOutput;
 		newItem.GetComponent<WindTurbineBtnInfo>().cost=GameObject.FindGameObjectWithTag("createResultHolder").GetComponent<CreateResultManager>().cost;
+		newItem.GetComponent<WindTurbineBtnInfo>().timeForWork=GameObject.FindGameObjectWithTag("createResultHolder").GetComponent<CreateResultManager>().timeForWork;
 		newturbineCount++;
 		newItem.transform.GetChild (0).GetComponent<Text> ().text = "Custom " + newturbineCount;
 

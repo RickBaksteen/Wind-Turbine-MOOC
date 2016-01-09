@@ -46,13 +46,13 @@ public class TurbineInfo : InfoItem
 		working = GetComponent<AudioSource>();
 		AudioSource.PlayClipAtPoint(construct, Camera.main.transform.position);
 		direction = directions[directionIndex];
-		lossK = 0.0001f;
+		lossK = 0.001f;
 		timeAfterWork = 0;
 		
 		isWorking = true;
 		isReparing = false;
 		
-		timeForWork = 30f;
+		//timeForWork = 30f;
 		timeForRepair = 15f;
 		costForRepair = 25;
 		
@@ -151,11 +151,11 @@ public class TurbineInfo : InfoItem
 		else if (!isWorking && isReparing) {
 			
 			timeRemains = timeForRepair - timeAfterRepair;
-			return "Turbine\n\n\n\nTurbine is waiting to be repaired.\nTime remains for repair: " + (int)timeRemains + "s\nRepair Cost: $" + costForRepair;
+			return "Turbine\n\n\n\nTurbine is waiting to be repaired.\nTime remains for repair: " + (int)timeRemains + "s\nRepair Cost: " + costForRepair + " TC";
 			
 		}
 		
-		return "Turbine\n\n\n\n" + "\nPower Output: " + originalOutput + "\nSelling Cost: $ " + cost/2;
+		return "Turbine\n\n\n\n" + "\nPower Output: " + originalOutput + "\nSelling Cost: " + cost/2 + " TC";
 		
 	}
 	

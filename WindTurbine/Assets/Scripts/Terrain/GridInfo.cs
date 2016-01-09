@@ -37,6 +37,8 @@ public class GridInfo : InfoItem {
 	
 	void OnMouseDown()
 	{
+		if (LockUI.OverGui) return;
+
 		AudioSource.PlayClipAtPoint (click, Camera.main.transform.position);
 		CreateManager createManager = GameObject.FindGameObjectWithTag ("createManager").transform.GetComponent<CreateManager> ();
 		bool creating = createManager.creating;

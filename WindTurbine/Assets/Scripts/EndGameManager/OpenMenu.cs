@@ -17,5 +17,10 @@ public class OpenMenu : MonoBehaviour {
 	public void open() {
 
 		p.SetActive (true);
+		GameObject.FindGameObjectWithTag ("canvas").GetComponent<CanvasGroup> ().alpha = 0;
+		GameObject.FindGameObjectWithTag ("canvas").GetComponent<CanvasGroup> ().interactable = false;
+		
+		GameObject.FindGameObjectWithTag ("canvasMenu").GetComponent<CanvasGroup> ().alpha = 1;
+		GameObject.FindGameObjectWithTag ("canvasMenu").GetComponent<CanvasGroup> ().interactable = true;
 	}
 }

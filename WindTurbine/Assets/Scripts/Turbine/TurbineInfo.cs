@@ -31,12 +31,20 @@ public class TurbineInfo : InfoItem
 	public bool	isReparing; 
 	
 	public int costForRepair;
-	
+	public AudioClip click;
+	public AudioClip breakdown;
+	public AudioClip repair;
+	public AudioClip construct;
+	private AudioSource working;
+
+
 	bool healthShow = false;
 	
 	
 	void Start()
 	{
+		working = GetComponent<AudioSource>();
+		AudioSource.PlayClipAtPoint(construct, Camera.main.transform.position);
 		direction = directions[directionIndex];
 		lossK = 0.0001f;
 		timeAfterWork = 0;
@@ -54,7 +62,7 @@ public class TurbineInfo : InfoItem
 	void Update()
 	{
 		if (isWorking) {
-			
+			working.mute = false;
 			//CalculateOutput();
 			if (Application.loadedLevelName == "Level1")
 				powerLoss = 0;
@@ -68,6 +76,7 @@ public class TurbineInfo : InfoItem
 			
 			if(health <= 0)
 			{
+				AudioSource.PlayClipAtPoint(breakdown, Camera.main.transform.position);
 				isWorking = false;
 				isReparing = true;
 			}
@@ -75,7 +84,7 @@ public class TurbineInfo : InfoItem
 		}
 		
 		if (!isWorking) {
-			
+			working.mute = true;
 			powerLoss = originalOutput;
 			output = 0;
 			
@@ -93,8 +102,7 @@ public class TurbineInfo : InfoItem
 			
 			if(!isReparing)
 			{
-				
-				
+				working.mute = true;				
 			}
 			
 		}
@@ -153,6 +161,7 @@ public class TurbineInfo : InfoItem
 	
 	void OnMouseDown()
 	{
+		AudioSource.PlayClipAtPoint (click, Camera.main.transform.position);
 		GameObject.FindGameObjectWithTag ("screens").GetComponent<CustomizationSwitch> ().toSelectionP ();
 		GameObject.FindGameObjectWithTag ("selectionPanel").GetComponent<InfoPanel> ().UpdateInfo (gameObject.transform.GetComponent<TurbineInfo>());
 		GameObject sellButton = GameObject.FindGameObjectWithTag ("sellButton");
@@ -180,7 +189,7 @@ public class TurbineInfo : InfoItem
 	//For repair the windTurbine
 	public void Repair()
 	{
-		
+		AudioSource.PlayClipAtPoint (repair, Camera.main.transform.position);
 		MoneyManager.money -= costForRepair;
 		timeAfterWork = 0;
 		timeAfterRepair = 0;

@@ -5,6 +5,8 @@ public class EnemyHealth : MonoBehaviour {
 
 	public int health;
 	public int maxHealth;
+	public AudioClip coins;
+	public AudioClip pump;
 	private Vector3 slider;
 
 	// Use this for initialization
@@ -29,11 +31,14 @@ public class EnemyHealth : MonoBehaviour {
 
 	public void attack(int damage){
 		health -= damage;
+		if(damage > 0)
+		AudioSource.PlayClipAtPoint (pump, Camera.main.transform.position, 0.1f);
 	}
 
 	public void die(){
         GameObject.FindGameObjectWithTag("enemyManager").transform.GetComponent<EnemyManager>().rainAmount -= gameObject.transform.GetComponent<EnemyInfo>().waterAmount;
 		MoneyManager.money += gameObject.transform.GetComponent<EnemyInfo>().rewards;
+		AudioSource.PlayClipAtPoint (coins, Camera.main.transform.position);
 		Destroy (gameObject);
         KilledDrops.killedDrops += 1;
 	}

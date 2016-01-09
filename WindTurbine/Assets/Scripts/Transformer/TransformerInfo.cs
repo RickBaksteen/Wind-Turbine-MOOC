@@ -12,6 +12,7 @@ public class TransformerInfo : InfoItem
 	public int z;
 
 	public bool powerShow;
+	public AudioClip click;
 
 	void Start(){
 	
@@ -41,6 +42,7 @@ public class TransformerInfo : InfoItem
 
 	void OnMouseDown()
 	{
+		AudioSource.PlayClipAtPoint (click, Camera.main.transform.position);
 		GameObject.FindGameObjectWithTag ("screens").GetComponent<CustomizationSwitch> ().toSelectionP ();
 		GameObject.FindGameObjectWithTag ("selectionPanel").GetComponent<InfoPanel> ().UpdateInfo (gameObject.transform.GetComponent<TransformerInfo>());
 		Debug.Log(GetInfo ());

@@ -7,6 +7,7 @@ public class PowertrainSelection : MonoBehaviour, IPointerClickHandler {
 
 	public int output;
 	public int cost;
+	public float time;
 	
 	// Use this for initialization
 	void Start () {
@@ -22,7 +23,7 @@ public class PowertrainSelection : MonoBehaviour, IPointerClickHandler {
 	{
 		if (eventData.button == PointerEventData.InputButton.Left) {
 			//			transform.GetComponent<Button>().interactable = false;
-			GameObject.FindGameObjectWithTag("createResultHolder").GetComponent<CreateResultManager>().updatePowertrain(output, cost);
+			GameObject.FindGameObjectWithTag("createResultHolder").GetComponent<CreateResultManager>().updatePowertrain(output, cost, time);
 		} else if (eventData.button == PointerEventData.InputButton.Middle) {
 			//			Debug.Log ("Middle click");
 		} else if (eventData.button == PointerEventData.InputButton.Right) {

@@ -17,7 +17,7 @@ public class TransformerWorking : MonoBehaviour {
 	void Start () {
 		
 		enabled = false;
-		lossK = 0.0001f;
+		lossK = 0.001f;
 		
 		//pump = GameObject.FindGameObjectWithTag("waterTower").transform;
 		//pumpLinks.Add (pump);

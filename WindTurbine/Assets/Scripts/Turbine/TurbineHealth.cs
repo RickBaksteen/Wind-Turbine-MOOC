@@ -59,7 +59,7 @@ public class TurbineHealth : MonoBehaviour {
 		color = transform.GetChild (2).GetComponent<Image> ().color;
 		transform.GetChild (2).GetComponent<Image> ().color = new Color(color.r, color.g, color.b, 1f);
 
-		transform.GetChild(3).GetComponent<Text>().text = myTurbineInfo.output + " kW";
+		transform.GetChild(3).GetComponent<Text>().text = myTurbineInfo.originalOutput + " kW";
 
 	}
 

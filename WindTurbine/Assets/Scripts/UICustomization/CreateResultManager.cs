@@ -16,6 +16,9 @@ public class CreateResultManager : MonoBehaviour {
 	
 	public int extraOutputPowertrain;
 	public int extraCostPowertrain;
+
+	public float timeForWork;
+	public float baseTimeForWork;
 	
 	// Use this for initialization
 	void Start () {
@@ -24,12 +27,15 @@ public class CreateResultManager : MonoBehaviour {
 		
 		maxOutput = baseOutput;
 		cost = baseCost;
+		baseTimeForWork = 30f;
+
+		timeForWork = baseTimeForWork;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		transform.GetChild (1).GetComponent<Text> ().text = "\t\t  Power: " + maxOutput;
-		transform.GetChild (2).GetComponent<Text> ().text = "\t\t     Cost: " + cost;
+		transform.GetChild (2).GetComponent<Text> ().text = "\t\t     Cost: " + cost + " TC";
 	}
 	
 	public void updateBlade(int extraOutput, int extraCost){
@@ -41,11 +47,13 @@ public class CreateResultManager : MonoBehaviour {
 		cost = baseCost + extraCostBlade + extraCostPowertrain;
 	}
 	
-	public void updatePowertrain(int extraOutput, int extraCost){
+	public void updatePowertrain(int extraOutput, int extraCost, float time){
 		extraOutputPowertrain = extraOutput;
 		extraCostPowertrain = extraCost;
 		
 		maxOutput = baseOutput + extraOutputBlade + extraOutputPowertrain;
 		cost = baseCost + extraCostBlade + extraCostPowertrain;
+
+		timeForWork = baseTimeForWork + time;
 	}
 }

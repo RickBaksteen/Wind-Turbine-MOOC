@@ -60,6 +60,7 @@ public class GridInfo : InfoItem {
 				int maxOutput = createManager.maxOutput; 
 				int directionIndex = createManager.directionIndex;
 				int cost = createManager.cost;
+				float timeForWork = createManager.timeForWork;
 				Vector3 pos = transform.position;
 				pos.y += 1;
 				Transform newObject = (Transform)Instantiate(newTransform, pos, rotation);
@@ -70,6 +71,8 @@ public class GridInfo : InfoItem {
 				newTurbineInfo.CalculateOutput(Elevation);
 				newTurbineInfo.directionIndex = directionIndex % 8;
 				newTurbineInfo.cost = cost;
+				newTurbineInfo.timeForWork = timeForWork;
+				Debug.Log(timeForWork);
 				newTurbineInfo.x = x;
 				newTurbineInfo.z = z;
 				

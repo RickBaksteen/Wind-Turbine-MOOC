@@ -15,6 +15,8 @@ public class WindTurbineBtnInfo : InfoItem, IPointerClickHandler {
 
 	public bool creating;
 
+	public static bool anyButtonCreate;
+
 	// Use this for initialization
 	void Start () {
 		rotation = new Quaternion (-0.5f, -0.5f, -0.5f, 0.5f);
@@ -24,7 +26,7 @@ public class WindTurbineBtnInfo : InfoItem, IPointerClickHandler {
 	// Update is called once per frame
 	void Update () {
 
-		if (MoneyManager.money < cost || CreateManager.turbineNum >= CreateManager.turbineNumLimit || creating) {
+		if (MoneyManager.money < cost || CreateManager.turbineNum >= CreateManager.turbineNumLimit || creating || WindTurbineBtnInfo.anyButtonCreate) {
 		
 			transform.GetComponent<Button>().interactable = false;
 		
@@ -59,8 +61,9 @@ public class WindTurbineBtnInfo : InfoItem, IPointerClickHandler {
 //			Debug.Log ("Middle click");
 		} else if (eventData.button == PointerEventData.InputButton.Right) {
 //			Debug.Log ("Right click");
-			if(creating)
+			if(creating||WindTurbineBtnInfo.anyButtonCreate)
 			{
+				anyButtonCreate = false;
 				GameObject.FindGameObjectWithTag ("createManager").GetComponent<CreateManager> ().finishCreateTurbine();
 			}
 		}

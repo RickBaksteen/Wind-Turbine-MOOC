@@ -41,6 +41,16 @@ public class PumpInfo : InfoItem
 			
 		}
 
+		if (transform != VisualizationManager.visualizedObject || !powerShow) {
+			
+			powerShow = false;
+			
+		} else {
+			
+			powerShow = true;
+			
+		}
+
 		if (powerShow) {
 			
 			transform.GetChild (2).GetChild (0).GetComponent<Text> ().text = power + " kW";
@@ -68,18 +78,11 @@ public class PumpInfo : InfoItem
 		GameObject.FindGameObjectWithTag ("screens").GetComponent<CustomizationSwitch> ().toSelectionP ();
 		GameObject.FindGameObjectWithTag ("selectionPanel").GetComponent<InfoPanel> ().UpdateInfo (gameObject.transform.GetComponent<PumpInfo>());
 		GameObject sellButton = GameObject.FindGameObjectWithTag ("sellButton");
-		sellButton.GetComponent<SellManager>().proposeSellPump(this.gameObject);
+		//sellButton.GetComponent<SellManager>().proposeSellPump(this.gameObject);
 		
 		Debug.Log(GetInfo ());
 
-		if (!powerShow) {
-			
-			powerShow = true;
-			
-		} else {
-			
-			powerShow = false;
-			
-		}
+		VisualizationManager.visualizedObject = transform;
+		powerShow = !powerShow;
 	}
 }

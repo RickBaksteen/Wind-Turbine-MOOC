@@ -38,4 +38,10 @@ public class beginUI : MonoBehaviour {
 		Application.LoadLevel ("Level4");
 	}
 
+	public void loadChapter1_5(){
+		CurrentLevel.currentLevel = 5;
+		GameEnd.clearLevelElement ();
+		Application.LoadLevel ("Level5");
+	}
+
 }

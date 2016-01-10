@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -17,7 +18,7 @@ public class TransformerWorking : MonoBehaviour {
 	void Start () {
 		
 		enabled = false;
-		lossK = 0.001f;
+		lossK = 0.0005f;
 		
 		//pump = GameObject.FindGameObjectWithTag("waterTower").transform;
 		//pumpLinks.Add (pump);
@@ -41,7 +42,7 @@ public class TransformerWorking : MonoBehaviour {
 				powerLoss = (int)(lossK * originalPower * originalPower * powerLineInfo.length(transform.position, pump.position));
 			
 			
-			pump.GetComponent<PumpInfo>().power = originalPower - powerLoss;
+			pump.GetComponent<PumpInfo>().power = Math.Max(originalPower - powerLoss, 0);
 		}
 		
 	}

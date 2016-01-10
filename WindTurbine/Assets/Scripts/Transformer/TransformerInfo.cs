@@ -22,6 +22,17 @@ public class TransformerInfo : InfoItem
 
 	void Update(){
 		
+
+		if (transform != VisualizationManager.visualizedObject || !powerShow) {
+			
+			powerShow = false;
+			
+		} else {
+			
+			powerShow = true;
+			
+		}
+
 		if (powerShow) {
 			
 			transform.GetChild (1).GetChild (0).GetComponent<Text> ().text = power + " kW";
@@ -49,16 +60,8 @@ public class TransformerInfo : InfoItem
 		GameObject.FindGameObjectWithTag ("selectionPanel").GetComponent<InfoPanel> ().UpdateInfo (gameObject.transform.GetComponent<TransformerInfo>());
 		Debug.Log(GetInfo ());
 
-		if (!powerShow) {
-			
-			powerShow = true;
-			
-		} 
-		else {
-			
-			powerShow = false;
-			
-		}
+		VisualizationManager.visualizedObject = transform;
+		powerShow = !powerShow;
 	}
 
 

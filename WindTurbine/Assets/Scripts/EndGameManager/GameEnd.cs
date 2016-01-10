@@ -33,6 +33,7 @@ public class GameEnd : MonoBehaviour {
 		WaterCountManager.waterCount = 0;
 		MoneyManager.money = 1000;
 		CreateManager.turbineNum = 0;
+		WindTurbineBtnInfo.anyButtonCreate = false;
 		
 		Time.timeScale = 1;
 	}

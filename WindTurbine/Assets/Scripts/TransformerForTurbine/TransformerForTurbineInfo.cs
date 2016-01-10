@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 using UnityEngine.UI;
 
 public class TransformerForTurbineInfo : InfoItem {
@@ -31,7 +32,19 @@ public class TransformerForTurbineInfo : InfoItem {
 		else
 			powerLoss = (int)(lossK * originalPower * originalPower * powerLineInfo.length(transform.position, gameObject.transform.GetComponent<TransformerForTurbineWorking>().poweredTransformer.position));
 		
-		outputPower = originalPower - powerLoss;
+		outputPower = Math.Max(originalPower - powerLoss, 0);
+
+
+		if (transform != VisualizationManager.visualizedObject || !powerShow) {
+			
+			powerShow = false;
+			
+		} else {
+			
+			powerShow = true;
+			
+		}
+
 
 		if (powerShow) {
 			
@@ -60,15 +73,7 @@ public class TransformerForTurbineInfo : InfoItem {
 		GameObject.FindGameObjectWithTag ("selectionPanel").GetComponent<InfoPanel> ().UpdateInfo (gameObject.transform.GetComponent<TransformerForTurbineInfo>());
 		//Debug.Log(GetInfo ());
 
-		if (!powerShow) {
-			
-			powerShow = true;
-			
-		} 
-		else {
-			
-			powerShow = false;
-			
-		}
+		VisualizationManager.visualizedObject = transform;
+		powerShow = !powerShow;
 	}
 }

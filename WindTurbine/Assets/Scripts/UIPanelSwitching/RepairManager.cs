@@ -6,6 +6,7 @@ public class RepairManager : MonoBehaviour {
 
 	public Transform repairObject;
 	public TurbineInfo repairObjectInfo;
+	public int repairPrice;
 
 	// Use this for initialization
 	void Start () {
@@ -21,20 +22,26 @@ public class RepairManager : MonoBehaviour {
 
 		else {
 		
-			if (repairObjectInfo.health <= 10 || repairObjectInfo.isReparing) {
+			if (repairObjectInfo.health <= 10) {
 				
+				gameObject.transform.GetComponent<Button> ().interactable = true;
 
-				if(!repairObjectInfo.isReparing && !repairObjectInfo.isWorking){
-				
-					gameObject.transform.GetComponent<Button>().interactable = false;
-				
+				if(!repairObjectInfo.isWorking && !repairObjectInfo.isReparing){
+
+					gameObject.transform.GetChild(0).GetComponent<Text>().text = "Renew";
+					repairPrice = repairObjectInfo.cost;
+
 				}
 
 				else{
-				
-					gameObject.transform.GetComponent<Button> ().interactable = true;
-					
+
+					gameObject.transform.GetChild(0).GetComponent<Text>().text = "Repair";
+					repairPrice = repairObjectInfo.cost = 25;
+
 				}
+
+				if(repairPrice > MoneyManager.money)
+					gameObject.transform.GetComponent<Button> ().interactable = false;
 				
 			}
 
@@ -49,7 +56,7 @@ public class RepairManager : MonoBehaviour {
 
 	public void Repair(){
 
-		repairObjectInfo.Repair ();
+		repairObjectInfo.Repair (repairPrice);
 
 	}
 

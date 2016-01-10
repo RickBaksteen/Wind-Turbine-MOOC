@@ -47,20 +47,72 @@ public class TurbineHealth : MonoBehaviour {
 	}
 
 	public void enter(){
+		
+		//		Debug.Log ("Mouse Enter");
+		
+		if (Application.loadedLevelName == "Level1" || Application.loadedLevelName == "Level2" ) {
+		
+			Color color = transform.GetChild (0).GetComponent<Image> ().color;
+			transform.GetChild (0).GetComponent<Image> ().color = new Color (color.r, color.g, color.b, 0f);
+			
+			color = transform.GetChild (1).GetComponent<Image> ().color;
+			transform.GetChild (1).GetComponent<Image> ().color = new Color (color.r, color.g, color.b, 0f);
+			
+			color = transform.GetChild (2).GetComponent<Image> ().color;
+			transform.GetChild (2).GetComponent<Image> ().color = new Color (color.r, color.g, color.b, 0f);
+		
+		} else {
+		
+			Color color = transform.GetChild (0).GetComponent<Image> ().color;
+			transform.GetChild (0).GetComponent<Image> ().color = new Color(color.r, color.g, color.b, 1f);
+			
+			color = transform.GetChild (1).GetComponent<Image> ().color;
+			transform.GetChild (1).GetComponent<Image> ().color = new Color(color.r, color.g, color.b, 1f);
+			
+			color = transform.GetChild (2).GetComponent<Image> ().color;
+			transform.GetChild (2).GetComponent<Image> ().color = new Color(color.r, color.g, color.b, 1f);
 
-//		Debug.Log ("Mouse Enter");
-
+		}
+		
+		if (myTurbineIsWorking) {
+			
+			transform.GetChild (3).GetComponent<Text> ().text = " " + myTurbineInfo.originalOutput + " kW";
+			transform.GetChild (4).GetComponent<Text> ().text = "";
+			
+		} else {
+			
+			transform.GetChild (3).GetComponent<Text> ().text = " 0 kW";
+			transform.GetChild (4).GetComponent<Text> ().text = "";
+		}
+		
+	}
+	
+	public void enterWithPowerLoss(){
+		
+		//		Debug.Log ("Mouse Enter");
+		
 		Color color = transform.GetChild (0).GetComponent<Image> ().color;
 		transform.GetChild (0).GetComponent<Image> ().color = new Color(color.r, color.g, color.b, 1f);
-
+		
 		color = transform.GetChild (1).GetComponent<Image> ().color;
 		transform.GetChild (1).GetComponent<Image> ().color = new Color(color.r, color.g, color.b, 1f);
-
+		
 		color = transform.GetChild (2).GetComponent<Image> ().color;
 		transform.GetChild (2).GetComponent<Image> ().color = new Color(color.r, color.g, color.b, 1f);
-
-		transform.GetChild(3).GetComponent<Text>().text = myTurbineInfo.originalOutput + " kW";
-
+		
+		
+		if (myTurbineIsWorking) {
+			
+			transform.GetChild (3).GetComponent<Text> ().text = " " + myTurbineInfo.originalOutput + " kW";
+			transform.GetChild (4).GetComponent<Text> ().text = "- " + myTurbineInfo.powerLoss + " kW";
+			
+		} else {
+			
+			transform.GetChild (3).GetComponent<Text> ().text = " 0 kW";
+			transform.GetChild (4).GetComponent<Text> ().text = "";
+		}
+		
+		
 	}
 
 	public void exit(){
@@ -77,5 +129,6 @@ public class TurbineHealth : MonoBehaviour {
 		transform.GetChild (2).GetComponent<Image> ().color = new Color(color.r, color.g, color.b, 0f);
 
 		transform.GetChild(3).GetComponent<Text>().text = "";
+		transform.GetChild (4).GetComponent<Text> ().text = "";
 	}
 }

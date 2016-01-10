@@ -45,6 +45,7 @@ public class CreateManager : MonoBehaviour {
 
 		currentButton = button;
 		currentButton.GetComponent<WindTurbineBtnInfo> ().creating = true;
+		WindTurbineBtnInfo.anyButtonCreate = true;
 		creating = true;
 		currentType = createType.turbine;
 		newTransform = newObject;
@@ -60,6 +61,7 @@ public class CreateManager : MonoBehaviour {
 	public void finishCreateTurbine()
 	{
 		creating = false;
+		WindTurbineBtnInfo.anyButtonCreate = false;
 		currentButton.GetComponent<WindTurbineBtnInfo> ().creating = false;
 	}
 

@@ -39,7 +39,7 @@ public class GridInfo : InfoItem {
 	{
 		if (LockUI.OverGui) return;
 
-		AudioSource.PlayClipAtPoint (click, Camera.main.transform.position);
+		AudioSource.PlayClipAtPoint (click, Camera.main.transform.position, 0.8f);
 		CreateManager createManager = GameObject.FindGameObjectWithTag ("createManager").transform.GetComponent<CreateManager> ();
 		bool creating = createManager.creating;
 		CreateManager.createType createType = createManager.currentType;

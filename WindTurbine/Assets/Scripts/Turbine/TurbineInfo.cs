@@ -44,7 +44,7 @@ public class TurbineInfo : InfoItem
 	void Start()
 	{
 		working = GetComponent<AudioSource>();
-		AudioSource.PlayClipAtPoint(construct, Camera.main.transform.position);
+		AudioSource.PlayClipAtPoint(construct, Camera.main.transform.position, 0.7f);
 		direction = directions[directionIndex];
 		lossK = 0.001f;
 		timeAfterWork = 0;
@@ -76,7 +76,7 @@ public class TurbineInfo : InfoItem
 			
 			if(health <= 0)
 			{
-				AudioSource.PlayClipAtPoint(breakdown, Camera.main.transform.position);
+				AudioSource.PlayClipAtPoint(breakdown, Camera.main.transform.position, 0.6f);
 				isWorking = false;
 				isReparing = true;
 			}
@@ -163,7 +163,7 @@ public class TurbineInfo : InfoItem
 	{
 		if (LockUI.OverGui) return;
 
-		AudioSource.PlayClipAtPoint (click, Camera.main.transform.position);
+		AudioSource.PlayClipAtPoint (click, Camera.main.transform.position, 0.4f);
 		GameObject.FindGameObjectWithTag ("screens").GetComponent<CustomizationSwitch> ().toSelectionP ();
 		GameObject.FindGameObjectWithTag ("selectionPanel").GetComponent<InfoPanel> ().UpdateInfo (gameObject.transform.GetComponent<TurbineInfo>());
 		GameObject sellButton = GameObject.FindGameObjectWithTag ("sellButton");
@@ -191,7 +191,7 @@ public class TurbineInfo : InfoItem
 	//For repair the windTurbine
 	public void Repair()
 	{
-		AudioSource.PlayClipAtPoint (repair, Camera.main.transform.position);
+		AudioSource.PlayClipAtPoint (repair, Camera.main.transform.position, 0.4f);
 		MoneyManager.money -= costForRepair;
 		timeAfterWork = 0;
 		timeAfterRepair = 0;

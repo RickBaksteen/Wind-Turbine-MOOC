@@ -67,6 +67,8 @@ public class PumpAttacking : MonoBehaviour {
 
 	void OnTriggerExit(Collider other){
 		if (other.gameObject.CompareTag ("waterDrop")) {
+			other.gameObject.GetComponent<EnemyHealth>().attacked = false;
+			other.gameObject.transform.localScale = new Vector3(7.152498f, 7.055891f, 7.152498f);
 			attackingList.Remove(other.gameObject.transform);
 			//Debug.Log ("Exit: " + attackingList.Count);
 		}

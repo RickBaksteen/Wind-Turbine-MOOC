@@ -87,19 +87,25 @@ public class PumpAttacking : MonoBehaviour {
 					attackingList.RemoveAt(i);
 					i = i-1;
 				}else{
+
 					currentTarget = attackingList [i].transform;
-				}				
+					break;
+
+				}
 			}
 		
 		}
 			//currentTarget = attackingList [0].transform;
 
-		for (int i = 0; i< attackingList.Count; i++) {
+//		for (int i = 0; i< attackingList.Count; i++) {
+//
+//			if(currentTarget.GetComponent<EnemyHealth>().health > attackingList [i].transform.GetComponent<EnemyHealth>().health)
+//				currentTarget = attackingList [i].transform;
+//
+//		}
 
-			if(currentTarget.GetComponent<EnemyHealth>().health > attackingList [i].transform.GetComponent<EnemyHealth>().health)
-				currentTarget = attackingList [i].transform;
-
-		}
+		if (currentTarget == null)
+			return;
 
 		currentEnemyHealth = currentTarget.GetComponent<EnemyHealth> ();
 

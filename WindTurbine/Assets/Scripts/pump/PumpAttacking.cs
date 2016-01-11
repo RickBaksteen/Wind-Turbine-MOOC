@@ -79,8 +79,20 @@ public class PumpAttacking : MonoBehaviour {
 
 		if (attackingList.Count <= 0)
 			return;
-		else
-			currentTarget = attackingList [0].transform;
+		else {
+		
+			for (int i = 0; i< attackingList.Count; i++) {
+				
+				if(attackingList [i]==null){
+					attackingList.RemoveAt(i);
+					i = i-1;
+				}else{
+					currentTarget = attackingList [i].transform;
+				}				
+			}
+		
+		}
+			//currentTarget = attackingList [0].transform;
 
 		for (int i = 0; i< attackingList.Count; i++) {
 

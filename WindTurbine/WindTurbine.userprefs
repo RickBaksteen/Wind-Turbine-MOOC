@@ -6,7 +6,7 @@
       <File FileName="Assets/Scripts/UICustomization/LockUI.cs" Line="11" Column="5" />
       <File FileName="Assets/Scripts/UIWindTurbineSelection/WindCustomizationPanelInfo.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/UIPanelSwitching/CustomizationSwitch.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/pump/PumpAttacking.cs" Line="71" Column="33" />
+      <File FileName="Assets/Scripts/pump/PumpAttacking.cs" Line="82" Column="7" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

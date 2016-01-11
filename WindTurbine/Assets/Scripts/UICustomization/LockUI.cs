@@ -8,7 +8,8 @@ public class LockUI : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+		//GameObject.FindGameObjectWithTag ("canvas").SetActive(false);
+		GameObject.FindGameObjectWithTag ("canvas").SetActive(true);
     }
 
     // Update is called once per frame

@@ -20,6 +20,7 @@ public class gamePlay : MonoBehaviour {
 
 		GameObject.FindGameObjectWithTag ("canvasMenu").GetComponent<CanvasGroup> ().alpha = 0;
 		GameObject.FindGameObjectWithTag ("canvasMenu").GetComponent<CanvasGroup> ().interactable = false;
+		GameObject.FindGameObjectWithTag ("canvasMenu").GetComponent<CanvasGroup> ().blocksRaycasts = false;
 	}
 
 	public void pause(){

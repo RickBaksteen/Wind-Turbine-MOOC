@@ -14,7 +14,7 @@ public class EnemyHealth : MonoBehaviour {
 	void Start () {
 		attacked = false;
 		if (Application.loadedLevelName == "Level4")
-			maxHealth = 120;
+			//maxHealth = 120;
 
 		health = maxHealth;
 	}

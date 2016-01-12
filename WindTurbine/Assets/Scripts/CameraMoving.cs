@@ -3,8 +3,8 @@ using System.Collections;
 
 public class CameraMoving : MonoBehaviour {
 
-	public float speed = 2f;
-	public float zoomSpeed = 10f;
+	public float speed = 15f;
+	public float zoomSpeed = 80f;
 
 	private float zoomDistance = 0;
 
@@ -51,7 +51,7 @@ public class CameraMoving : MonoBehaviour {
 		float scroll = Input.GetAxis("Mouse ScrollWheel");
 		//Debug.Log (scroll);
 		//transform.Translate(0, scroll * zoomSpeed , 0, Space.World);
-		cam.orthographicSize += scroll*zoomSpeed;
+		cam.orthographicSize -= scroll*zoomSpeed;
 
 	}
 

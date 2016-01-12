@@ -22,5 +22,7 @@ public class ScoreManager : MonoBehaviour {
 				score += Turbines[i].transform.GetComponent<TurbineInfo>().cost;
 			}
 		}
+		if (Application.loadedLevelName == "Fail")
+			score = 0;
 	}
 }

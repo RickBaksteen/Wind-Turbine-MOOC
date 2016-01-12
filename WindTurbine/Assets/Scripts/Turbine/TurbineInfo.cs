@@ -184,11 +184,11 @@ public class TurbineInfo : InfoItem
 		else if (!isWorking && isReparing) {
 			
 			timeRemains = timeForRepair - timeAfterRepair;
-			return "Turbine\n\n\n\nTurbine is waiting to be repaired.\nTime remains for repair: " + (int)timeRemains + "s\nRepair Cost: " + costForRepair + " TC";
+			return "Turbine\n\n\n\nTurbine is waiting to be repaired.\nTime remaining until total loss: " + (int)timeRemains + "s\nRepair Cost: " + costForRepair + " TC";
 			
 		}
 		
-		return "Turbine\n\n\n\n" + "\nPower Output: " + originalOutput + "\nSelling Cost: " + cost/2 + " TC";
+		return "Turbine\n\n\n\n" + "\nPower Output: " + originalOutput + "\nSelling Price: " + cost/2 + " TC";
 		
 	}
 	

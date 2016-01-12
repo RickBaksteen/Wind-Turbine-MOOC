@@ -68,7 +68,7 @@ public class PumpInfo : InfoItem
 		//        return "Pump Time: " + pumpTimeBetween + "\nPump Ammount: " + pumpDamage + "\nCurrent Power: " + power
 		//            + "\nMax Power: " + maxPower + "\nPower Percentage: " + percentage;
 		
-		return "Pump\n\n\n\n" + "Attacking Speed: " + pumpTimeBetween + "\nDamage: " + pumpDamage + "\nCurrent Power: " + power;
+		return "Pump\n\n\n\n" + "Attack Speed: " + pumpTimeBetween + "\nDamage: " + pumpDamage + "\nReceived Power: " + power;
 	}
 	
 	void OnMouseDown()

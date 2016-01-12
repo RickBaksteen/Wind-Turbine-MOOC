@@ -36,7 +36,7 @@ public class CreateResultManager : MonoBehaviour {
 	void Update () {
 		transform.GetChild (1).GetComponent<Text> ().text = "\t\t  Power: " + maxOutput;
 		transform.GetChild (2).GetComponent<Text> ().text = "\t\t  Cost: " + cost + " TC";
-		transform.GetChild (3).GetComponent<Text> ().text = "\t\t  Working Time: " + timeForWork + " s";
+		transform.GetChild (3).GetComponent<Text> ().text = "\t\t  Time Until Maintenance: " + timeForWork + " s";
 	}
 	
 	public void updateBlade(int extraOutput, int extraCost){

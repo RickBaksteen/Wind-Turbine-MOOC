@@ -7,6 +7,7 @@ public class BladSelection : MonoBehaviour, IPointerClickHandler {
 
 	public int output;
 	public int cost;
+	public string name;
 
 	// Use this for initialization
 	void Start () {
@@ -22,7 +23,7 @@ public class BladSelection : MonoBehaviour, IPointerClickHandler {
 	{
 		if (eventData.button == PointerEventData.InputButton.Left) {
 //			transform.GetComponent<Button>().interactable = false;
-			GameObject.FindGameObjectWithTag("createResultHolder").GetComponent<CreateResultManager>().updateBlade(output, cost);
+			GameObject.FindGameObjectWithTag("createResultHolder").GetComponent<CreateResultManager>().updateBlade(output, cost, name);
 		} else if (eventData.button == PointerEventData.InputButton.Middle) {
 			//			Debug.Log ("Middle click");
 		} else if (eventData.button == PointerEventData.InputButton.Right) {

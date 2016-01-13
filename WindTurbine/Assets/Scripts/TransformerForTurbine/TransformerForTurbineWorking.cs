@@ -11,12 +11,15 @@ public class TransformerForTurbineWorking : MonoBehaviour {
 	public Transform powerLine;
 
 	public Transform poweredTransformer;
+
+	public int previousPower;
 	
 	// Use this for initialization
 	void Start () {
 		
 		enabled = false;
 		linkToTransformer ();
+		previousPower = 0;
 
 	}
 	
@@ -42,10 +45,13 @@ public class TransformerForTurbineWorking : MonoBehaviour {
 			
 			enabled = true;
 			turbineLinks.Add(target);
-			
+			//target.GetComponent<TurbineInfo>().calculatePowerLoss();
+			transform.GetComponent<TransformerForTurbineInfo> ().showNewPower (turbineLinks[turbineLinks.Count-1]);
 		}
 		
 	}
+
+
 	
 	public void unlinkTurbine(Transform target){
 		

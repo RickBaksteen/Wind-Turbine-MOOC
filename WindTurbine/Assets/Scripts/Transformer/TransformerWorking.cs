@@ -36,7 +36,7 @@ public class TransformerWorking : MonoBehaviour {
 			int originalPower = gameObject.GetComponent<TransformerInfo>().power/pumpLinks.Count;
 			int powerLoss;
 			
-			if (Application.loadedLevelName == "Level1")
+			if (Application.loadedLevelName == "Level1" || Application.loadedLevelName == "Level1_1"|| Application.loadedLevelName == "Level1_2"|| Application.loadedLevelName == "Level1_3")
 				powerLoss = 0;
 			else
 				powerLoss = (int)(lossK * originalPower * originalPower * powerLineInfo.length(transform.position, pump.position));
@@ -68,7 +68,7 @@ public class TransformerWorking : MonoBehaviour {
 			Transform newLine = (Transform) Instantiate(powerLine, gameObject.transform.position, Quaternion.identity);
 			newLine.SetParent(gameObject.transform);
 			newLine.localPosition = Vector3.zero;
-			newLine.GetComponent<powerLineInfo>().drawLine(new Color(1f, 1f, 0f, 1f), gameObject.transform.position, target.position);
+			newLine.GetComponent<powerLineInfo>().drawLine(new Color(1f, 0f, 0f, 1f), gameObject.transform.position, target.position);
 			
 			target.GetChild(1).GetComponent<PumpAttacking>().enableWork();
 		}
@@ -113,7 +113,7 @@ public class TransformerWorking : MonoBehaviour {
 			
 			GameObject line = gameObject.transform.GetChild(index+1).gameObject;
 			
-			Destroy(line);
+			GameObject.Destroy(line);
 			
 		}
 	}

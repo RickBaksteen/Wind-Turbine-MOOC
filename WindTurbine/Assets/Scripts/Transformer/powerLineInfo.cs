@@ -39,7 +39,7 @@ public class powerLineInfo : MonoBehaviour {
 		
 		lineRenderer = gameObject.GetComponent<LineRenderer> ();
 		
-		if(Application.loadedLevelName == "Level1")
+		if(Application.loadedLevelName == "Level1" || Application.loadedLevelName == "Level1_1"|| Application.loadedLevelName == "Level1_2"|| Application.loadedLevelName == "Level1_3")
 			lineRenderer.SetWidth (5f, 5f);
 		else
 			lineRenderer.SetWidth (5f, 5f * loss);

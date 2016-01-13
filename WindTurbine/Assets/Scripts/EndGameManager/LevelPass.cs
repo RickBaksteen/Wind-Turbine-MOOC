@@ -7,7 +7,7 @@ public class LevelPass : MonoBehaviour {
     {
         
         Debug.Log("Button Clicked");
-        if (CurrentLevel.currentLevel < 5)
+        if (CurrentLevel.currentLevel < 8)
         {
 			GameEnd.clearLevelElement();
 			CurrentLevel.currentLevel += 1;

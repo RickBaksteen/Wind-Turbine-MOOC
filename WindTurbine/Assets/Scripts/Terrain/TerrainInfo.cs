@@ -11,7 +11,7 @@ public class TerrainInfo : MonoBehaviour {
 	public int[,] elevationInfo = new int[20, 20];		//Elevation Index: From 0 ~ elevationMax/ElevationInterval		
 	public static int[,] placeItemInfo = new int[20, 20];		//0: not occupied; 1: occupied
 	
-	public int elevationInterval = 5;
+	public int elevationInterval = 10;
 	public int elevationMax = 100;
 	
 	private int indexMax;
@@ -28,6 +28,9 @@ public class TerrainInfo : MonoBehaviour {
 		
 		Transform turningPointsObject = GameObject.FindGameObjectWithTag ("routeTurningPoints").transform;
 		int i = 0;
+
+		routeTurningPoints.Add(GameObject.FindGameObjectWithTag ("startPoint").transform);
+		gridTurningPoints.Add(TerrainInfo.TransformToGrid(GameObject.FindGameObjectWithTag ("startPoint").transform.position));
 		
 		while (i < turningPointsObject.childCount) {
 			routeTurningPoints.Add (turningPointsObject.GetChild (i).transform);
@@ -219,9 +222,9 @@ public class TerrainInfo : MonoBehaviour {
 			
 		}
 		
-		Vector2 prev = new Vector2 (0, 19);
+		Vector2 prev = gridTurningPoints[0];
 		
-		for (int i = 0; i < gridTurningPoints.Count; i++) {
+		for (int i = 1; i < gridTurningPoints.Count; i++) {
 			
 			loadRoute (prev, gridTurningPoints[i]);
 			prev = gridTurningPoints[i];

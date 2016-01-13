@@ -53,7 +53,7 @@ public class SellManager : MonoBehaviour {
 				int z = sellingTurbine.transform.GetComponent<TurbineInfo> ().z;
 				
 				TerrainInfo.placeItemInfo [x, z] = 0;
-				Destroy (sellingTurbine);
+				Destroy (sellingTurbine.gameObject);
 				CreateManager.turbineNum--;
 				gameObject.transform.GetComponent<Button>().interactable = false;
 

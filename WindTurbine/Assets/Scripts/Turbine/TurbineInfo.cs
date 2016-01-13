@@ -40,41 +40,74 @@ public class TurbineInfo : InfoItem
 	public AudioClip construct;
 	private AudioSource working;
 
+	public static int healthPercBeforeReparing;
+	public Color turbineColor;
 
 	bool healthShow = false;
 	bool powerLossShow;
 	
-	
+	void Awake(){
+
+		//turbineColor = Color.white;
+		lossK = 0.001f;
+	}
+
 	void Start()
 	{
 		working = GetComponent<AudioSource>();
 		AudioSource.PlayClipAtPoint(construct, Camera.main.transform.position);
 		direction = directions[directionIndex];
-		lossK = 0.001f;
+
 		timeAfterWork = 0;
 		
 		isWorking = true;
 		isReparing = false;
 		
 		//timeForWork = 30f;
-		timeForRepair = 15f;
-		costForRepair = 25;
-		timeForPowerLossShow = 3f;
+
+		if (Application.loadedLevelName == "Level3_1") {
+		
+			timeForRepair = 25f;
+			costForRepair = 25;
+			TurbineInfo.healthPercBeforeReparing = 50;
+			timeForPowerLossShow = 3f;
+
+		} else {
+		
+			timeForRepair = 15f;
+			costForRepair = 30;
+			timeForPowerLossShow = 3f;
+			TurbineInfo.healthPercBeforeReparing = 25;
+		}
 		
 		healthShow = true;
 		powerLossShow = true;
+
+		if(Application.loadedLevelName == "Level1_1"||Application.loadedLevelName == "Level1_2"||Application.loadedLevelName == "Level2_1"||Application.loadedLevelName == "Level2_2")
+			cost = 250;
+
+
+		else if(Application.loadedLevelName == "Level3_2"){
+			cost = 200;
+			
+		}
+
+		else
+			cost = 100;
+
 	}
 	
 	void Update()
 	{
 		if (isWorking) {
 			working.mute = false;
+			brushTurbine(turbineColor);
 			//CalculateOutput();
-			if (Application.loadedLevelName == "Level1")
+			if (Application.loadedLevelName == "Level1" || Application.loadedLevelName == "Level1_1"|| Application.loadedLevelName == "Level1_2"|| Application.loadedLevelName == "Level1_3")
 				powerLoss = 0;
 			else{
 				powerLoss = (int)(lossK * originalOutput * originalOutput * powerLineInfo.length(transform.position, gameObject.transform.GetComponent<TurbineWorking>().transformerForTurbine.position));
-				Math.Min(originalOutput, powerLoss);
+				powerLoss = Math.Min(originalOutput, powerLoss);
 			}
 			
 			output = originalOutput - powerLoss;
@@ -82,7 +115,7 @@ public class TurbineInfo : InfoItem
 			timeAfterWork += Time.deltaTime;
 			timeAfterPowerLossShow += Time.deltaTime;
 
-			if (Application.loadedLevelName != "Level1" && Application.loadedLevelName != "Level2")
+			if (Application.loadedLevelName != "Level1"&& Application.loadedLevelName != "Level1_1" && Application.loadedLevelName != "Level1_2"  && Application.loadedLevelName != "Level1_3"  && Application.loadedLevelName != "Level1_3" && Application.loadedLevelName != "Level2" && Application.loadedLevelName != "Level2_1" && Application.loadedLevelName != "Level2_2" && Application.loadedLevelName != "Level2_3")
 				health = 100 - (int)(100 * timeAfterWork/timeForWork);
 			
 			if(health <= 0)
@@ -117,12 +150,14 @@ public class TurbineInfo : InfoItem
 			
 			if(!isReparing)
 			{
+
+				brushTurbine(Color.black);
 				working.mute = true;				
 			}
 			
 		}
 		
-		if (transform == VisualizationManager.visualizedObject || health <= 10) {
+		if (transform == VisualizationManager.visualizedObject || health <= TurbineInfo.healthPercBeforeReparing) {
 			
 			healthShow = true;
 			
@@ -134,7 +169,7 @@ public class TurbineInfo : InfoItem
 		
 		if (powerLossShow) {
 			
-			if(Application.loadedLevelName == "Level1")
+			if(Application.loadedLevelName == "Level1" || Application.loadedLevelName == "Level1" || Application.loadedLevelName == "Level1_1"|| Application.loadedLevelName == "Level1_2"|| Application.loadedLevelName == "Level1_3")
 				transform.GetChild (1).GetChild (0).GetComponent<TurbineHealth> ().enter ();
 			else
 				transform.GetChild (1).GetChild (0).GetComponent<TurbineHealth> ().enterWithPowerLoss ();
@@ -164,7 +199,7 @@ public class TurbineInfo : InfoItem
 	//calculate output with the influence of elevation	
 	public void outputFromElevation(){
 		
-		originalOutput = maxOutput + this.elevation / 10;
+		originalOutput = maxOutput + this.elevation / 1;
 		
 	}
 	
@@ -179,7 +214,7 @@ public class TurbineInfo : InfoItem
 		float timeRemains;
 		
 		if (!isWorking && !isReparing)
-			return "Turbine\n\n\n\nTurbine is not working any more.";
+			return "Turbine\n\n\n\nTurbine is not working any more.\nRenew Cost: " + cost +" TC";
 		
 		else if (!isWorking && isReparing) {
 			
@@ -188,7 +223,7 @@ public class TurbineInfo : InfoItem
 			
 		}
 		
-		return "Turbine\n\n\n\n" + "\nPower Output: " + originalOutput + "\nSelling Price: " + cost/2 + " TC";
+		return "Turbine\n\n\n\n" + "\nPower Output: " + originalOutput+ "\nPower Lost Over Distance: " + powerLoss + "\nSelling Price: " + cost/2 + " TC";
 		
 	}
 	
@@ -200,9 +235,8 @@ public class TurbineInfo : InfoItem
 		GameObject.FindGameObjectWithTag ("screens").GetComponent<CustomizationSwitch> ().toSelectionP ();
 		GameObject.FindGameObjectWithTag ("selectionPanel").GetComponent<InfoPanel> ().UpdateInfo (gameObject.transform.GetComponent<TurbineInfo>());
 
-		if (Application.loadedLevelName != "Level1" && Application.loadedLevelName != "Level2") {
+		if (Application.loadedLevelName != "Level1"&& Application.loadedLevelName != "Level1_1" && Application.loadedLevelName != "Level1_2"  && Application.loadedLevelName != "Level1_3"  && Application.loadedLevelName != "Level1_3" && Application.loadedLevelName != "Level2" && Application.loadedLevelName != "Level2_1" && Application.loadedLevelName != "Level2_2" && Application.loadedLevelName != "Level2_3") {
 		
-
 			GameObject repairButton = GameObject.FindGameObjectWithTag ("repairButton");
 			repairButton.GetComponent<RepairManager> ().proposeRepairTurbine (transform);
 		
@@ -229,5 +263,34 @@ public class TurbineInfo : InfoItem
 		isWorking = true;
 		isReparing = false;
 		powerLossShow = true;
+	}
+
+	public void brushTurbine(Color color){
+
+		transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material.SetColor("_Color", color);
+		transform.GetChild(0).GetChild(1).GetComponent<MeshRenderer>().material.SetColor("_Color", color);
+
+	}
+
+	public int calculatePowerLoss(int power){
+
+		int loss;
+
+		Debug.Log ("power: " + power);
+		Debug.Log ("lossK: " + lossK);
+
+		if (Application.loadedLevelName == "Level1" || Application.loadedLevelName == "Level1_1"|| Application.loadedLevelName == "Level1_2"|| Application.loadedLevelName == "Level1_3")
+			loss = 0;
+		else{
+			loss = (int)(lossK * power * power * powerLineInfo.length(transform.position, gameObject.transform.GetComponent<TurbineWorking>().transformerForTurbine.position));
+			loss = Math.Min(power, loss);
+
+			Debug.Log(powerLineInfo.length(transform.position, gameObject.transform.GetComponent<TurbineWorking>().transformerForTurbine.position));
+		}
+
+		Debug.Log ("loss: " + loss);
+
+		return loss;
+
 	}
 }

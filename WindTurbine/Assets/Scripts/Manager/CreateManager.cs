@@ -14,6 +14,7 @@ public class CreateManager : MonoBehaviour {
 	public int directionIndex;
 	public int cost;
 	public float timeForWork;
+	public Color turbineColor;
 
 	//Parameter for Pump
 	public float pumpTimeBetween;
@@ -41,7 +42,7 @@ public class CreateManager : MonoBehaviour {
 		
 	}
 
-	public void createTurbine(Transform newObject, Quaternion newRotation, int maxOutput, int directionIndex, int cost, Transform button, float time){
+	public void createTurbine(Transform newObject, Quaternion newRotation, int maxOutput, int directionIndex, int cost, Transform button, float time, Color turbineColor){
 
 		currentButton = button;
 		currentButton.GetComponent<WindTurbineBtnInfo> ().creating = true;
@@ -55,6 +56,7 @@ public class CreateManager : MonoBehaviour {
 		this.directionIndex = directionIndex;
 		this.cost = cost;
 		this.timeForWork = time;
+		this.turbineColor = turbineColor;
 
 	}
 

@@ -22,7 +22,7 @@ public class RepairManager : MonoBehaviour {
 
 		else {
 		
-			if (repairObjectInfo.health <= 10) {
+			if (repairObjectInfo.health <= TurbineInfo.healthPercBeforeReparing) {
 				
 				gameObject.transform.GetComponent<Button> ().interactable = true;
 
@@ -36,7 +36,7 @@ public class RepairManager : MonoBehaviour {
 				else{
 
 					gameObject.transform.GetChild(0).GetComponent<Text>().text = "Repair";
-					repairPrice = repairObjectInfo.cost = 25;
+					repairPrice = repairObjectInfo.costForRepair;
 
 				}
 

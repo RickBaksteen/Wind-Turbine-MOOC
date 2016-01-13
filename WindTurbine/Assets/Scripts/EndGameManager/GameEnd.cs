@@ -3,13 +3,23 @@ using System.Collections;
 
 public class GameEnd : MonoBehaviour {
 
-    public int allDrops = 31;
+    public int allDrops = 30;
    // public int killedDrops = 0;
     
 
 	// Use this for initialization
 	void Start () {
-   
+
+		if (Application.loadedLevelName == "Level3_2" || Application.loadedLevelName == "Level4_2") {
+		
+			allDrops = 40;
+
+		} else {
+		
+			allDrops = 30;
+		
+		}
+
 	}
 	
 	// Update is called once per frame

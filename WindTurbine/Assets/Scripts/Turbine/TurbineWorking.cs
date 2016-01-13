@@ -57,11 +57,11 @@ public class TurbineWorking : MonoBehaviour {
 			int index = transformers.IndexOf(target);
 			
 			Transform newGameObject = gameObject.transform.GetChild(index+1);
-			Destroy(newGameObject);
+			Destroy(newGameObject.gameObject);
 			transformers.Remove(target);
 			
 			LineRenderer lineRenderer = gameObject.GetComponent<LineRenderer>();
-			GameObject.Destroy(lineRenderer); //I don't know whether this would work or not.
+			Destroy(lineRenderer.gameObject); //I don't know whether this would work or not.
 			target.transform.GetComponent<TransformerForTurbineWorking>().unlinkTurbine(gameObject.transform);
 		}
 		

@@ -24,6 +24,17 @@ public class EnemyManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+		if (Application.loadedLevelName == "Level3_2" || Application.loadedLevelName == "Level4_2") {
+		
+			waveNum = 4;
+
+		} else {
+		
+			waveNum = 3;
+		
+		}
+
+
 		waveComing = true;
 		waveCome ();
 		//waveComing = false;

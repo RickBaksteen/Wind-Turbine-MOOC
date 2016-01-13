@@ -11,6 +11,8 @@ public class RepairManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		gameObject.transform.GetComponent<Button>().interactable = false;
+
+		disableButton ();
 	}
 	
 	// Update is called once per frame
@@ -64,5 +66,19 @@ public class RepairManager : MonoBehaviour {
 	{
 		repairObject = newObject;
 		repairObjectInfo = newObject.GetComponent<TurbineInfo> ();
+	}
+
+	public void disableButton(){
+		
+		transform.GetComponent<CanvasGroup> ().alpha = 0;
+		transform.GetComponent<CanvasGroup> ().interactable = false;
+		
+	}
+	
+	public void enableButton(){
+		
+		transform.GetComponent<CanvasGroup> ().alpha = 1;
+		transform.GetComponent<CanvasGroup> ().interactable = true;
+		
 	}
 }

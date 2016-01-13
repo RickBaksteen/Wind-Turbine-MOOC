@@ -55,6 +55,15 @@ public class TransformerInfo : InfoItem
 	{
 		if (LockUI.OverGui) return;
 
+		GameObject sellBtn = GameObject.FindGameObjectWithTag("sellButton");
+		GameObject repairBtn = GameObject.FindGameObjectWithTag("repairButton");
+		
+		if (sellBtn != null)
+			sellBtn.GetComponent<SellManager> ().disableButton ();
+		
+		if (repairBtn != null)
+			repairBtn.GetComponent<RepairManager> ().disableButton ();
+
 		AudioSource.PlayClipAtPoint (click, Camera.main.transform.position);
 		GameObject.FindGameObjectWithTag ("screens").GetComponent<CustomizationSwitch> ().toSelectionP ();
 		GameObject.FindGameObjectWithTag ("selectionPanel").GetComponent<InfoPanel> ().UpdateInfo (gameObject.transform.GetComponent<TransformerInfo>());

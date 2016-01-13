@@ -78,7 +78,15 @@ public class PumpInfo : InfoItem
 		GameObject.FindGameObjectWithTag ("screens").GetComponent<CustomizationSwitch> ().toSelectionP ();
 		GameObject.FindGameObjectWithTag ("selectionPanel").GetComponent<InfoPanel> ().UpdateInfo (gameObject.transform.GetComponent<PumpInfo>());
 		GameObject sellButton = GameObject.FindGameObjectWithTag ("sellButton");
-		//sellButton.GetComponent<SellManager>().proposeSellPump(this.gameObject);
+
+		GameObject sellBtn = GameObject.FindGameObjectWithTag("sellButton");
+		GameObject repairBtn = GameObject.FindGameObjectWithTag("repairButton");
+		
+		if (sellBtn != null)
+			sellBtn.GetComponent<SellManager> ().disableButton ();
+		
+		if (repairBtn != null)
+			repairBtn.GetComponent<RepairManager> ().disableButton ();
 		
 		Debug.Log(GetInfo ());
 

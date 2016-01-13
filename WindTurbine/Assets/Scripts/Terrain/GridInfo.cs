@@ -39,6 +39,17 @@ public class GridInfo : InfoItem {
 	{
 		if (LockUI.OverGui) return;
 
+		//sellButton.GetComponent<SellManager>().disableButton();
+
+		GameObject sellBtn = GameObject.FindGameObjectWithTag("sellButton");
+		GameObject repairBtn = GameObject.FindGameObjectWithTag("repairButton");
+		
+		if (sellBtn != null)
+			sellBtn.GetComponent<SellManager> ().disableButton ();
+		
+		if (repairBtn != null)
+			repairBtn.GetComponent<RepairManager> ().disableButton ();
+
 		AudioSource.PlayClipAtPoint (click, Camera.main.transform.position, 0.8f);
 		CreateManager createManager = GameObject.FindGameObjectWithTag ("createManager").transform.GetComponent<CreateManager> ();
 		bool creating = createManager.creating;

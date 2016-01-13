@@ -72,13 +72,14 @@ public class GridInfo : InfoItem {
 				newTurbineInfo.directionIndex = directionIndex % 8;
 				newTurbineInfo.cost = cost;
 				newTurbineInfo.timeForWork = timeForWork;
+				newTurbineInfo.turbineColor = createManager.turbineColor;
 				Debug.Log(timeForWork);
 				newTurbineInfo.x = x;
 				newTurbineInfo.z = z;
 				
 				if(MoneyManager.money < cost + ExtraCost){
 					createManager.finishCreateTurbine();
-					Destroy(newObject);
+					Destroy(newObject.gameObject);
 				}
 				else{
 					MoneyManager.money -= cost + ExtraCost;

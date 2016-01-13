@@ -104,7 +104,7 @@ public class TurbineHealth : MonoBehaviour {
 		if (myTurbineIsWorking) {
 			
 			transform.GetChild (3).GetComponent<Text> ().text = " " + myTurbineInfo.originalOutput + " kW";
-			transform.GetChild (4).GetComponent<Text> ().text = "- " + myTurbineInfo.powerLoss + " kW";
+			//transform.GetChild (4).GetComponent<Text> ().text = "- " + myTurbineInfo.powerLoss + " kW";
 			
 		} else {
 			

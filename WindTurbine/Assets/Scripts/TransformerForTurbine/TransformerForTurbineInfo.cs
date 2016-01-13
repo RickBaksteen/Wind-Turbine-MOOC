@@ -18,16 +18,33 @@ public class TransformerForTurbineInfo : InfoItem {
 	public bool powerShow;
 	public AudioClip click;
 
+	public int previousPower;
+
+	public float timeAfterShowingNewPower;
+	public float timeForShowingNewPower;
+	public bool newPowerShow;
+
+	public int plusPower;
+	public int minusPower;
+
+
 	void Start(){
 	
 		lossK = 0.00001f;
 		powerShow = false;
 
+		timeAfterShowingNewPower = 0f;
+		timeForShowingNewPower = 2f;
+		newPowerShow = false;
+
+		plusPower = 0;
+		minusPower = 0;
+
 	}
 
 	void Update(){
 	
-		if (Application.loadedLevelName == "Level1")
+		if (Application.loadedLevelName == "Level1" || Application.loadedLevelName == "Level1_1"|| Application.loadedLevelName == "Level1_2"|| Application.loadedLevelName == "Level1_3")
 			powerLoss = 0;
 		else
 			powerLoss = (int)(lossK * originalPower * originalPower * powerLineInfo.length(transform.position, gameObject.transform.GetComponent<TransformerForTurbineWorking>().poweredTransformer.position));
@@ -45,17 +62,54 @@ public class TransformerForTurbineInfo : InfoItem {
 			
 		}
 
+		if (newPowerShow) {
+		
+			timeAfterShowingNewPower += Time.deltaTime;
+			if(timeAfterShowingNewPower >= timeForShowingNewPower){
+				unshowNewPower();
+			}
+		
+		}
 
-		if (powerShow) {
-			
+		if (newPowerShow && Application.loadedLevelName!="Level1" && Application.loadedLevelName!="Level1_1" && Application.loadedLevelName!="Level1_2") {
+		
+			transform.GetChild (1).GetChild (0).GetComponent<Text> ().text = previousPower + " kW";
+			transform.GetChild (1).GetChild (1).GetComponent<Text> ().text = "+ " + plusPower + " kW";
+			transform.GetChild (1).GetChild (2).GetComponent<Text> ().text = "- "+ minusPower + " kW";
+		
+		} else if (powerShow) {
+		
 			transform.GetChild (1).GetChild (0).GetComponent<Text> ().text = originalPower + " kW";
-			
+		
 		} else {
-			
+		
 			transform.GetChild (1).GetChild (0).GetComponent<Text> ().text = "";
-			
+		
 		}
 	
+	}
+
+
+	public void showNewPower(Transform turbine){
+		
+		timeAfterShowingNewPower = 0f;
+		newPowerShow = true;
+		//turbine.GetComponent<TurbineInfo> ().calculatePowerLoss ();
+		plusPower += turbine.GetComponent<TurbineInfo>().originalOutput;
+		minusPower += turbine.GetComponent<TurbineInfo>().calculatePowerLoss(turbine.GetComponent<TurbineInfo>().originalOutput);
+	}
+	
+	public void unshowNewPower(){
+		
+		newPowerShow = false;
+		previousPower = originalPower;
+		plusPower = 0;
+		minusPower = 0;
+
+		transform.GetChild (1).GetChild (0).GetComponent<Text> ().text = "";
+		transform.GetChild (1).GetChild (1).GetComponent<Text> ().text = "";
+		transform.GetChild (1).GetChild (2).GetComponent<Text> ().text = "";
+		
 	}
 
 

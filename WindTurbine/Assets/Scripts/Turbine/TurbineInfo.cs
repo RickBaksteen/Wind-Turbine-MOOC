@@ -50,6 +50,18 @@ public class TurbineInfo : InfoItem
 
 		//turbineColor = Color.white;
 		lossK = 0.001f;
+
+		if(Application.loadedLevelName == "Level1_1"||Application.loadedLevelName == "Level1_2"||Application.loadedLevelName == "Level2_1"||Application.loadedLevelName == "Level2_2")
+			cost = 250;
+		
+		
+		else if(Application.loadedLevelName == "Level3_2"){
+			cost = 200;
+			
+		}
+		
+		else
+			cost = 100;
 	}
 
 	void Start()
@@ -82,18 +94,6 @@ public class TurbineInfo : InfoItem
 		
 		healthShow = true;
 		powerLossShow = true;
-
-		if(Application.loadedLevelName == "Level1_1"||Application.loadedLevelName == "Level1_2"||Application.loadedLevelName == "Level2_1"||Application.loadedLevelName == "Level2_2")
-			cost = 250;
-
-
-		else if(Application.loadedLevelName == "Level3_2"){
-			cost = 200;
-			
-		}
-
-		else
-			cost = 100;
 
 	}
 	
@@ -231,19 +231,29 @@ public class TurbineInfo : InfoItem
 	{
 		if (LockUI.OverGui) return;
 
+		GameObject sellBtn = GameObject.FindGameObjectWithTag("sellButton");
+		GameObject repairBtn = GameObject.FindGameObjectWithTag("repairButton");
+
+		if (sellBtn != null)
+			sellBtn.GetComponent<SellManager> ().enableButton ();
+
+		if (repairBtn != null)
+			repairBtn.GetComponent<RepairManager> ().enableButton ();
+
+
 		AudioSource.PlayClipAtPoint (click, Camera.main.transform.position, 0.4f);
 		GameObject.FindGameObjectWithTag ("screens").GetComponent<CustomizationSwitch> ().toSelectionP ();
 		GameObject.FindGameObjectWithTag ("selectionPanel").GetComponent<InfoPanel> ().UpdateInfo (gameObject.transform.GetComponent<TurbineInfo>());
 
-		if (Application.loadedLevelName != "Level1"&& Application.loadedLevelName != "Level1_1" && Application.loadedLevelName != "Level1_2"  && Application.loadedLevelName != "Level1_3"  && Application.loadedLevelName != "Level1_3" && Application.loadedLevelName != "Level2" && Application.loadedLevelName != "Level2_1" && Application.loadedLevelName != "Level2_2" && Application.loadedLevelName != "Level2_3") {
+		if (repairBtn!=null) {
 		
-			GameObject repairButton = GameObject.FindGameObjectWithTag ("repairButton");
-			repairButton.GetComponent<RepairManager> ().proposeRepairTurbine (transform);
+			//GameObject repairButton = GameObject.FindGameObjectWithTag ("repairButton");
+			repairBtn.GetComponent<RepairManager> ().proposeRepairTurbine (transform);
 		
 		}
 
-		GameObject sellButton = GameObject.FindGameObjectWithTag ("sellButton");
-		sellButton.GetComponent<SellManager>().proposeSellTurbine(this.gameObject);
+		//GameObject sellButton = GameObject.FindGameObjectWithTag ("sellButton");
+		sellBtn.GetComponent<SellManager>().proposeSellTurbine(this.gameObject);
 		
 		Debug.Log(GetInfo ());
 		

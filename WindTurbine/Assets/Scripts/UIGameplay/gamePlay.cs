@@ -3,9 +3,14 @@ using System.Collections;
 
 public class gamePlay : MonoBehaviour {
 
+	public bool volumePanelOpen;
+
 	// Use this for initialization
 	void Start () {
-	
+		volumePanelOpen = false;
+
+		GameObject.Find ("Utility").GetComponent<CanvasGroup> ().alpha = 0f;
+		GameObject.Find ("Utility").GetComponent<CanvasGroup> ().interactable = false;
 	}
 	
 	// Update is called once per frame
@@ -32,5 +37,24 @@ public class gamePlay : MonoBehaviour {
 		if (Time.timeScale < 12) {
 			Time.timeScale += 1;
 		}
+	}
+
+	public void volumeControl(){
+
+		volumePanelOpen = !volumePanelOpen;
+
+
+		if (volumePanelOpen) {
+		
+			GameObject.Find ("Utility").GetComponent<CanvasGroup> ().alpha = 1f;
+			GameObject.Find ("Utility").GetComponent<CanvasGroup> ().interactable = true;
+		
+		} else {
+		
+			GameObject.Find ("Utility").GetComponent<CanvasGroup> ().alpha = 0f;
+			GameObject.Find ("Utility").GetComponent<CanvasGroup> ().interactable = false;
+
+		}
+
 	}
 }

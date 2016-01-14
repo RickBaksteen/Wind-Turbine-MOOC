@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class GridInfo : InfoItem {
 	
@@ -128,5 +129,34 @@ public class GridInfo : InfoItem {
 		
 		ExtraCost = Elevation;
 		
+	}
+
+	public void OnMouseEnter (){
+
+//		Debug.Log ("enter");
+//		GameObject.Find ("TerrainInformation").transform.GetChild (0).GetComponent<CanvasGroup> ().alpha = 0.7f;
+//		GameObject.Find ("TerrainInformation").transform.GetChild (0).GetChild(1).GetComponent<Text> ().text = "Elevation: " + Elevation + "\n" + "Extra Cost: " + ExtraCost + " TC";
+
+		CreateManager createManager = GameObject.FindGameObjectWithTag ("createManager").transform.GetComponent<CreateManager> ();
+
+		Debug.Log ("enter");
+		transform.GetChild (0).GetComponent<CanvasGroup> ().alpha = 0.7f;
+
+		if (!createManager.creating)
+			transform.GetChild (0).GetChild(1).GetComponent<Text> ().text = "Elevation: " + Elevation + "\n" + "Extra Cost: " + ExtraCost + " TC";
+		else
+			transform.GetChild (0).GetChild(1).GetComponent<Text> ().text = "Elevation: " + Elevation + "\n" + "Extra Cost: " + ExtraCost + " TC" + "\nTotal Cost: " + createManager.cost + " TC";
+
+	}
+
+	public void OnMouseExit(){
+		Debug.Log ("exit");
+//		GameObject.Find ("TerrainInformation").transform.GetChild (0).GetComponent<CanvasGroup> ().alpha = 0f;
+//		GameObject.Find ("TerrainInformation").transform.GetChild (0).GetChild(1).GetComponent<Text> ().text = "";
+
+		Debug.Log ("enter");
+		transform.GetChild (0).GetComponent<CanvasGroup> ().alpha = 0f;
+		transform.GetChild (0).GetChild (1).GetComponent<Text> ().text = "";
+
 	}
 }

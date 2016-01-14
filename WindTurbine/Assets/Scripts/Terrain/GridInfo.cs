@@ -17,11 +17,11 @@ public class GridInfo : InfoItem {
 
 	void Awake(){
 
-		GridInfo.showInfo = false;
+		GridInfo.showInfo = true;
 		
 		
 		if (Application.loadedLevelName == "Level1_1" || Application.loadedLevelName == "Level2_1" || Application.loadedLevelName == "Level3_1" || Application.loadedLevelName == "Level4_1")
-			GridInfo.showInfo = true;
+			GridInfo.showInfo = false;
 
 	}
 	

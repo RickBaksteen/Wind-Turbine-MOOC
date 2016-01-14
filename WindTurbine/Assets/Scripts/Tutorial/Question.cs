@@ -1,12 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Question : MonoBehaviour {
     public GameObject p;
+
+	public bool clicked;
 	//public GameObject step0;
 
 	// Use this for initialization
 	public void Click () {
+
+		clicked = true;
 
 		p.SetActive(true);
 
@@ -41,6 +46,25 @@ public class Question : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+
+		if (clicked) {
+		
+			gameObject.GetComponent<Button>().interactable = false;
+		
+		}
+
+		else{
+			
+			gameObject.GetComponent<Button>().interactable = true;
+			
+		}
+
+	}
+
+	void Start(){
+
+
+		clicked = true;
+
 	}
 }

@@ -78,6 +78,12 @@
      <Compile Include="Assets\Scripts\Turbine\TurbineHealth.cs" />
      <Compile Include="Assets\Scripts\Turbine\TurbineInfo.cs" />
      <Compile Include="Assets\Scripts\Turbine\TurbineWorking.cs" />
+     <Compile Include="Assets\Scripts\Tutorial\Arrow.cs" />
+     <Compile Include="Assets\Scripts\Tutorial\NextStep.cs" />
+     <Compile Include="Assets\Scripts\Tutorial\Question.cs" />
+     <Compile Include="Assets\Scripts\Tutorial\SkipTutorial.cs" />
+     <Compile Include="Assets\Scripts\Tutorial\Timage1.cs" />
+     <Compile Include="Assets\Scripts\Tutorial\Tutorial.cs" />
      <Compile Include="Assets\Scripts\UICondition\ConditionManager.cs" />
      <Compile Include="Assets\Scripts\UICondition\EnemyCountManager.cs" />
      <Compile Include="Assets\Scripts\UICondition\MoneyManager.cs" />

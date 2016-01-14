@@ -39,9 +39,9 @@ public class CreateResultManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		transform.GetChild (1).GetComponent<Text> ().text = "\t  Power Output: " + maxOutput;
-		transform.GetChild (2).GetComponent<Text> ().text = "\t  Cost: " + cost + " TC";
-		transform.GetChild (3).GetComponent<Text> ().text = "\t  Time Before Maintenance: " + timeForWork + " s";
+		transform.GetChild (1).GetComponent<Text> ().text = " Power Output: " + maxOutput;
+		transform.GetChild (2).GetComponent<Text> ().text = " Cost: " + cost + " TC";
+		transform.GetChild (3).GetComponent<Text> ().text = " Time Before Repair: " + timeForWork + " s";
 	}
 	
 	public void updateBlade(int extraOutput, int extraCost, string name){

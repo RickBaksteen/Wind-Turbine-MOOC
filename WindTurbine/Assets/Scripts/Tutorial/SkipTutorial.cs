@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class SkipTutorial : MonoBehaviour {
     public GameObject t;
@@ -11,11 +12,19 @@ public class SkipTutorial : MonoBehaviour {
 
     // Use this for initialization
     public void Click () {
-        t.SetActive(false);
+        
+		GameObject.FindGameObjectWithTag ("questionBtn").GetComponent<Question> ().clicked = false;
+		t.SetActive(false);
         Time.timeScale = 1;
         cam.speed = 2;
         cam.zoomSpeed = 5;
-		gameObject.SetActive (false);
+
+		transform.parent.parent.gameObject.SetActive (false);
+		//gameObject.SetActive (false);
+
+		GridInfo.showInfo = true;
+
+		
     }
 	
     void Start() { }

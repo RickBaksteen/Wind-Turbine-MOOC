@@ -53,6 +53,7 @@ public class PumpInfo : InfoItem
 
 		if (powerShow) {
 			
+			transform.GetChild (2).GetChild (0).GetComponent<Text> ().color = Color.yellow;
 			transform.GetChild (2).GetChild (0).GetComponent<Text> ().text = power + " kW";
 			
 		} else {

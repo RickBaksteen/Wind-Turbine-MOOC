@@ -12,9 +12,22 @@ public class GridInfo : InfoItem {
 	public int x;
 	public int z;
 	public AudioClip click;
+
+	public static bool showInfo;
+
+	void Awake(){
+
+		GridInfo.showInfo = false;
+		
+		
+		if (Application.loadedLevelName == "Level1_1" || Application.loadedLevelName == "Level2_1" || Application.loadedLevelName == "Level3_1" || Application.loadedLevelName == "Level4_1")
+			GridInfo.showInfo = true;
+
+	}
+	
 	// Use this for initialization
 	void Start () {
-		
+
 	}
 	
 	// Update is called once per frame
@@ -133,6 +146,8 @@ public class GridInfo : InfoItem {
 
 	public void OnMouseEnter (){
 
+		if (!GridInfo.showInfo)
+			return;
 //		Debug.Log ("enter");
 //		GameObject.Find ("TerrainInformation").transform.GetChild (0).GetComponent<CanvasGroup> ().alpha = 0.7f;
 //		GameObject.Find ("TerrainInformation").transform.GetChild (0).GetChild(1).GetComponent<Text> ().text = "Elevation: " + Elevation + "\n" + "Extra Cost: " + ExtraCost + " TC";

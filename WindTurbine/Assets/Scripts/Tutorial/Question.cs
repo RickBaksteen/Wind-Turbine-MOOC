@@ -35,6 +35,8 @@ public class Question : MonoBehaviour {
 
 		//Debug.Log ("Tutorial Begin");
 
+		GridInfo.showInfo = false;
+
 	}
 	
 	// Update is called once per frame

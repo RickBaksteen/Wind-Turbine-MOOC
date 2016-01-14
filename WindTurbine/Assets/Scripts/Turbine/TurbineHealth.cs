@@ -23,6 +23,7 @@ public class TurbineHealth : MonoBehaviour {
 		
 			transform.GetChild(2).GetComponent<Image>().fillAmount = 0;
 			transform.GetChild(1).GetComponent<Image>().fillAmount = (float)myTurbineInfo.health / 100.0f;
+			transform.GetChild(0).GetComponent<Image>().color = Color.red;
 		
 		}
 
@@ -33,6 +34,8 @@ public class TurbineHealth : MonoBehaviour {
 			if(!myTurbineIsRepairing)
 			{
 				transform.GetChild(2).GetComponent<Image>().fillAmount = 0;
+				transform.GetChild(0).GetComponent<Image>().color = Color.black;
+				
 			}
 
 			else

@@ -16,6 +16,8 @@ public class SkipTutorial : MonoBehaviour {
         cam.speed = 2;
         cam.zoomSpeed = 5;
 		gameObject.SetActive (false);
+
+		GridInfo.showInfo = true;
     }
 	
     void Start() { }

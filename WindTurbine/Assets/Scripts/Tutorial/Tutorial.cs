@@ -20,6 +20,8 @@ public class Tutorial : MonoBehaviour {
         cam.speed = 0;
         cam.zoomSpeed = 0;
 
+		GridInfo.showInfo = false;
+
     }
 	
 	// Update is called once per frame

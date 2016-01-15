@@ -230,24 +230,25 @@ public class TerrainInfo : MonoBehaviour {
 			prev = gridTurningPoints[i];
 			
 		}
-
+		
 		//Detect the palce of all turbines, pumps and transformers that already in the scene
-
+		
 		GameObject[] allTurbines = GameObject.FindGameObjectsWithTag ("turbine");
 		GameObject[] allPumps = GameObject.FindGameObjectsWithTag ("waterTower");
 		GameObject[] allTransformers = GameObject.FindGameObjectsWithTag ("transformer");
-
+		GameObject[] allTransformerForTurbines = GameObject.FindGameObjectsWithTag("transformerForTurbine");
+		
 		for (int i = 0; i < allTurbines.Length; i++) {
-
+			
 			Transform currentTransform = allTurbines[i].transform;
 			Vector2 gridPlace = TerrainInfo.TransformToGrid(currentTransform.position);
 			TurbineInfo currentTurbine = allTurbines[i].transform.GetComponent<TurbineInfo>();
 			currentTurbine.x = (int) gridPlace.x;
 			currentTurbine.z = (int) gridPlace.y;
 			placeItemInfo[(int)gridPlace.x, (int)gridPlace.y] = 1;
-
+			
 		}
-
+		
 		for (int i = 0; i < allPumps.Length; i++) {
 			
 			Transform currentTransform = allPumps[i].transform;
@@ -256,9 +257,9 @@ public class TerrainInfo : MonoBehaviour {
 			currentPump.x = (int)gridPlace.x;
 			currentPump.z = (int)gridPlace.y;
 			placeItemInfo[(int)gridPlace.x, (int)gridPlace.y] = 1;
-
+			
 		}
-
+		
 		for (int i = 0; i < allTransformers.Length; i++) {
 			
 			Transform currentTransform = allTransformers[i].transform;
@@ -270,6 +271,16 @@ public class TerrainInfo : MonoBehaviour {
 			
 		}
 		
+		for (int i = 0; i < allTransformerForTurbines.Length; i++) {
+			
+			Transform currentTransform = allTransformerForTurbines[i].transform;
+			Vector2 gridPlace = TerrainInfo.TransformToGrid(currentTransform.position);
+			TransformerForTurbineInfo currentTransformerForTurbine = allTransformerForTurbines[i].transform.GetComponent<TransformerForTurbineInfo>();
+			currentTransformerForTurbine.x = (int)gridPlace.x;
+			currentTransformerForTurbine.z = (int)gridPlace.y;
+			placeItemInfo[(int)gridPlace.x, (int)gridPlace.y] = 1;
+			
+		}
 	}
 	
 	

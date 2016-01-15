@@ -19,7 +19,7 @@ public class SkipTutorial : MonoBehaviour {
         cam.speed = 2;
         cam.zoomSpeed = 5;
 
-		transform.parent.parent.gameObject.SetActive (false);
+		//transform.parent.parent.gameObject.SetActive (false);
 		//gameObject.SetActive (false);
 
 		GridInfo.showInfo = true;

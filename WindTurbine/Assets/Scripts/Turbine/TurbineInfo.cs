@@ -82,13 +82,13 @@ public class TurbineInfo : InfoItem
 			timeForRepair = 25f;
 			costForRepair = 25;
 			TurbineInfo.healthPercBeforeReparing = 50;
-			timeForPowerLossShow = 3f;
+			timeForPowerLossShow = 4f;
 
 		} else {
 		
 			timeForRepair = 15f;
 			costForRepair = 30;
-			timeForPowerLossShow = 3f;
+			timeForPowerLossShow = 4f;
 			TurbineInfo.healthPercBeforeReparing = 25;
 		}
 		

@@ -18,33 +18,43 @@ public class TurbineHealth : MonoBehaviour {
 	
 		myTurbineIsWorking = myTurbineInfo.isWorking;
 		myTurbineIsRepairing = myTurbineInfo.isReparing;
-
-		if (myTurbineIsWorking) {
 		
+		if (myTurbineIsWorking) {
+			
 			transform.GetChild(2).GetComponent<Image>().fillAmount = 0;
 			transform.GetChild(1).GetComponent<Image>().fillAmount = (float)myTurbineInfo.health / 100.0f;
-			transform.GetChild(0).GetComponent<Image>().color = Color.red;
-		
+			
+			Color backgroundColor = transform.GetChild(0).GetComponent<Image>().color;
+			
+			if(backgroundColor.a!=0f)
+				transform.GetChild(0).GetComponent<Image>().color = Color.red;
+			
+			
 		}
-
-		if (!myTurbineIsWorking) {
 		
+		if (!myTurbineIsWorking) {
+			
 			transform.GetChild(1).GetComponent<Image>().fillAmount = 0;
-
+			
 			if(!myTurbineIsRepairing)
 			{
 				transform.GetChild(2).GetComponent<Image>().fillAmount = 0;
-				transform.GetChild(0).GetComponent<Image>().color = Color.black;
+				//transform.GetChild(0).GetComponent<Image>().color = Color.black;
+				
+				Color backgroundColor = transform.GetChild(0).GetComponent<Image>().color;
+				
+				if(backgroundColor.a!=0f)
+					transform.GetChild(0).GetComponent<Image>().color = Color.black;
 				
 			}
-
+			
 			else
 			{
 				transform.GetChild(2).GetComponent<Image>().fillAmount = myTurbineInfo.timeAfterRepair / myTurbineInfo.timeForRepair;
 			}
-		
+			
 		}
-
+		
 		//transform.GetChild(3).GetComponent<Text>().text = myTurbineInfo.output + " kW";
 
 	}
@@ -107,7 +117,7 @@ public class TurbineHealth : MonoBehaviour {
 		if (myTurbineIsWorking) {
 			
 			transform.GetChild (3).GetComponent<Text> ().text = " " + myTurbineInfo.originalOutput + " kW";
-			//transform.GetChild (4).GetComponent<Text> ().text = "- " + myTurbineInfo.powerLoss + " kW";
+			transform.GetChild (4).GetComponent<Text> ().text = "- " + myTurbineInfo.powerLoss + " kW";
 			
 		} else {
 			

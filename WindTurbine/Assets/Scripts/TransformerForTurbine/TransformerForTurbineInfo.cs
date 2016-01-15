@@ -34,7 +34,7 @@ public class TransformerForTurbineInfo : InfoItem {
 		powerShow = false;
 
 		timeAfterShowingNewPower = 0f;
-		timeForShowingNewPower = 2f;
+		timeForShowingNewPower = 4f;
 		newPowerShow = false;
 
 		plusPower = 0;
@@ -50,8 +50,8 @@ public class TransformerForTurbineInfo : InfoItem {
 			powerLoss = (int)(lossK * originalPower * originalPower * powerLineInfo.length(transform.position, gameObject.transform.GetComponent<TransformerForTurbineWorking>().poweredTransformer.position));
 		
 		outputPower = Math.Max(originalPower - powerLoss, 0);
-
-
+		
+		
 		if (transform != VisualizationManager.visualizedObject || !powerShow) {
 			
 			powerShow = false;
@@ -61,30 +61,35 @@ public class TransformerForTurbineInfo : InfoItem {
 			powerShow = true;
 			
 		}
-
-		if (newPowerShow) {
 		
+		if (newPowerShow) {
+			
 			timeAfterShowingNewPower += Time.deltaTime;
 			if(timeAfterShowingNewPower >= timeForShowingNewPower){
 				unshowNewPower();
 			}
-		
+			
 		}
-
+		
 		if (newPowerShow && Application.loadedLevelName!="Level1" && Application.loadedLevelName!="Level1_1" && Application.loadedLevelName!="Level1_2") {
-		
-			transform.GetChild (1).GetChild (0).GetComponent<Text> ().text = previousPower + " kW";
-			transform.GetChild (1).GetChild (1).GetComponent<Text> ().text = "+ " + plusPower + " kW";
-			transform.GetChild (1).GetChild (2).GetComponent<Text> ().text = "- "+ minusPower + " kW";
-		
+			
+			int powerAdded = plusPower-minusPower;
+			
+			//transform.GetChild (1).GetChild (0).GetComponent<Text> ().text = originalPower + " kW";
+			transform.GetChild (1).GetChild (0).GetComponent<Text> ().color = Color.green;
+			transform.GetChild (1).GetChild (0).GetComponent<Text> ().text = "+ " + powerAdded + " kW";
+			//transform.GetChild (1).GetChild (0).GetComponent<Text> ().text = previousPower + " kW";
+			//transform.GetChild (1).GetChild (1).GetComponent<Text> ().text = "+ " + plusPower + " kW";
+			//transform.GetChild (1).GetChild (2).GetComponent<Text> ().text = "- "+ minusPower + " kW";
+			
 		} else if (powerShow) {
-		
+			
 			transform.GetChild (1).GetChild (0).GetComponent<Text> ().text = originalPower + " kW";
-		
+			
 		} else {
-		
+			
 			transform.GetChild (1).GetChild (0).GetComponent<Text> ().text = "";
-		
+			
 		}
 	
 	}
@@ -105,11 +110,11 @@ public class TransformerForTurbineInfo : InfoItem {
 		previousPower = originalPower;
 		plusPower = 0;
 		minusPower = 0;
-
+		
+		transform.GetChild (1).GetChild (0).GetComponent<Text> ().color = Color.yellow;
 		transform.GetChild (1).GetChild (0).GetComponent<Text> ().text = "";
 		transform.GetChild (1).GetChild (1).GetComponent<Text> ().text = "";
 		transform.GetChild (1).GetChild (2).GetComponent<Text> ().text = "";
-		
 	}
 
 

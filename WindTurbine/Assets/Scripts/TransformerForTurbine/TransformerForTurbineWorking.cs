@@ -71,7 +71,11 @@ public class TransformerForTurbineWorking : MonoBehaviour {
 		Transform newLine = (Transform) Instantiate(powerLine, gameObject.transform.position, Quaternion.identity);
 		newLine.SetParent(gameObject.transform);
 		newLine.localPosition = Vector3.zero;
-		newLine.GetComponent<powerLineInfo>().drawLine(new Color(0f, 0f, 1f, 1f), gameObject.transform.position, poweredTransformer.position, 1f);
+
+		if(Application.loadedLevelName=="Level1_1"||Application.loadedLevelName=="Level1_2")
+			newLine.GetComponent<powerLineInfo>().drawLine(new Color(0f, 0f, 1f, 1f), gameObject.transform.position, poweredTransformer.position, 1f);
+		else
+			newLine.GetComponent<powerLineInfo>().drawLine(new Color(0f, 0f, 1f, 1f), gameObject.transform.position, poweredTransformer.position, 1f);
 
 	}
 }

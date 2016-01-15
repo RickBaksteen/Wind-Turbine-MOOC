@@ -23,7 +23,14 @@ public class TurbineWorking : MonoBehaviour {
 	}
 	
 	public void linkToTransformer(Transform target){
+
+		Color powerLineColor = new Color (1f, 0f, 0f, 1f);
 		
+		if(Application.loadedLevelName=="Level1_1"||Application.loadedLevelName=="Level1_2")
+			powerLineColor = new Color (0f, 0f, 1f, 1f);
+		else
+			powerLineColor = new Color (1f, 0f, 0f, 1f);
+
 		if (target.CompareTag ("transformerForTurbine")) {
 			
 			transformers.Add(target);
@@ -44,7 +51,7 @@ public class TurbineWorking : MonoBehaviour {
 			Transform newLine = (Transform) Instantiate(powerLine, gameObject.transform.position, Quaternion.identity);
 			newLine.SetParent(gameObject.transform);
 			newLine.localPosition = Vector3.zero;
-			newLine.GetComponent<powerLineInfo>().drawLine(new Color(1f, 0f, 0f, 1f), gameObject.transform.position, target.position);
+			newLine.GetComponent<powerLineInfo>().drawLine(powerLineColor, gameObject.transform.position, target.position);
 			
 		}
 		

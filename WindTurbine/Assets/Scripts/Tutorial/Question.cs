@@ -22,15 +22,34 @@ public class Question : MonoBehaviour {
 			p.transform.GetChild(2).gameObject.SetActive(false);
 			p.transform.GetChild(3).gameObject.SetActive(false);
 			p.transform.GetChild(4).gameObject.SetActive(false);
+			p.transform.GetChild(5).gameObject.SetActive(false);
 		
 		}
 
-		else if(Application.loadedLevelName == "Level3_1"||Application.loadedLevelName == "Level4_1")
-		{
+		else if (Application.loadedLevelName == "Level2_1") {
+			
 			p.transform.GetChild(0).gameObject.SetActive(true);
 			p.transform.GetChild(1).gameObject.SetActive(false);
 			p.transform.GetChild(2).gameObject.SetActive(false);
 			p.transform.GetChild(3).gameObject.SetActive(false);
+			p.transform.GetChild(4).gameObject.SetActive(false);
+			
+		}
+
+		else if(Application.loadedLevelName == "Level3_1")
+		{
+			p.transform.GetChild(0).gameObject.SetActive(true);
+			p.transform.GetChild(1).gameObject.SetActive(false);
+			p.transform.GetChild(2).gameObject.SetActive(false);
+			//p.transform.GetChild(3).gameObject.SetActive(false);
+		}
+
+		else if(Application.loadedLevelName == "Level4_1")
+		{
+			p.transform.GetChild(0).gameObject.SetActive(true);
+			p.transform.GetChild(1).gameObject.SetActive(false);
+			p.transform.GetChild(2).gameObject.SetActive(false);
+			//p.transform.GetChild(3).gameObject.SetActive(false);
 		}
 
 

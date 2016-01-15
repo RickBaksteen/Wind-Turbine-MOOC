@@ -15,7 +15,7 @@ public class Question : MonoBehaviour {
 
 		p.SetActive(true);
 
-		if (Application.loadedLevelName == "Level1_1"||Application.loadedLevelName == "Level2_1") {
+		if (Application.loadedLevelName == "Level1_1") {
 		
 			p.transform.GetChild(0).gameObject.SetActive(true);
 			p.transform.GetChild(1).gameObject.SetActive(false);
